@@ -1,0 +1,19 @@
+{
+  "name": "dicom-viewer",
+  "version": "1.0.0",
+  "description": "Веб-приложение для просмотра DICOM изображений на базе Cornerstone.js",
+  "private": true,
+  "scripts": {
+    "dev": "cd frontend && npm run dev",
+    "build": "cd frontend && npm run build",
+    "lint": "cd frontend && npm run lint",
+    "install-all": "cd frontend && npm install && cd ../backend && npm install",
+    "start": "concurrently \"npm run dev\" \"cd backend && npm start\""
+  },
+  "keywords": ["dicom", "medical-imaging", "cornerstone", "react", "viewer"],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
