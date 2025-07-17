@@ -190,7 +190,6 @@ function App() {
         <input
           ref={fileInputRef}
           type="file"
-          accept=".dcm,.dicom"
           onChange={handleFileLoad}
           style={{ display: 'none' }}
         />
