@@ -88,7 +88,7 @@ venv.bak/
 # DICOM test files (большие файлы не должны попадать в репозиторий)
 *.dcm
 *.dicom
-test-data/
+example_dcm/
 
 # Documentation builds
 docs/_build/
