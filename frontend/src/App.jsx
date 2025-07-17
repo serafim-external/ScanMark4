@@ -28,6 +28,9 @@ function App() {
   const [status, setStatus] = useState('Готов к загрузке');
   const [isInitialized, setIsInitialized] = useState(false);
   const fileInputRef = useRef(null);
+  const [imageStack, setImageStack] = useState([]);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [seriesInfo, setSeriesInfo] = useState(null);
 
   useEffect(() => {
     if (isInitialized) return;
@@ -131,34 +134,66 @@ function App() {
     };
   }, []);
 
-  const handleFileLoad = async (event) => {
-    const file = event.target.files[0];
-    if (!file) return;
+  // Обработка клавиатурных команд
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      if (imageStack.length > 1) {
+        switch (event.key) {
+          case 'ArrowUp':
+            event.preventDefault();
+            nextImage();
+            break;
+          case 'ArrowDown':
+            event.preventDefault();
+            prevImage();
+            break;
+        }
+      }
+    };
 
-    setStatus(`Загружаем файл: ${file.name}...`);
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [imageStack.length, currentImageIndex]);
 
+  const processFiles = async (files) => {
+    if (!files || files.length === 0) return;
+
+    setStatus(`Загружаем ${files.length} файл(ов)...`);
+    
     try {
-      const arrayBuffer = await file.arrayBuffer();
-      const dicomData = new Uint8Array(arrayBuffer);
+      const imageIds = [];
       
-      setStatus('Обрабатываем DICOM данные...');
+      for (let i = 0; i < files.length; i++) {
+        const file = files[i];
+        setStatus(`Обрабатываем файл ${i + 1}/${files.length}: ${file.name}...`);
+        
+        const arrayBuffer = await file.arrayBuffer();
+        const dicomData = new Uint8Array(arrayBuffer);
+        const blob = new Blob([dicomData], { type: 'application/dicom' });
+        const url = URL.createObjectURL(blob);
+        const imageId = `wadouri:${url}`;
+        
+        imageIds.push(imageId);
+      }
       
-      const blob = new Blob([dicomData], { type: 'application/dicom' });
-      const url = URL.createObjectURL(blob);
-      const imageId = `wadouri:${url}`;
+      setImageStack(imageIds);
+      setCurrentImageIndex(0);
+      setSeriesInfo({
+        totalImages: imageIds.length,
+        currentImage: 1
+      });
       
-      if (viewport) {
-        setStatus('Отображаем изображение...');
+      if (viewport && imageIds.length > 0) {
+        setStatus('Отображаем серию...');
         
         try {
-          await viewport.setStack([imageId]);
+          await viewport.setStack(imageIds);
           
-          // Асинхронный рендеринг
           setTimeout(() => {
             try {
               if (renderingEngineRef.current) {
                 renderingEngineRef.current.renderViewports(['CT_STACK']);
-                setStatus(`Файл загружен: ${file.name}`);
+                setStatus(`Загружена серия: ${imageIds.length} изображений`);
               } else {
                 setStatus('Ошибка: Rendering engine не найден');
               }
@@ -178,8 +213,34 @@ function App() {
     }
   };
 
+  const handleFileLoad = async (event) => {
+    const files = Array.from(event.target.files);
+    await processFiles(files);
+  };
+
   const triggerFileInput = () => {
     fileInputRef.current?.click();
+  };
+
+  const navigateToImage = (index) => {
+    if (viewport && imageStack.length > 0 && index >= 0 && index < imageStack.length) {
+      viewport.setImageIdIndex(index);
+      setCurrentImageIndex(index);
+      setSeriesInfo(prev => ({ ...prev, currentImage: index + 1 }));
+      renderingEngineRef.current?.renderViewports(['CT_STACK']);
+    }
+  };
+
+  const nextImage = () => {
+    if (currentImageIndex < imageStack.length - 1) {
+      navigateToImage(currentImageIndex + 1);
+    }
+  };
+
+  const prevImage = () => {
+    if (currentImageIndex > 0) {
+      navigateToImage(currentImageIndex - 1);
+    }
   };
 
   return (
@@ -190,9 +251,11 @@ function App() {
         <input
           ref={fileInputRef}
           type="file"
+          multiple
           onChange={handleFileLoad}
           style={{ display: 'none' }}
         />
+        
         <button 
           onClick={triggerFileInput}
           style={{
@@ -202,11 +265,26 @@ function App() {
             padding: '10px 20px',
             borderRadius: '5px',
             cursor: 'pointer',
-            fontSize: '16px'
+            fontSize: '16px',
+            marginBottom: '10px'
           }}
         >
-          Загрузить DICOM файл
+          Загрузить исследование
         </button>
+        
+        {seriesInfo && (
+          <div style={{ 
+            marginBottom: '10px',
+            padding: '10px',
+            backgroundColor: '#f8f9fa',
+            borderRadius: '5px',
+            textAlign: 'center'
+          }}>
+            <span style={{ fontSize: '14px', fontWeight: 'bold' }}>
+              Изображение {seriesInfo.currentImage} из {seriesInfo.totalImages}
+            </span>
+          </div>
+        )}
         
         <div style={{ 
           marginTop: '10px', 
@@ -229,6 +307,7 @@ function App() {
           <div>• Средняя кнопка мыши: панорамирование</div>
           <div>• Правая кнопка мыши: масштабирование</div>
           <div>• Колесо мыши: прокрутка слайсов (для стеков)</div>
+          <div>• Клавиши ↑/↓: навигация по слайсам серии</div>
         </div>
       </div>
       
