@@ -21,6 +21,10 @@ import {
   init as dicomImageLoaderInit,
 } from '@cornerstonejs/dicom-image-loader';
 
+import {
+  utilities,
+} from '@cornerstonejs/core';
+
 function App() {
   const viewportRef = useRef(null);
   const renderingEngineRef = useRef(null);
@@ -177,24 +181,37 @@ function App() {
         imageIds.push(imageId);
       }
       
-      setImageStack(imageIds);
+      // Сортируем изображения для правильного отображения серии
+      let sortedImageIds = imageIds;
+      if (imageIds.length > 1) {
+        try {
+          setStatus('Сортируем серию...');
+          const sortingResult = utilities.sortImageIdsAndGetSpacing(imageIds);
+          sortedImageIds = sortingResult.sortedImageIds;
+          console.log('Серия отсортирована, z-spacing:', sortingResult.zSpacing);
+        } catch (error) {
+          console.warn('Не удалось отсортировать серию, используем исходный порядок:', error);
+        }
+      }
+      
+      setImageStack(sortedImageIds);
       setCurrentImageIndex(0);
       setSeriesInfo({
-        totalImages: imageIds.length,
+        totalImages: sortedImageIds.length,
         currentImage: 1
       });
       
-      if (viewport && imageIds.length > 0) {
+      if (viewport && sortedImageIds.length > 0) {
         setStatus('Отображаем серию...');
         
         try {
-          await viewport.setStack(imageIds);
+          await viewport.setStack(sortedImageIds);
           
           setTimeout(() => {
             try {
               if (renderingEngineRef.current) {
                 renderingEngineRef.current.renderViewports(['CT_STACK']);
-                setStatus(`Загружена серия: ${imageIds.length} изображений`);
+                setStatus(`Загружена серия: ${sortedImageIds.length} изображений`);
               } else {
                 setStatus('Ошибка: Rendering engine не найден');
               }
