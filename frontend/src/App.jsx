@@ -28,6 +28,7 @@ function App() {
   const [status, setStatus] = useState('Готов к загрузке');
   const [isInitialized, setIsInitialized] = useState(false);
   const fileInputRef = useRef(null);
+  const folderInputRef = useRef(null);
   const [imageStack, setImageStack] = useState([]);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [seriesInfo, setSeriesInfo] = useState(null);
@@ -218,9 +219,19 @@ function App() {
     await processFiles(files);
   };
 
-  const triggerFileInput = () => {
+  const handleFolderLoad = async (event) => {
+    const files = Array.from(event.target.files);
+    await processFiles(files);
+  };
+
+  const showFileDialog = () => {
     fileInputRef.current?.click();
   };
+
+  const showFolderDialog = () => {
+    folderInputRef.current?.click();
+  };
+
 
   const navigateToImage = (index) => {
     if (viewport && imageStack.length > 0 && index >= 0 && index < imageStack.length) {
@@ -255,22 +266,45 @@ function App() {
           onChange={handleFileLoad}
           style={{ display: 'none' }}
         />
+        <input
+          ref={folderInputRef}
+          type="file"
+          webkitdirectory="true"
+          onChange={handleFolderLoad}
+          style={{ display: 'none' }}
+        />
         
-        <button 
-          onClick={triggerFileInput}
-          style={{
-            backgroundColor: '#007bff',
-            color: 'white',
-            border: 'none',
-            padding: '10px 20px',
-            borderRadius: '5px',
-            cursor: 'pointer',
-            fontSize: '16px',
-            marginBottom: '10px'
-          }}
-        >
-          Загрузить исследование
-        </button>
+        <div style={{ display: 'flex', gap: '10px', marginBottom: '10px' }}>
+          <button 
+            onClick={showFileDialog}
+            style={{
+              backgroundColor: '#007bff',
+              color: 'white',
+              border: 'none',
+              padding: '10px 20px',
+              borderRadius: '5px',
+              cursor: 'pointer',
+              fontSize: '16px'
+            }}
+          >
+            Загрузить файл(ы)
+          </button>
+          
+          <button 
+            onClick={showFolderDialog}
+            style={{
+              backgroundColor: '#28a745',
+              color: 'white',
+              border: 'none',
+              padding: '10px 20px',
+              borderRadius: '5px',
+              cursor: 'pointer',
+              fontSize: '16px'
+            }}
+          >
+            Загрузить папку
+          </button>
+        </div>
         
         {seriesInfo && (
           <div style={{ 
