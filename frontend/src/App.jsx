@@ -23,6 +23,8 @@ import {
 
 import {
   utilities,
+  metaData,
+  imageLoader,
 } from '@cornerstonejs/core';
 
 function App() {
@@ -160,14 +162,109 @@ function App() {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [imageStack.length, currentImageIndex]);
 
+  // Функция сортировки по Instance Number
+  const sortByInstanceNumber = async (imageIds) => {
+    const imageWithMetadata = [];
+    
+    for (const imageId of imageIds) {
+      try {
+        const generalImageModule = metaData.get('generalImageModule', imageId);
+        const instanceNumber = generalImageModule?.instanceNumber || 0;
+        imageWithMetadata.push({ imageId, instanceNumber });
+        console.log(`Image: ${imageId}, Instance Number: ${instanceNumber}`);
+      } catch (error) {
+        console.warn(`Не удалось получить метаданные для ${imageId}:`, error);
+        imageWithMetadata.push({ imageId, instanceNumber: 0 });
+      }
+    }
+    
+    imageWithMetadata.sort((a, b) => a.instanceNumber - b.instanceNumber);
+    return imageWithMetadata.map(item => item.imageId);
+  };
+
+  // Функция сортировки по Slice Location
+  const sortBySliceLocation = async (imageIds) => {
+    const imageWithMetadata = [];
+    
+    for (const imageId of imageIds) {
+      try {
+        const imagePlaneModule = metaData.get('imagePlaneModule', imageId);
+        const sliceLocation = imagePlaneModule?.sliceLocation || 0;
+        imageWithMetadata.push({ imageId, sliceLocation });
+        console.log(`Image: ${imageId}, Slice Location: ${sliceLocation}`);
+      } catch (error) {
+        console.warn(`Не удалось получить метаданные для ${imageId}:`, error);
+        imageWithMetadata.push({ imageId, sliceLocation: 0 });
+      }
+    }
+    
+    imageWithMetadata.sort((a, b) => a.sliceLocation - b.sliceLocation);
+    return imageWithMetadata.map(item => item.imageId);
+  };
+
+  // Функция сортировки по Image Position Patient
+  const sortByImagePositionPatient = async (imageIds) => {
+    const imageWithMetadata = [];
+    
+    for (const imageId of imageIds) {
+      try {
+        const imagePlaneModule = metaData.get('imagePlaneModule', imageId);
+        const imagePositionPatient = imagePlaneModule?.imagePositionPatient;
+        const imageOrientationPatient = imagePlaneModule?.imageOrientationPatient;
+        
+        if (imagePositionPatient && imagePositionPatient.length >= 3) {
+          imageWithMetadata.push({ 
+            imageId, 
+            position: imagePositionPatient,
+            orientation: imageOrientationPatient,
+            x: imagePositionPatient[0],
+            y: imagePositionPatient[1], 
+            z: imagePositionPatient[2]
+          });
+          console.log(`Image: ${imageId}, Position: [${imagePositionPatient.join(', ')}]`);
+        } else {
+          imageWithMetadata.push({ imageId, position: [0, 0, 0], orientation: null, x: 0, y: 0, z: 0 });
+        }
+      } catch (error) {
+        console.warn(`Не удалось получить метаданные для ${imageId}:`, error);
+        imageWithMetadata.push({ imageId, position: [0, 0, 0], orientation: null, x: 0, y: 0, z: 0 });
+      }
+    }
+    
+    if (imageWithMetadata.length >= 2) {
+      // Определяем основное направление изменения координат
+      const positions = imageWithMetadata.map(item => item.position);
+      const xRange = Math.max(...positions.map(p => p[0])) - Math.min(...positions.map(p => p[0]));
+      const yRange = Math.max(...positions.map(p => p[1])) - Math.min(...positions.map(p => p[1]));
+      const zRange = Math.max(...positions.map(p => p[2])) - Math.min(...positions.map(p => p[2]));
+      
+      console.log(`Диапазоны координат - X: ${xRange.toFixed(2)}, Y: ${yRange.toFixed(2)}, Z: ${zRange.toFixed(2)}`);
+      
+      // Сортируем по оси с наибольшим изменением
+      if (zRange >= xRange && zRange >= yRange) {
+        console.log('Сортировка по Z-координате (аксиальные срезы)');
+        imageWithMetadata.sort((a, b) => a.z - b.z);
+      } else if (yRange >= xRange) {
+        console.log('Сортировка по Y-координате (коронарные срезы)');
+        imageWithMetadata.sort((a, b) => a.y - b.y);
+      } else {
+        console.log('Сортировка по X-координате (сагиттальные срезы)');
+        imageWithMetadata.sort((a, b) => a.x - b.x);
+      }
+    }
+    
+    return imageWithMetadata.map(item => item.imageId);
+  };
+
   const processFiles = async (files) => {
     if (!files || files.length === 0) return;
 
     setStatus(`Загружаем ${files.length} файл(ов)...`);
     
     try {
-      const imageIds = [];
+      const filesWithMetadata = [];
       
+      // Сначала загружаем все файлы и получаем их метаданные
       for (let i = 0; i < files.length; i++) {
         const file = files[i];
         setStatus(`Обрабатываем файл ${i + 1}/${files.length}: ${file.name}...`);
@@ -178,19 +275,85 @@ function App() {
         const url = URL.createObjectURL(blob);
         const imageId = `wadouri:${url}`;
         
-        imageIds.push(imageId);
+        // Предзагружаем изображение для получения метаданных
+        try {
+          await imageLoader.loadAndCacheImage(imageId);
+        } catch (loadError) {
+          console.warn(`Ошибка загрузки изображения ${file.name}:`, loadError);
+        }
+        
+        filesWithMetadata.push({
+          imageId,
+          fileName: file.name,
+          file
+        });
       }
       
-      // Сортируем изображения для правильного отображения серии
-      let sortedImageIds = imageIds;
-      if (imageIds.length > 1) {
+      setStatus('Сортируем серию по метаданным...');
+      
+      // Теперь пробуем сортировку с загруженными метаданными
+      let sortedImageIds = filesWithMetadata.map(f => f.imageId);
+      
+      if (filesWithMetadata.length > 1) {
+        let sortingSuccess = false;
+        
+        // Попытка 1: Сортировка по Image Position Patient
         try {
-          setStatus('Сортируем серию...');
-          const sortingResult = utilities.sortImageIdsAndGetSpacing(imageIds);
-          sortedImageIds = sortingResult.sortedImageIds;
-          console.log('Серия отсортирована, z-spacing:', sortingResult.zSpacing);
-        } catch (error) {
-          console.warn('Не удалось отсортировать серию, используем исходный порядок:', error);
+          console.log('Пробуем сортировку по Image Position Patient...');
+          sortedImageIds = await sortByImagePositionPatient(sortedImageIds);
+          console.log('Image Position Patient сортировка завершена');
+          sortingSuccess = true;
+        } catch (positionError) {
+          console.warn('Image Position Patient сортировка не удалась:', positionError);
+        }
+        
+        // Попытка 2: Cornerstone сортировка
+        if (!sortingSuccess) {
+          try {
+            console.log('Пробуем Cornerstone сортировку с предзагруженными метаданными...');
+            const sortingResult = utilities.sortImageIdsAndGetSpacing(sortedImageIds);
+            sortedImageIds = sortingResult.sortedImageIds;
+            console.log('Cornerstone сортировка успешна, z-spacing:', sortingResult.zSpacing);
+            sortingSuccess = true;
+          } catch (error) {
+            console.warn('Cornerstone сортировка не удалась:', error);
+          }
+        }
+        
+        // Попытка 3: Instance Number
+        if (!sortingSuccess) {
+          try {
+            console.log('Пробуем сортировку по Instance Number...');
+            sortedImageIds = await sortByInstanceNumber(sortedImageIds);
+            console.log('Instance Number сортировка завершена');
+            sortingSuccess = true;
+          } catch (instanceError) {
+            console.warn('Instance Number сортировка не удалась:', instanceError);
+          }
+        }
+        
+        // Попытка 4: Slice Location
+        if (!sortingSuccess) {
+          try {
+            console.log('Пробуем сортировку по Slice Location...');
+            sortedImageIds = await sortBySliceLocation(sortedImageIds);
+            console.log('Slice Location сортировка завершена');
+            sortingSuccess = true;
+          } catch (sliceError) {
+            console.warn('Slice Location сортировка не удалась:', sliceError);
+          }
+        }
+        
+        // Последняя попытка: сортировка по именам файлов
+        if (!sortingSuccess) {
+          try {
+            console.log('Сортируем по именам файлов...');
+            filesWithMetadata.sort((a, b) => a.fileName.localeCompare(b.fileName));
+            sortedImageIds = filesWithMetadata.map(f => f.imageId);
+            console.log('Сортировка по именам файлов завершена');
+          } catch (nameError) {
+            console.warn('Все методы сортировки не удались, используем исходный порядок');
+          }
         }
       }
       
