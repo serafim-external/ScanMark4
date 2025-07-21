@@ -32,6 +32,7 @@ dicom-viewer/
 
 ### Требования
 - Node.js 16+ 
+
 - npm или yarn
 
 ### Быстрый старт
