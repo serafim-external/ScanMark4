@@ -92,3 +92,5 @@ example_dcm/
 
 # Documentation builds
 docs/_build/
+
+CLAUDE.md

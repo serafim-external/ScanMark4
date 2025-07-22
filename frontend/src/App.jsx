@@ -1137,6 +1137,7 @@ function App() {
                   overflow: 'hidden',
                   position: 'relative'
                 }}
+                onContextMenu={(e) => e.preventDefault()}
               />
               
               {/* Overlay для пустого viewport */}
