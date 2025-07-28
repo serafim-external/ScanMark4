@@ -1,42 +1,333 @@
+/* Remove default root styles for medical viewer */
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Reset body and html for full screen medical viewer */
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  font-family: 'Arial', sans-serif;
+  background-color: #222;
+}
+
+/* Ensure proper box sizing for all elements */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/* Medical viewer specific styles */
+.medical-viewer-container {
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 20% 80%;
+  grid-template-rows: 10% 90%;
+  background-color: #222;
+  color: white;
+  font-family: Arial, sans-serif;
+}
+
+/* Panel styles */
+.sources-panel {
+  grid-row: 1;
+  grid-column: 1;
+  border-right: 1px solid #333;
+  background-color: #2a2a2a;
+}
+
+.tools-panel {
+  grid-row: 1;
+  grid-column: 2;
+  background-color: #2a2a2a;
+  border-bottom: 1px solid #333;
+}
+
+.browser-panel {
+  grid-row: 2;
+  grid-column: 1;
+  border-right: 1px solid #333;
+  background-color: #1a1a1a;
+  overflow-y: auto;
+}
+
+.viewport-area {
+  grid-row: 2;
+  grid-column: 2;
+  background-color: #000;
+}
+
+/* Viewport grid */
+.viewport-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 2px;
+  height: 100%;
+  width: 100%;
+  padding: 2px;
+}
+
+.viewport {
+  position: relative;
+  background-color: #111;
+  border: 1px solid #333;
+  min-height: 200px;
+}
+
+.viewport.active {
+  border: 2px solid #00ff00;
+}
+
+.viewport-overlay {
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  color: white;
+  font-size: 10px;
+  z-index: 10;
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 2px 4px;
+  border-radius: 2px;
+  pointer-events: none;
+}
+
+.viewport-canvas {
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+}
+
+/* Button styles */
+.btn {
+  padding: 6px 12px;
+  background-color: #404040;
+  color: white;
+  border: 1px solid #555;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 12px;
+  transition: background-color 0.2s;
+}
+
+.btn:hover {
+  background-color: #505050;
+}
+
+.btn:active {
+  background-color: #303030;
+}
+
+.btn-primary {
+  background-color: #0066cc;
+}
+
+.btn-primary:hover {
+  background-color: #0052a3;
+}
+
+/* Tool button styles */
+.tool-btn {
+  padding: 4px 8px;
+  background-color: #333;
+  color: white;
+  border: 1px solid #555;
+  border-radius: 2px;
+  cursor: pointer;
+  font-size: 10px;
+  line-height: 1.2;
   text-align: center;
+  min-width: 40px;
+  transition: background-color 0.2s;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.tool-btn:hover {
+  background-color: #444;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
+.tool-btn:active {
+  background-color: #222;
+}
+
+/* Series list styles */
+.series-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 4px;
+  padding: 4px;
+  cursor: pointer;
+  border: 1px solid #333;
+  border-radius: 2px;
+  transition: background-color 0.2s;
+}
+
+.series-item:hover {
+  background-color: #333;
+}
+
+.series-item.selected {
+  background-color: #444;
+}
+
+.series-thumbnail {
+  width: 32px;
+  height: 32px;
+  background-color: #666;
+  margin-right: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 8px;
+  color: #999;
+  border-radius: 2px;
+}
+
+.series-info {
+  flex: 1;
+  text-align: left;
+}
+
+.series-modality {
+  font-weight: bold;
+  font-size: 11px;
+}
+
+.series-description {
+  font-size: 10px;
+  color: #ccc;
+}
+
+.series-count {
+  font-size: 9px;
+  color: #999;
+}
+
+/* Modal styles */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background-color: #333;
+  padding: 20px;
+  border-radius: 8px;
+  color: white;
+  min-width: 400px;
+  max-width: 600px;
+}
+
+.modal-form-group {
+  margin-bottom: 15px;
+}
+
+.modal-form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 14px;
+}
+
+.modal-form-group input {
+  width: 100%;
+  padding: 8px;
+  background-color: #444;
+  color: white;
+  border: 1px solid #555;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+  margin-top: 20px;
+}
+
+/* Scrollbar styles for dark theme */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #2a2a2a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #555;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #666;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+  .medical-viewer-container {
+    grid-template-columns: 25% 75%;
   }
-  to {
-    transform: rotate(360deg);
+}
+
+@media (max-width: 900px) {
+  .medical-viewer-container {
+    grid-template-columns: 30% 70%;
+  }
+  
+  .tools-panel {
+    font-size: 11px;
+  }
+  
+  .tool-btn {
+    font-size: 9px;
+    padding: 3px 6px;
+    min-width: 35px;
   }
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
+@media (max-width: 600px) {
+  .medical-viewer-container {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto 1fr;
   }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
+  
+  .sources-panel {
+    grid-row: 1;
+    grid-column: 1;
+    border-right: none;
+    border-bottom: 1px solid #333;
+  }
+  
+  .tools-panel {
+    grid-row: 2;
+    grid-column: 1;
+  }
+  
+  .browser-panel {
+    grid-row: 3;
+    grid-column: 1;
+    border-right: none;
+    border-bottom: 1px solid #333;
+    max-height: 200px;
+  }
+  
+  .viewport-area {
+    grid-row: 4;
+    grid-column: 1;
+  }
 }
