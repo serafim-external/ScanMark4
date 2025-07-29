@@ -359,34 +359,22 @@ function App() {
     <div style={{
       padding: '8px',
       display: 'flex',
-      gap: '8px'
+      gap: '16px',
+      width: '100%'
     }}>
       <button 
         onClick={handleLocalFiles}
-        style={{
-          padding: '6px 12px',
-          backgroundColor: '#404040',
-          color: 'white',
-          border: '1px solid #555',
-          borderRadius: '4px',
-          cursor: 'pointer',
-          fontSize: '12px',
-          fontWeight: 'bold'
-        }}
+        style={sourceButtonStyle}
+        onMouseEnter={(e) => e.target.style.backgroundColor = '#333'}
+        onMouseLeave={(e) => e.target.style.backgroundColor = '#1a1a1a'}
       >
         Local Files
       </button>
       <button 
         onClick={handlePacs}
-        style={{
-          padding: '6px 12px',
-          backgroundColor: '#404040',
-          color: 'white',
-          border: '1px solid #555',
-          borderRadius: '4px',
-          cursor: 'pointer',
-          fontSize: '12px'
-        }}
+        style={sourceButtonStyle}
+        onMouseEnter={(e) => e.target.style.backgroundColor = '#333'}
+        onMouseLeave={(e) => e.target.style.backgroundColor = '#1a1a1a'}
       >
         PACS
       </button>
@@ -409,41 +397,42 @@ function App() {
       gap: '16px',
       fontSize: '12px',
       color: 'white',
-      position: 'relative'
+      position: 'relative',
+      width: '100%'
     }}>
-      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '4px' }}>
-        <span>1.View</span>
+      <div style={toolGroupStyle}>
+        <span style={toolGroupTitleStyle}>1.View</span>
         <div style={{ display: 'flex', gap: '4px' }}>
           <button style={toolButtonStyle} title="Press 1-1 (11)">1.Layout<br/>11</button>
           <button style={toolButtonStyle} title="Press 1-2 (12)">2.Stack<br/>12</button>
         </div>
       </div>
       
-      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '4px' }}>
-        <span>2.Image</span>
+      <div style={toolGroupStyle}>
+        <span style={toolGroupTitleStyle}>2.Image</span>
         <div style={{ display: 'flex', gap: '4px' }}>
           <button style={toolButtonStyle} title="Press 2-1 (21)">1.Zoom<br/>21</button>
           <button style={toolButtonStyle} title="Press 2-2 (22)">2.W/L<br/>22</button>
         </div>
       </div>
       
-      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '4px' }}>
-        <span>3.Measure</span>
+      <div style={toolGroupStyle}>
+        <span style={toolGroupTitleStyle}>3.Measure</span>
         <div style={{ display: 'flex', gap: '4px' }}>
           <button style={toolButtonStyle} title="Press 3-1 (31)">1.Length<br/>31</button>
           <button style={toolButtonStyle} title="Press 3-2 (32)">2.Angle<br/>32</button>
         </div>
       </div>
       
-      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '4px' }}>
-        <span>4.Actions</span>
+      <div style={toolGroupStyle}>
+        <span style={toolGroupTitleStyle}>4.Actions</span>
         <div style={{ display: 'flex', gap: '4px' }}>
           <button style={toolButtonStyle} title="Press 4-1 (41)">1.Reset<br/>41</button>
         </div>
       </div>
       
-      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '4px' }}>
-        <span>5.Presets</span>
+      <div style={toolGroupStyle}>
+        <span style={toolGroupTitleStyle}>5.Presets</span>
         <div style={{ display: 'flex', gap: '4px' }}>
           <button style={toolButtonStyle} title="Press 5-1 (51)">1.Preset<br/>51</button>
         </div>
@@ -604,6 +593,43 @@ function App() {
     cursor: 'pointer',
     fontSize: '10px',
     lineHeight: '1.2'
+  };
+
+  const toolGroupStyle = {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    gap: '4px',
+    padding: '6px',
+    backgroundColor: '#1a1a1a',
+    border: '1px solid #444',
+    borderRadius: '4px',
+    minWidth: '80px'
+  };
+
+  const toolGroupTitleStyle = {
+    fontSize: '11px',
+    fontWeight: 'bold',
+    color: '#ccc',
+    textAlign: 'center',
+    marginBottom: '2px'
+  };
+
+  const sourceButtonStyle = {
+    padding: '6px',
+    backgroundColor: '#1a1a1a',
+    color: 'white',
+    border: '1px solid #444',
+    borderRadius: '4px',
+    cursor: 'pointer',
+    fontSize: '12px',
+    fontWeight: 'bold',
+    height: '68px', // Точная высота как у групп инструментов (включая padding + content)
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    transition: 'background-color 0.2s',
+    flex: 1 // Каждая кнопка занимает равную долю (50%)
   };
 
   // PACS Modal Component
