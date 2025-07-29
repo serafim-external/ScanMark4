@@ -359,7 +359,7 @@ function App() {
     <div style={{
       padding: '8px',
       display: 'flex',
-      gap: '16px',
+      gap: '8px',
       width: '100%'
     }}>
       <button 
@@ -394,11 +394,12 @@ function App() {
     <div style={{
       padding: '8px',
       display: 'flex',
-      gap: '16px',
+      gap: '8px',
       fontSize: '12px',
       color: 'white',
       position: 'relative',
-      width: '100%'
+      width: '100%',
+      justifyContent: 'center'
     }}>
       <div style={toolGroupStyle}>
         <span style={toolGroupTitleStyle}>1.View</span>
