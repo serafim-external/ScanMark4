@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState, useCallback } from 'react';
+import './App.css';
 
 import {
   RenderingEngine,
@@ -357,7 +358,6 @@ function App() {
   const SourcesPanel = () => (
     <div style={{
       padding: '8px',
-      borderBottom: '1px solid #333',
       display: 'flex',
       gap: '8px'
     }}>
@@ -405,7 +405,6 @@ function App() {
   const ToolsPanel = () => (
     <div style={{
       padding: '8px',
-      borderBottom: '1px solid #333',
       display: 'flex',
       gap: '16px',
       fontSize: '12px',
@@ -668,32 +667,24 @@ function App() {
   );
 
   return (
-    <div style={{
-      width: '100vw',
-      height: '100vh',
-      backgroundColor: '#222',
-      display: 'grid',
-      gridTemplateColumns: '20% 80%',
-      gridTemplateRows: '10% 90%',
-      fontFamily: 'Arial, sans-serif'
-    }}>
+    <div className="medical-viewer-container">
       {/* Sources Panel - Top Left */}
-      <div style={{ gridRow: 1, gridColumn: 1, borderRight: '1px solid #333' }}>
+      <div className="sources-panel">
         <SourcesPanel />
       </div>
 
       {/* Tools Panel - Top Right */}
-      <div style={{ gridRow: 1, gridColumn: 2 }}>
+      <div className="tools-panel">
         <ToolsPanel />
       </div>
 
       {/* Browser Panel - Bottom Left */}
-      <div style={{ gridRow: 2, gridColumn: 1, borderRight: '1px solid #333' }}>
+      <div className="browser-panel">
         <BrowserPanel />
       </div>
 
       {/* Viewport Area - Bottom Right */}
-      <div style={{ gridRow: 2, gridColumn: 2 }}>
+      <div className="viewport-area">
         <ViewportArea />
       </div>
 
