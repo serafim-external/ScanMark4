@@ -33,6 +33,7 @@ function App() {
   const [showPacsModal, setShowPacsModal] = useState(false);
   const [keySequence, setKeySequence] = useState('');
   const [keyTimeout, setKeyTimeout] = useState(null);
+  const [displaySequence, setDisplaySequence] = useState('');
   
   const [viewportSeries, setViewportSeries] = useState({
     viewport1: null,
@@ -89,17 +90,23 @@ function App() {
       
       const newSequence = keySequence + key;
       setKeySequence(newSequence);
+      setDisplaySequence(newSequence);
       
       // Handle complete sequences (2 digits)
       if (newSequence.length === 2) {
         handleKeySequence(newSequence);
         setKeySequence('');
         setKeyTimeout(null);
+        // Keep showing the complete sequence for a bit longer
+        setTimeout(() => {
+          setDisplaySequence('');
+        }, 1500);
       } else {
         // Set timeout to reset sequence after 1 second
         const timeout = setTimeout(() => {
           setKeySequence('');
           setKeyTimeout(null);
+          setDisplaySequence('');
         }, 1000);
         setKeyTimeout(timeout);
       }
@@ -480,7 +487,7 @@ function App() {
       </div>
       
       {/* Key sequence indicator */}
-      {keySequence && (
+      {displaySequence && (
         <div style={{
           position: 'absolute',
           top: '4px',
@@ -492,7 +499,7 @@ function App() {
           fontSize: '11px',
           fontWeight: 'bold'
         }}>
-          {keySequence}_
+          {displaySequence}
         </div>
       )}
     </div>
