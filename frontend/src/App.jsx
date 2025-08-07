@@ -403,7 +403,7 @@ function App() {
       display: 'flex',
       gap: '8px',
       fontSize: '12px',
-      color: 'white',
+      color: '#e0e0e0',
       position: 'relative',
       width: '100%',
       justifyContent: 'center'
@@ -512,12 +512,12 @@ function App() {
       height: '100%',
       overflow: 'auto',
       fontSize: '12px',
-      color: 'white'
+      color: '#e0e0e0'
     }}>
       {selectedPatient && (
         <>
           <div style={{ marginBottom: '8px' }}>
-            <div style={{ fontWeight: 'bold' }}>► Patient</div>
+            <div style={{ fontWeight: 'bold', color: '#ffffff' }}>► Patient</div>
             <div style={{ marginLeft: '16px' }}>
               <div>{selectedPatient.patientName}</div>
               <div>ID: {selectedPatient.patientId}</div>
@@ -526,7 +526,7 @@ function App() {
 
           {selectedStudy && (
             <div style={{ marginBottom: '8px' }}>
-              <div style={{ fontWeight: 'bold' }}>► Study</div>
+              <div style={{ fontWeight: 'bold', color: '#ffffff' }}>► Study</div>
               <div style={{ marginLeft: '16px' }}>
                 <div>{selectedStudy.studyDescription}</div>
                 <div>{selectedStudy.studyDate}</div>
@@ -534,7 +534,7 @@ function App() {
             </div>
           )}
 
-          <div style={{ fontWeight: 'bold', marginBottom: '8px' }}>► Series:</div>
+          <div style={{ fontWeight: 'bold', marginBottom: '8px', color: '#ffffff' }}>► Series:</div>
           {selectedStudy?.series?.map((series) => (
             <div 
               key={series.seriesInstanceUID} 
@@ -563,7 +563,7 @@ function App() {
                 ████<br/>████<br/>████
               </div>
               <div>
-                <div style={{ fontWeight: 'bold' }}>{series.modality}</div>
+                <div style={{ fontWeight: 'bold', color: '#ffffff' }}>{series.modality}</div>
                 <div>{series.seriesDescription}</div>
                 <div>{series.images.length}img</div>
               </div>
@@ -582,14 +582,14 @@ function App() {
       gridTemplateRows: '1fr 1fr',
       gap: '2px',
       height: '100%',
-      backgroundColor: '#222'
+      backgroundColor: '#2a2a2a'
     }}>
       {[1, 2, 3, 4].map(vpNum => (
         <div 
           key={vpNum}
           style={{
             position: 'relative',
-            backgroundColor: '#111',
+            backgroundColor: '#1a1a1a',
             border: activeViewport === vpNum ? '2px solid #00ff00' : '1px solid #333',
             display: 'flex',
             flexDirection: 'column'
@@ -600,7 +600,7 @@ function App() {
             position: 'absolute',
             top: '4px',
             left: '4px',
-            color: 'white',
+            color: '#e0e0e0',
             fontSize: '10px',
             zIndex: 10,
             backgroundColor: 'rgba(0,0,0,0.7)',
@@ -617,11 +617,11 @@ function App() {
             style={{
               width: '100%',
               height: '100%',
-              backgroundColor: '#000',
+              backgroundColor: '#1a1a1a',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              color: '#666',
+              color: '#e0e0e0',
               fontSize: '14px'
             }}
           >
@@ -635,7 +635,7 @@ function App() {
   const toolButtonStyle = {
     padding: '4px 8px',
     backgroundColor: '#333',
-    color: 'white',
+    color: '#e0e0e0',
     border: '1px solid #555',
     borderRadius: '2px',
     cursor: 'pointer',
@@ -658,7 +658,7 @@ function App() {
   const toolGroupTitleStyle = {
     fontSize: '11px',
     fontWeight: 'bold',
-    color: '#ccc',
+    color: '#ffffff',
     textAlign: 'center',
     marginBottom: '2px'
   };
@@ -666,7 +666,7 @@ function App() {
   const sourceButtonStyle = {
     padding: '6px',
     backgroundColor: '#1a1a1a',
-    color: 'white',
+    color: '#e0e0e0',
     border: '1px solid #444',
     borderRadius: '4px',
     cursor: 'pointer',
@@ -698,10 +698,10 @@ function App() {
         backgroundColor: '#333',
         padding: '20px',
         borderRadius: '8px',
-        color: 'white',
+        color: '#e0e0e0',
         minWidth: '400px'
       }}>
-        <h3>PACS Connection</h3>
+        <h3 style={{ color: '#ffffff' }}>PACS Connection</h3>
         <div style={{ marginBottom: '10px' }}>
           <label>Server URL:</label>
           <input type="text" style={{ width: '100%', padding: '4px', marginTop: '4px' }} />
@@ -718,7 +718,7 @@ function App() {
           <button onClick={() => setShowPacsModal(false)} style={{
             padding: '8px 16px',
             backgroundColor: '#666',
-            color: 'white',
+            color: '#e0e0e0',
             border: 'none',
             borderRadius: '4px',
             cursor: 'pointer'
@@ -728,7 +728,7 @@ function App() {
           <button style={{
             padding: '8px 16px',
             backgroundColor: '#0066cc',
-            color: 'white',
+            color: '#e0e0e0',
             border: 'none',
             borderRadius: '4px',
             cursor: 'pointer'
