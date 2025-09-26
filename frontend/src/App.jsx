@@ -417,135 +417,130 @@ function App() {
   const ToolsPanel = () => (
     <div style={{
       display: 'flex',
-      gap: '24px',
-      fontSize: '14px',
-      color: '#495057',
-      position: 'relative',
-      width: '100%',
+      gap: '16px',
+      alignItems: 'center',
       justifyContent: 'center',
-      alignItems: 'center'
+      width: '100%',
+      position: 'relative'
     }}>
-      <div style={toolGroupStyle}>
-        <span style={toolGroupTitleStyle}>View</span>
-        <div style={{ display: 'flex', gap: '12px' }}>
-          <button 
-            style={toolButtonStyle} 
-            title="Press 1-1 (11)"
-            onMouseEnter={(e) => {
-              e.target.style.backgroundColor = '#f8f9fa';
-              e.target.style.transform = 'translateY(-1px)';
-              e.target.style.boxShadow = '0 3px 6px rgba(0,0,0,0.12)';
-            }}
-            onMouseLeave={(e) => {
-              e.target.style.backgroundColor = '#ffffff';
-              e.target.style.transform = 'translateY(0)';
-              e.target.style.boxShadow = '0 1px 3px rgba(0,0,0,0.08)';
-            }}
-          >📐 Layout<br/><small>11</small></button>
-          <button 
-            style={toolButtonStyle} 
-            title="Press 1-2 (12)"
-            onMouseEnter={(e) => {
-              e.target.style.backgroundColor = '#f8f9fa';
-              e.target.style.transform = 'translateY(-1px)';
-              e.target.style.boxShadow = '0 3px 6px rgba(0,0,0,0.12)';
-            }}
-            onMouseLeave={(e) => {
-              e.target.style.backgroundColor = '#ffffff';
-              e.target.style.transform = 'translateY(0)';
-              e.target.style.boxShadow = '0 1px 3px rgba(0,0,0,0.08)';
-            }}
-          >📚 Stack<br/><small>12</small></button>
-        </div>
-      </div>
+      <button 
+        style={toolButtonStyle} 
+        title="Press 1-1 (11)"
+        onMouseEnter={(e) => {
+          e.target.style.backgroundColor = '#f8f9fa';
+          e.target.style.transform = 'translateY(-1px)';
+          e.target.style.boxShadow = '0 3px 6px rgba(0,0,0,0.12)';
+        }}
+        onMouseLeave={(e) => {
+          e.target.style.backgroundColor = '#ffffff';
+          e.target.style.transform = 'translateY(0)';
+          e.target.style.boxShadow = '0 1px 3px rgba(0,0,0,0.08)';
+        }}
+      >
+        Layout
+      </button>
       
-      <div style={toolGroupStyle}>
-        <span style={toolGroupTitleStyle}>Image</span>
-        <div style={{ display: 'flex', gap: '12px' }}>
-          <button 
-            style={toolButtonStyle} 
-            title="Press 2-1 (21)"
-            onMouseEnter={(e) => {
-              e.target.style.backgroundColor = '#f8f9fa';
-              e.target.style.transform = 'translateY(-1px)';
-              e.target.style.boxShadow = '0 3px 6px rgba(0,0,0,0.12)';
-            }}
-            onMouseLeave={(e) => {
-              e.target.style.backgroundColor = '#ffffff';
-              e.target.style.transform = 'translateY(0)';
-              e.target.style.boxShadow = '0 1px 3px rgba(0,0,0,0.08)';
-            }}
-          >🔍 Zoom<br/><small>21</small></button>
-          <button 
-            style={toolButtonStyle} 
-            title="Press 2-2 (22)"
-            onMouseEnter={(e) => {
-              e.target.style.backgroundColor = '#f8f9fa';
-              e.target.style.transform = 'translateY(-1px)';
-              e.target.style.boxShadow = '0 3px 6px rgba(0,0,0,0.12)';
-            }}
-            onMouseLeave={(e) => {
-              e.target.style.backgroundColor = '#ffffff';
-              e.target.style.transform = 'translateY(0)';
-              e.target.style.boxShadow = '0 1px 3px rgba(0,0,0,0.08)';
-            }}
-          >⚪ W/L<br/><small>22</small></button>
-        </div>
-      </div>
+      <button 
+        style={toolButtonStyle} 
+        title="Press 1-2 (12)"
+        onMouseEnter={(e) => {
+          e.target.style.backgroundColor = '#f8f9fa';
+          e.target.style.transform = 'translateY(-1px)';
+          e.target.style.boxShadow = '0 3px 6px rgba(0,0,0,0.12)';
+        }}
+        onMouseLeave={(e) => {
+          e.target.style.backgroundColor = '#ffffff';
+          e.target.style.transform = 'translateY(0)';
+          e.target.style.boxShadow = '0 1px 3px rgba(0,0,0,0.08)';
+        }}
+      >
+        Stack
+      </button>
       
-      <div style={toolGroupStyle}>
-        <span style={toolGroupTitleStyle}>Measure</span>
-        <div style={{ display: 'flex', gap: '12px' }}>
-          <button 
-            style={toolButtonStyle} 
-            title="Press 3-1 (31)"
-            onMouseEnter={(e) => {
-              e.target.style.backgroundColor = '#f8f9fa';
-              e.target.style.transform = 'translateY(-1px)';
-              e.target.style.boxShadow = '0 3px 6px rgba(0,0,0,0.12)';
-            }}
-            onMouseLeave={(e) => {
-              e.target.style.backgroundColor = '#ffffff';
-              e.target.style.transform = 'translateY(0)';
-              e.target.style.boxShadow = '0 1px 3px rgba(0,0,0,0.08)';
-            }}
-          >📏 Length<br/><small>31</small></button>
-          <button 
-            style={toolButtonStyle} 
-            title="Press 3-2 (32)"
-            onMouseEnter={(e) => {
-              e.target.style.backgroundColor = '#f8f9fa';
-              e.target.style.transform = 'translateY(-1px)';
-              e.target.style.boxShadow = '0 3px 6px rgba(0,0,0,0.12)';
-            }}
-            onMouseLeave={(e) => {
-              e.target.style.backgroundColor = '#ffffff';
-              e.target.style.transform = 'translateY(0)';
-              e.target.style.boxShadow = '0 1px 3px rgba(0,0,0,0.08)';
-            }}
-          >📐 Angle<br/><small>32</small></button>
-        </div>
-      </div>
+      <button 
+        style={toolButtonStyle} 
+        title="Press 2-1 (21)"
+        onMouseEnter={(e) => {
+          e.target.style.backgroundColor = '#f8f9fa';
+          e.target.style.transform = 'translateY(-1px)';
+          e.target.style.boxShadow = '0 3px 6px rgba(0,0,0,0.12)';
+        }}
+        onMouseLeave={(e) => {
+          e.target.style.backgroundColor = '#ffffff';
+          e.target.style.transform = 'translateY(0)';
+          e.target.style.boxShadow = '0 1px 3px rgba(0,0,0,0.08)';
+        }}
+      >
+        Zoom
+      </button>
       
-      <div style={toolGroupStyle}>
-        <span style={toolGroupTitleStyle}>Actions</span>
-        <div style={{ display: 'flex', gap: '12px' }}>
-          <button 
-            style={toolButtonStyle} 
-            title="Press 4-1 (41)"
-            onMouseEnter={(e) => {
-              e.target.style.backgroundColor = '#f8f9fa';
-              e.target.style.transform = 'translateY(-1px)';
-              e.target.style.boxShadow = '0 3px 6px rgba(0,0,0,0.12)';
-            }}
-            onMouseLeave={(e) => {
-              e.target.style.backgroundColor = '#ffffff';
-              e.target.style.transform = 'translateY(0)';
-              e.target.style.boxShadow = '0 1px 3px rgba(0,0,0,0.08)';
-            }}
-          >🔄 Reset<br/><small>41</small></button>
-        </div>
-      </div>
+      <button 
+        style={toolButtonStyle} 
+        title="Press 2-2 (22)"
+        onMouseEnter={(e) => {
+          e.target.style.backgroundColor = '#f8f9fa';
+          e.target.style.transform = 'translateY(-1px)';
+          e.target.style.boxShadow = '0 3px 6px rgba(0,0,0,0.12)';
+        }}
+        onMouseLeave={(e) => {
+          e.target.style.backgroundColor = '#ffffff';
+          e.target.style.transform = 'translateY(0)';
+          e.target.style.boxShadow = '0 1px 3px rgba(0,0,0,0.08)';
+        }}
+      >
+        W/L
+      </button>
+      
+      <button 
+        style={toolButtonStyle} 
+        title="Press 3-1 (31)"
+        onMouseEnter={(e) => {
+          e.target.style.backgroundColor = '#f8f9fa';
+          e.target.style.transform = 'translateY(-1px)';
+          e.target.style.boxShadow = '0 3px 6px rgba(0,0,0,0.12)';
+        }}
+        onMouseLeave={(e) => {
+          e.target.style.backgroundColor = '#ffffff';
+          e.target.style.transform = 'translateY(0)';
+          e.target.style.boxShadow = '0 1px 3px rgba(0,0,0,0.08)';
+        }}
+      >
+        Length
+      </button>
+      
+      <button 
+        style={toolButtonStyle} 
+        title="Press 3-2 (32)"
+        onMouseEnter={(e) => {
+          e.target.style.backgroundColor = '#f8f9fa';
+          e.target.style.transform = 'translateY(-1px)';
+          e.target.style.boxShadow = '0 3px 6px rgba(0,0,0,0.12)';
+        }}
+        onMouseLeave={(e) => {
+          e.target.style.backgroundColor = '#ffffff';
+          e.target.style.transform = 'translateY(0)';
+          e.target.style.boxShadow = '0 1px 3px rgba(0,0,0,0.08)';
+        }}
+      >
+        Angle
+      </button>
+      
+      <button 
+        style={toolButtonStyle} 
+        title="Press 4-1 (41)"
+        onMouseEnter={(e) => {
+          e.target.style.backgroundColor = '#f8f9fa';
+          e.target.style.transform = 'translateY(-1px)';
+          e.target.style.boxShadow = '0 3px 6px rgba(0,0,0,0.12)';
+        }}
+        onMouseLeave={(e) => {
+          e.target.style.backgroundColor = '#ffffff';
+          e.target.style.transform = 'translateY(0)';
+          e.target.style.boxShadow = '0 1px 3px rgba(0,0,0,0.08)';
+        }}
+      >
+        Reset
+      </button>
       
       {/* Key sequence indicator */}
       {displaySequence && (
@@ -761,40 +756,22 @@ function App() {
   );
 
   const toolButtonStyle = {
-    padding: '12px 16px',
+    padding: '16px 20px',
     backgroundColor: '#ffffff',
     color: '#495057',
     border: '1px solid #dee2e6',
-    borderRadius: '8px',
+    borderRadius: '12px',
     cursor: 'pointer',
-    fontSize: '13px',
+    fontSize: '14px',
     fontWeight: '500',
-    lineHeight: '1.4',
     transition: 'all 0.2s ease',
     boxShadow: '0 1px 3px rgba(0,0,0,0.08)',
-    minWidth: '80px'
-  };
-
-  const toolGroupStyle = {
+    height: '68px',
     display: 'flex',
-    flexDirection: 'column',
     alignItems: 'center',
-    gap: '12px',
-    padding: '16px',
-    backgroundColor: '#ffffff',
-    border: '1px solid #e1e8ed',
-    borderRadius: '12px',
-    minWidth: '120px',
-    boxShadow: '0 2px 8px rgba(0,0,0,0.06)'
+    justifyContent: 'center'
   };
 
-  const toolGroupTitleStyle = {
-    fontSize: '14px',
-    fontWeight: '600',
-    color: '#495057',
-    textAlign: 'center',
-    marginBottom: '4px'
-  };
 
   const sourceButtonStyle = {
     padding: '16px',
