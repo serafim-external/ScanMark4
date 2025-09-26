@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState, useCallback } from 'react';
+import { useEffect, useRef, useState, useCallback } from 'react';
 import './App.css';
 
 import {
@@ -171,7 +171,7 @@ function App() {
       try {
         await cornerstoneCoreInit();
         dicomImageLoaderInit({ useWebWorkers: false });
-        await cornerstoneToolsInit();
+        cornerstoneToolsInit();
 
         addTool(WindowLevelTool);
         addTool(PanTool);
@@ -364,26 +364,43 @@ function App() {
   // Sources Panel Component
   const SourcesPanel = () => (
     <div style={{
-      padding: '8px',
       display: 'flex',
-      gap: '8px',
-      width: '100%'
+      gap: '16px',
+      width: '100%',
+      height: '100%',
+      alignItems: 'center'
     }}>
       <button 
         onClick={handleLocalFiles}
         style={sourceButtonStyle}
-        onMouseEnter={(e) => e.target.style.backgroundColor = '#333'}
-        onMouseLeave={(e) => e.target.style.backgroundColor = '#1a1a1a'}
+        onMouseEnter={(e) => {
+          e.target.style.backgroundColor = '#f8f9fa';
+          e.target.style.transform = 'translateY(-1px)';
+          e.target.style.boxShadow = '0 4px 8px rgba(0,0,0,0.15)';
+        }}
+        onMouseLeave={(e) => {
+          e.target.style.backgroundColor = '#ffffff';
+          e.target.style.transform = 'translateY(0)';
+          e.target.style.boxShadow = '0 1px 3px rgba(0,0,0,0.1)';
+        }}
       >
-        Local Files
+        📁 Local Files
       </button>
       <button 
         onClick={handlePacs}
         style={sourceButtonStyle}
-        onMouseEnter={(e) => e.target.style.backgroundColor = '#333'}
-        onMouseLeave={(e) => e.target.style.backgroundColor = '#1a1a1a'}
+        onMouseEnter={(e) => {
+          e.target.style.backgroundColor = '#f8f9fa';
+          e.target.style.transform = 'translateY(-1px)';
+          e.target.style.boxShadow = '0 4px 8px rgba(0,0,0,0.15)';
+        }}
+        onMouseLeave={(e) => {
+          e.target.style.backgroundColor = '#ffffff';
+          e.target.style.transform = 'translateY(0)';
+          e.target.style.boxShadow = '0 1px 3px rgba(0,0,0,0.1)';
+        }}
       >
-        PACS
+        🌐 PACS
       </button>
       <input
         ref={fileInputRef}
@@ -399,90 +416,134 @@ function App() {
   // Tools Panel Component
   const ToolsPanel = () => (
     <div style={{
-      padding: '8px',
       display: 'flex',
-      gap: '8px',
-      fontSize: '12px',
-      color: '#e0e0e0',
+      gap: '24px',
+      fontSize: '14px',
+      color: '#495057',
       position: 'relative',
       width: '100%',
-      justifyContent: 'center'
+      justifyContent: 'center',
+      alignItems: 'center'
     }}>
       <div style={toolGroupStyle}>
-        <span style={toolGroupTitleStyle}>1.View</span>
-        <div style={{ display: 'flex', gap: '4px' }}>
+        <span style={toolGroupTitleStyle}>View</span>
+        <div style={{ display: 'flex', gap: '12px' }}>
           <button 
             style={toolButtonStyle} 
             title="Press 1-1 (11)"
-            onMouseEnter={(e) => e.target.style.backgroundColor = '#444'}
-            onMouseLeave={(e) => e.target.style.backgroundColor = '#333'}
-          >1.Layout<br/>11</button>
+            onMouseEnter={(e) => {
+              e.target.style.backgroundColor = '#f8f9fa';
+              e.target.style.transform = 'translateY(-1px)';
+              e.target.style.boxShadow = '0 3px 6px rgba(0,0,0,0.12)';
+            }}
+            onMouseLeave={(e) => {
+              e.target.style.backgroundColor = '#ffffff';
+              e.target.style.transform = 'translateY(0)';
+              e.target.style.boxShadow = '0 1px 3px rgba(0,0,0,0.08)';
+            }}
+          >📐 Layout<br/><small>11</small></button>
           <button 
             style={toolButtonStyle} 
             title="Press 1-2 (12)"
-            onMouseEnter={(e) => e.target.style.backgroundColor = '#444'}
-            onMouseLeave={(e) => e.target.style.backgroundColor = '#333'}
-          >2.Stack<br/>12</button>
+            onMouseEnter={(e) => {
+              e.target.style.backgroundColor = '#f8f9fa';
+              e.target.style.transform = 'translateY(-1px)';
+              e.target.style.boxShadow = '0 3px 6px rgba(0,0,0,0.12)';
+            }}
+            onMouseLeave={(e) => {
+              e.target.style.backgroundColor = '#ffffff';
+              e.target.style.transform = 'translateY(0)';
+              e.target.style.boxShadow = '0 1px 3px rgba(0,0,0,0.08)';
+            }}
+          >📚 Stack<br/><small>12</small></button>
         </div>
       </div>
       
       <div style={toolGroupStyle}>
-        <span style={toolGroupTitleStyle}>2.Image</span>
-        <div style={{ display: 'flex', gap: '4px' }}>
+        <span style={toolGroupTitleStyle}>Image</span>
+        <div style={{ display: 'flex', gap: '12px' }}>
           <button 
             style={toolButtonStyle} 
             title="Press 2-1 (21)"
-            onMouseEnter={(e) => e.target.style.backgroundColor = '#444'}
-            onMouseLeave={(e) => e.target.style.backgroundColor = '#333'}
-          >1.Zoom<br/>21</button>
+            onMouseEnter={(e) => {
+              e.target.style.backgroundColor = '#f8f9fa';
+              e.target.style.transform = 'translateY(-1px)';
+              e.target.style.boxShadow = '0 3px 6px rgba(0,0,0,0.12)';
+            }}
+            onMouseLeave={(e) => {
+              e.target.style.backgroundColor = '#ffffff';
+              e.target.style.transform = 'translateY(0)';
+              e.target.style.boxShadow = '0 1px 3px rgba(0,0,0,0.08)';
+            }}
+          >🔍 Zoom<br/><small>21</small></button>
           <button 
             style={toolButtonStyle} 
             title="Press 2-2 (22)"
-            onMouseEnter={(e) => e.target.style.backgroundColor = '#444'}
-            onMouseLeave={(e) => e.target.style.backgroundColor = '#333'}
-          >2.W/L<br/>22</button>
+            onMouseEnter={(e) => {
+              e.target.style.backgroundColor = '#f8f9fa';
+              e.target.style.transform = 'translateY(-1px)';
+              e.target.style.boxShadow = '0 3px 6px rgba(0,0,0,0.12)';
+            }}
+            onMouseLeave={(e) => {
+              e.target.style.backgroundColor = '#ffffff';
+              e.target.style.transform = 'translateY(0)';
+              e.target.style.boxShadow = '0 1px 3px rgba(0,0,0,0.08)';
+            }}
+          >⚪ W/L<br/><small>22</small></button>
         </div>
       </div>
       
       <div style={toolGroupStyle}>
-        <span style={toolGroupTitleStyle}>3.Measure</span>
-        <div style={{ display: 'flex', gap: '4px' }}>
+        <span style={toolGroupTitleStyle}>Measure</span>
+        <div style={{ display: 'flex', gap: '12px' }}>
           <button 
             style={toolButtonStyle} 
             title="Press 3-1 (31)"
-            onMouseEnter={(e) => e.target.style.backgroundColor = '#444'}
-            onMouseLeave={(e) => e.target.style.backgroundColor = '#333'}
-          >1.Length<br/>31</button>
+            onMouseEnter={(e) => {
+              e.target.style.backgroundColor = '#f8f9fa';
+              e.target.style.transform = 'translateY(-1px)';
+              e.target.style.boxShadow = '0 3px 6px rgba(0,0,0,0.12)';
+            }}
+            onMouseLeave={(e) => {
+              e.target.style.backgroundColor = '#ffffff';
+              e.target.style.transform = 'translateY(0)';
+              e.target.style.boxShadow = '0 1px 3px rgba(0,0,0,0.08)';
+            }}
+          >📏 Length<br/><small>31</small></button>
           <button 
             style={toolButtonStyle} 
             title="Press 3-2 (32)"
-            onMouseEnter={(e) => e.target.style.backgroundColor = '#444'}
-            onMouseLeave={(e) => e.target.style.backgroundColor = '#333'}
-          >2.Angle<br/>32</button>
+            onMouseEnter={(e) => {
+              e.target.style.backgroundColor = '#f8f9fa';
+              e.target.style.transform = 'translateY(-1px)';
+              e.target.style.boxShadow = '0 3px 6px rgba(0,0,0,0.12)';
+            }}
+            onMouseLeave={(e) => {
+              e.target.style.backgroundColor = '#ffffff';
+              e.target.style.transform = 'translateY(0)';
+              e.target.style.boxShadow = '0 1px 3px rgba(0,0,0,0.08)';
+            }}
+          >📐 Angle<br/><small>32</small></button>
         </div>
       </div>
       
       <div style={toolGroupStyle}>
-        <span style={toolGroupTitleStyle}>4.Actions</span>
-        <div style={{ display: 'flex', gap: '4px' }}>
+        <span style={toolGroupTitleStyle}>Actions</span>
+        <div style={{ display: 'flex', gap: '12px' }}>
           <button 
             style={toolButtonStyle} 
             title="Press 4-1 (41)"
-            onMouseEnter={(e) => e.target.style.backgroundColor = '#444'}
-            onMouseLeave={(e) => e.target.style.backgroundColor = '#333'}
-          >1.Reset<br/>41</button>
-        </div>
-      </div>
-      
-      <div style={toolGroupStyle}>
-        <span style={toolGroupTitleStyle}>5.Presets</span>
-        <div style={{ display: 'flex', gap: '4px' }}>
-          <button 
-            style={toolButtonStyle} 
-            title="Press 5-1 (51)"
-            onMouseEnter={(e) => e.target.style.backgroundColor = '#444'}
-            onMouseLeave={(e) => e.target.style.backgroundColor = '#333'}
-          >1.Preset<br/>51</button>
+            onMouseEnter={(e) => {
+              e.target.style.backgroundColor = '#f8f9fa';
+              e.target.style.transform = 'translateY(-1px)';
+              e.target.style.boxShadow = '0 3px 6px rgba(0,0,0,0.12)';
+            }}
+            onMouseLeave={(e) => {
+              e.target.style.backgroundColor = '#ffffff';
+              e.target.style.transform = 'translateY(0)';
+              e.target.style.boxShadow = '0 1px 3px rgba(0,0,0,0.08)';
+            }}
+          >🔄 Reset<br/><small>41</small></button>
         </div>
       </div>
       
@@ -490,14 +551,16 @@ function App() {
       {displaySequence && (
         <div style={{
           position: 'absolute',
-          top: '4px',
-          right: '8px',
-          backgroundColor: 'rgba(0, 255, 0, 0.8)',
-          color: 'black',
-          padding: '2px 6px',
-          borderRadius: '3px',
-          fontSize: '11px',
-          fontWeight: 'bold'
+          top: '16px',
+          right: '16px',
+          backgroundColor: '#28a745',
+          color: 'white',
+          padding: '8px 12px',
+          borderRadius: '8px',
+          fontSize: '14px',
+          fontWeight: '600',
+          boxShadow: '0 3px 6px rgba(40,167,69,0.3)',
+          border: '2px solid #20c997'
         }}>
           {displaySequence}
         </div>
@@ -508,68 +571,139 @@ function App() {
   // Browser Panel Component
   const BrowserPanel = () => (
     <div style={{
-      padding: '8px',
       height: '100%',
       overflow: 'auto',
-      fontSize: '12px',
-      color: '#e0e0e0'
+      fontSize: '14px',
+      color: '#495057'
     }}>
-      {selectedPatient && (
-        <>
-          <div style={{ marginBottom: '8px' }}>
-            <div style={{ fontWeight: 'bold', color: '#ffffff' }}>► Patient</div>
-            <div style={{ marginLeft: '16px' }}>
-              <div>{selectedPatient.patientName}</div>
-              <div>ID: {selectedPatient.patientId}</div>
+      {selectedPatient ? (
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+          <div>
+            <div style={{ 
+              fontWeight: '600', 
+              color: '#2c3e50', 
+              fontSize: '16px',
+              marginBottom: '8px',
+              paddingBottom: '8px',
+              borderBottom: '2px solid #e1e8ed'
+            }}>
+              👤 Patient
+            </div>
+            <div style={{ marginLeft: '8px', lineHeight: '1.5' }}>
+              <div style={{ fontWeight: '500' }}>{selectedPatient.patientName}</div>
+              <div style={{ color: '#6c757d', fontSize: '13px' }}>ID: {selectedPatient.patientId}</div>
             </div>
           </div>
 
           {selectedStudy && (
-            <div style={{ marginBottom: '8px' }}>
-              <div style={{ fontWeight: 'bold', color: '#ffffff' }}>► Study</div>
-              <div style={{ marginLeft: '16px' }}>
-                <div>{selectedStudy.studyDescription}</div>
-                <div>{selectedStudy.studyDate}</div>
+            <div>
+              <div style={{ 
+                fontWeight: '600', 
+                color: '#2c3e50', 
+                fontSize: '16px',
+                marginBottom: '8px',
+                paddingBottom: '8px',
+                borderBottom: '2px solid #e1e8ed'
+              }}>
+                📋 Study
+              </div>
+              <div style={{ marginLeft: '8px', lineHeight: '1.5' }}>
+                <div style={{ fontWeight: '500' }}>{selectedStudy.studyDescription}</div>
+                <div style={{ color: '#6c757d', fontSize: '13px' }}>{selectedStudy.studyDate}</div>
               </div>
             </div>
           )}
 
-          <div style={{ fontWeight: 'bold', marginBottom: '8px', color: '#ffffff' }}>► Series:</div>
-          {selectedStudy?.series?.map((series) => (
-            <div 
-              key={series.seriesInstanceUID} 
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                marginBottom: '4px',
-                padding: '4px',
-                backgroundColor: selectedSeries?.seriesInstanceUID === series.seriesInstanceUID ? '#444' : 'transparent',
-                cursor: 'pointer',
-                border: '1px solid #333'
-              }}
-              onClick={() => setSelectedSeries(series)}
-              onDoubleClick={() => loadSeriesToViewport(series, 'viewport1')}
-            >
-              <div style={{
-                width: '32px',
-                height: '32px',
-                backgroundColor: '#666',
-                marginRight: '8px',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                fontSize: '8px'
-              }}>
-                ████<br/>████<br/>████
-              </div>
-              <div>
-                <div style={{ fontWeight: 'bold', color: '#ffffff' }}>{series.modality}</div>
-                <div>{series.seriesDescription}</div>
-                <div>{series.images.length}img</div>
-              </div>
+          <div>
+            <div style={{ 
+              fontWeight: '600', 
+              color: '#2c3e50', 
+              fontSize: '16px',
+              marginBottom: '12px',
+              paddingBottom: '8px',
+              borderBottom: '2px solid #e1e8ed'
+            }}>
+              🗂️ Series
             </div>
-          ))}
-        </>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+              {selectedStudy?.series?.map((series) => (
+                <div 
+                  key={series.seriesInstanceUID} 
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    padding: '12px',
+                    backgroundColor: selectedSeries?.seriesInstanceUID === series.seriesInstanceUID ? '#e7f3ff' : '#ffffff',
+                    cursor: 'pointer',
+                    border: '1px solid #e1e8ed',
+                    borderRadius: '8px',
+                    transition: 'all 0.2s ease',
+                    boxShadow: '0 1px 3px rgba(0,0,0,0.05)'
+                  }}
+                  onClick={() => setSelectedSeries(series)}
+                  onDoubleClick={() => loadSeriesToViewport(series, 'viewport1')}
+                  onMouseEnter={(e) => {
+                    if (selectedSeries?.seriesInstanceUID !== series.seriesInstanceUID) {
+                      e.target.style.backgroundColor = '#f8f9fa';
+                      e.target.style.transform = 'translateY(-1px)';
+                      e.target.style.boxShadow = '0 3px 6px rgba(0,0,0,0.08)';
+                    }
+                  }}
+                  onMouseLeave={(e) => {
+                    if (selectedSeries?.seriesInstanceUID !== series.seriesInstanceUID) {
+                      e.target.style.backgroundColor = '#ffffff';
+                      e.target.style.transform = 'translateY(0)';
+                      e.target.style.boxShadow = '0 1px 3px rgba(0,0,0,0.05)';
+                    }
+                  }}
+                >
+                  <div style={{
+                    width: '40px',
+                    height: '40px',
+                    backgroundColor: '#f0f2f5',
+                    marginRight: '12px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    borderRadius: '6px',
+                    fontSize: '16px'
+                  }}>
+                    🖼️
+                  </div>
+                  <div style={{ flex: 1 }}>
+                    <div style={{ fontWeight: '600', color: '#2c3e50', marginBottom: '2px' }}>
+                      {series.modality}
+                    </div>
+                    <div style={{ fontSize: '13px', color: '#495057', marginBottom: '2px' }}>
+                      {series.seriesDescription}
+                    </div>
+                    <div style={{ fontSize: '12px', color: '#6c757d' }}>
+                      {series.images.length} images
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      ) : (
+        <div style={{
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          justifyContent: 'center',
+          height: '100%',
+          color: '#6c757d',
+          textAlign: 'center'
+        }}>
+          <div style={{ fontSize: '48px', marginBottom: '16px' }}>📁</div>
+          <div style={{ fontSize: '16px', fontWeight: '500', marginBottom: '8px' }}>
+            No files loaded
+          </div>
+          <div style={{ fontSize: '13px' }}>
+            Select local files or connect to PACS to get started
+          </div>
+        </div>
       )}
     </div>
   );
@@ -580,104 +714,104 @@ function App() {
       display: 'grid',
       gridTemplateColumns: '1fr 1fr',
       gridTemplateRows: '1fr 1fr',
-      gap: '2px',
+      gap: '8px',
       height: '100%',
-      backgroundColor: '#2a2a2a'
+      backgroundColor: 'transparent'
     }}>
       {[1, 2, 3, 4].map(vpNum => (
         <div 
           key={vpNum}
           style={{
             position: 'relative',
-            backgroundColor: '#1a1a1a',
-            border: activeViewport === vpNum ? '2px solid #00ff00' : '1px solid #333',
+            backgroundColor: '#ffffff',
+            border: activeViewport === vpNum ? '3px solid #007bff' : '1px solid #e1e8ed',
+            borderRadius: '12px',
             display: 'flex',
-            flexDirection: 'column'
+            flexDirection: 'column',
+            overflow: 'hidden',
+            boxShadow: activeViewport === vpNum ? '0 4px 12px rgba(0,123,255,0.3)' : '0 2px 8px rgba(0,0,0,0.06)',
+            transition: 'all 0.2s ease',
+            cursor: 'pointer'
           }}
           onClick={() => setActiveViewport(vpNum)}
+          onMouseEnter={(e) => {
+            if (activeViewport !== vpNum) {
+              e.currentTarget.style.transform = 'translateY(-2px)';
+              e.currentTarget.style.boxShadow = '0 6px 20px rgba(0,0,0,0.12)';
+            }
+          }}
+          onMouseLeave={(e) => {
+            if (activeViewport !== vpNum) {
+              e.currentTarget.style.transform = 'translateY(0)';
+              e.currentTarget.style.boxShadow = '0 2px 8px rgba(0,0,0,0.06)';
+            }
+          }}
         >
-          <div style={{
-            position: 'absolute',
-            top: '4px',
-            left: '4px',
-            color: '#e0e0e0',
-            fontSize: '10px',
-            zIndex: 10,
-            backgroundColor: 'rgba(0,0,0,0.7)',
-            padding: '2px 4px',
-            borderRadius: '2px'
-          }}>
-            Viewport {vpNum} {activeViewport === vpNum ? '[ACTIVE]' : ''}
-            <br/>
-            Image: {viewportImages[`viewport${vpNum}`].current}/{viewportImages[`viewport${vpNum}`].total}
-          </div>
-          
           <div 
             ref={vpNum === 1 ? viewport1Ref : vpNum === 2 ? viewport2Ref : vpNum === 3 ? viewport3Ref : viewport4Ref}
             style={{
               width: '100%',
               height: '100%',
-              backgroundColor: '#1a1a1a',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              color: '#e0e0e0',
-              fontSize: '14px'
+              backgroundColor: '#fafbfc'
             }}
-          >
-            {!viewportSeries[`viewport${vpNum}`] && 'Empty'}
-          </div>
+          />
         </div>
       ))}
     </div>
   );
 
   const toolButtonStyle = {
-    padding: '4px 8px',
-    backgroundColor: '#333',
-    color: '#e0e0e0',
-    border: '1px solid #555',
-    borderRadius: '2px',
+    padding: '12px 16px',
+    backgroundColor: '#ffffff',
+    color: '#495057',
+    border: '1px solid #dee2e6',
+    borderRadius: '8px',
     cursor: 'pointer',
-    fontSize: '10px',
-    lineHeight: '1.2'
+    fontSize: '13px',
+    fontWeight: '500',
+    lineHeight: '1.4',
+    transition: 'all 0.2s ease',
+    boxShadow: '0 1px 3px rgba(0,0,0,0.08)',
+    minWidth: '80px'
   };
 
   const toolGroupStyle = {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    gap: '4px',
-    padding: '6px',
-    backgroundColor: '#1a1a1a',
-    border: '1px solid #444',
-    borderRadius: '4px',
-    minWidth: '80px'
+    gap: '12px',
+    padding: '16px',
+    backgroundColor: '#ffffff',
+    border: '1px solid #e1e8ed',
+    borderRadius: '12px',
+    minWidth: '120px',
+    boxShadow: '0 2px 8px rgba(0,0,0,0.06)'
   };
 
   const toolGroupTitleStyle = {
-    fontSize: '11px',
-    fontWeight: 'bold',
-    color: '#ffffff',
+    fontSize: '14px',
+    fontWeight: '600',
+    color: '#495057',
     textAlign: 'center',
-    marginBottom: '2px'
+    marginBottom: '4px'
   };
 
   const sourceButtonStyle = {
-    padding: '6px',
-    backgroundColor: '#1a1a1a',
-    color: '#e0e0e0',
-    border: '1px solid #444',
-    borderRadius: '4px',
+    padding: '16px',
+    backgroundColor: '#ffffff',
+    color: '#495057',
+    border: '1px solid #dee2e6',
+    borderRadius: '12px',
     cursor: 'pointer',
-    fontSize: '12px',
-    fontWeight: 'bold',
-    height: '68px', // Точная высота как у групп инструментов (включая padding + content)
+    fontSize: '14px',
+    fontWeight: '500',
+    height: '68px',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    transition: 'background-color 0.2s',
-    flex: 1 // Каждая кнопка занимает равную долю (50%)
+    transition: 'all 0.2s ease',
+    flex: 1,
+    boxShadow: '0 1px 3px rgba(0,0,0,0.1)'
   };
 
   // PACS Modal Component
@@ -688,51 +822,166 @@ function App() {
       left: 0,
       right: 0,
       bottom: 0,
-      backgroundColor: 'rgba(0,0,0,0.8)',
+      backgroundColor: 'rgba(0,0,0,0.6)',
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
-      zIndex: 1000
+      zIndex: 1000,
+      backdropFilter: 'blur(4px)'
     }}>
       <div style={{
-        backgroundColor: '#333',
-        padding: '20px',
-        borderRadius: '8px',
-        color: '#e0e0e0',
-        minWidth: '400px'
+        backgroundColor: '#ffffff',
+        padding: '32px',
+        borderRadius: '16px',
+        color: '#495057',
+        minWidth: '450px',
+        boxShadow: '0 20px 40px rgba(0,0,0,0.15)',
+        border: '1px solid #e1e8ed'
       }}>
-        <h3 style={{ color: '#ffffff' }}>PACS Connection</h3>
-        <div style={{ marginBottom: '10px' }}>
-          <label>Server URL:</label>
-          <input type="text" style={{ width: '100%', padding: '4px', marginTop: '4px' }} />
-        </div>
-        <div style={{ marginBottom: '10px' }}>
-          <label>Port:</label>
-          <input type="text" style={{ width: '100%', padding: '4px', marginTop: '4px' }} />
-        </div>
-        <div style={{ marginBottom: '10px' }}>
-          <label>AE Title:</label>
-          <input type="text" style={{ width: '100%', padding: '4px', marginTop: '4px' }} />
-        </div>
-        <div style={{ display: 'flex', gap: '10px', justifyContent: 'flex-end' }}>
-          <button onClick={() => setShowPacsModal(false)} style={{
-            padding: '8px 16px',
-            backgroundColor: '#666',
-            color: '#e0e0e0',
-            border: 'none',
-            borderRadius: '4px',
-            cursor: 'pointer'
+        <h3 style={{ 
+          color: '#2c3e50', 
+          fontSize: '24px', 
+          fontWeight: '600',
+          marginBottom: '24px',
+          display: 'flex',
+          alignItems: 'center',
+          gap: '8px'
+        }}>
+          🌐 PACS Connection
+        </h3>
+        <div style={{ marginBottom: '20px' }}>
+          <label style={{ 
+            display: 'block', 
+            fontSize: '14px', 
+            fontWeight: '500', 
+            marginBottom: '8px',
+            color: '#495057'
           }}>
+            Server URL:
+          </label>
+          <input 
+            type="text" 
+            placeholder="http://example.com" 
+            style={{ 
+              width: '100%', 
+              padding: '12px 16px', 
+              fontSize: '14px',
+              border: '1px solid #dee2e6',
+              borderRadius: '8px',
+              backgroundColor: '#ffffff',
+              color: '#495057',
+              outline: 'none',
+              transition: 'border-color 0.2s ease',
+              boxSizing: 'border-box'
+            }} 
+            onFocus={(e) => e.target.style.borderColor = '#007bff'}
+            onBlur={(e) => e.target.style.borderColor = '#dee2e6'}
+          />
+        </div>
+        <div style={{ marginBottom: '20px' }}>
+          <label style={{ 
+            display: 'block', 
+            fontSize: '14px', 
+            fontWeight: '500', 
+            marginBottom: '8px',
+            color: '#495057'
+          }}>
+            Port:
+          </label>
+          <input 
+            type="text" 
+            placeholder="11112" 
+            style={{ 
+              width: '100%', 
+              padding: '12px 16px', 
+              fontSize: '14px',
+              border: '1px solid #dee2e6',
+              borderRadius: '8px',
+              backgroundColor: '#ffffff',
+              color: '#495057',
+              outline: 'none',
+              transition: 'border-color 0.2s ease',
+              boxSizing: 'border-box'
+            }} 
+            onFocus={(e) => e.target.style.borderColor = '#007bff'}
+            onBlur={(e) => e.target.style.borderColor = '#dee2e6'}
+          />
+        </div>
+        <div style={{ marginBottom: '24px' }}>
+          <label style={{ 
+            display: 'block', 
+            fontSize: '14px', 
+            fontWeight: '500', 
+            marginBottom: '8px',
+            color: '#495057'
+          }}>
+            AE Title:
+          </label>
+          <input 
+            type="text" 
+            placeholder="VIEWER" 
+            style={{ 
+              width: '100%', 
+              padding: '12px 16px', 
+              fontSize: '14px',
+              border: '1px solid #dee2e6',
+              borderRadius: '8px',
+              backgroundColor: '#ffffff',
+              color: '#495057',
+              outline: 'none',
+              transition: 'border-color 0.2s ease',
+              boxSizing: 'border-box'
+            }} 
+            onFocus={(e) => e.target.style.borderColor = '#007bff'}
+            onBlur={(e) => e.target.style.borderColor = '#dee2e6'}
+          />
+        </div>
+        <div style={{ display: 'flex', gap: '12px', justifyContent: 'flex-end' }}>
+          <button 
+            onClick={() => setShowPacsModal(false)} 
+            style={{
+              padding: '12px 24px',
+              backgroundColor: '#ffffff',
+              color: '#6c757d',
+              border: '1px solid #dee2e6',
+              borderRadius: '8px',
+              cursor: 'pointer',
+              fontSize: '14px',
+              fontWeight: '500',
+              transition: 'all 0.2s ease'
+            }}
+            onMouseEnter={(e) => {
+              e.target.style.backgroundColor = '#f8f9fa';
+              e.target.style.borderColor = '#adb5bd';
+            }}
+            onMouseLeave={(e) => {
+              e.target.style.backgroundColor = '#ffffff';
+              e.target.style.borderColor = '#dee2e6';
+            }}
+          >
             Cancel
           </button>
-          <button style={{
-            padding: '8px 16px',
-            backgroundColor: '#0066cc',
-            color: '#e0e0e0',
-            border: 'none',
-            borderRadius: '4px',
-            cursor: 'pointer'
-          }}>
+          <button 
+            style={{
+              padding: '12px 24px',
+              backgroundColor: '#007bff',
+              color: '#ffffff',
+              border: '1px solid #007bff',
+              borderRadius: '8px',
+              cursor: 'pointer',
+              fontSize: '14px',
+              fontWeight: '500',
+              transition: 'all 0.2s ease'
+            }}
+            onMouseEnter={(e) => {
+              e.target.style.backgroundColor = '#0056b3';
+              e.target.style.borderColor = '#0056b3';
+            }}
+            onMouseLeave={(e) => {
+              e.target.style.backgroundColor = '#007bff';
+              e.target.style.borderColor = '#007bff';
+            }}
+          >
             Connect
           </button>
         </div>
