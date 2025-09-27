@@ -709,7 +709,7 @@ function App() {
       display: 'grid',
       gridTemplateColumns: '1fr 1fr',
       gridTemplateRows: '1fr 1fr',
-      gap: '4px',
+      gap: '2px',
       height: '100%',
       backgroundColor: 'transparent'
     }}>
