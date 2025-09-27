@@ -709,7 +709,7 @@ function App() {
       display: 'grid',
       gridTemplateColumns: '1fr 1fr',
       gridTemplateRows: '1fr 1fr',
-      gap: '8px',
+      gap: '4px',
       height: '100%',
       backgroundColor: 'transparent'
     }}>
@@ -756,17 +756,17 @@ function App() {
   );
 
   const toolButtonStyle = {
-    padding: '16px 20px',
+    padding: '10px 16px',
     backgroundColor: '#ffffff',
     color: '#495057',
     border: '1px solid #dee2e6',
-    borderRadius: '12px',
+    borderRadius: '8px',
     cursor: 'pointer',
     fontSize: '14px',
     fontWeight: '500',
     transition: 'all 0.2s ease',
     boxShadow: '0 1px 3px rgba(0,0,0,0.08)',
-    height: '68px',
+    height: '46px',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center'
@@ -774,15 +774,15 @@ function App() {
 
 
   const sourceButtonStyle = {
-    padding: '16px',
+    padding: '10px 16px',
     backgroundColor: '#ffffff',
     color: '#495057',
     border: '1px solid #dee2e6',
-    borderRadius: '12px',
+    borderRadius: '8px',
     cursor: 'pointer',
     fontSize: '14px',
     fontWeight: '500',
-    height: '68px',
+    height: '46px',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
