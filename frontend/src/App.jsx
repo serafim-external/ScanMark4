@@ -370,34 +370,42 @@ function App() {
       height: '100%',
       alignItems: 'center'
     }}>
-      <button 
+      <button
         onClick={handleLocalFiles}
         style={sourceButtonStyle}
         onMouseEnter={(e) => {
-          e.target.style.backgroundColor = '#f8f9fa';
+          e.target.style.backgroundColor = '#3b82f6';
+          e.target.style.borderColor = '#3b82f6';
+          e.target.style.color = '#ffffff';
           e.target.style.transform = 'translateY(-1px)';
-          e.target.style.boxShadow = '0 4px 8px rgba(0,0,0,0.15)';
+          e.target.style.boxShadow = '0 4px 8px rgba(59, 130, 246, 0.4)';
         }}
         onMouseLeave={(e) => {
-          e.target.style.backgroundColor = '#ffffff';
+          e.target.style.backgroundColor = '#2d3139';
+          e.target.style.borderColor = '#3d424d';
+          e.target.style.color = '#e5e7eb';
           e.target.style.transform = 'translateY(0)';
-          e.target.style.boxShadow = '0 1px 3px rgba(0,0,0,0.1)';
+          e.target.style.boxShadow = '0 2px 4px rgba(0,0,0,0.2)';
         }}
       >
         📁 Local Files
       </button>
-      <button 
+      <button
         onClick={handlePacs}
         style={sourceButtonStyle}
         onMouseEnter={(e) => {
-          e.target.style.backgroundColor = '#f8f9fa';
+          e.target.style.backgroundColor = '#3b82f6';
+          e.target.style.borderColor = '#3b82f6';
+          e.target.style.color = '#ffffff';
           e.target.style.transform = 'translateY(-1px)';
-          e.target.style.boxShadow = '0 4px 8px rgba(0,0,0,0.15)';
+          e.target.style.boxShadow = '0 4px 8px rgba(59, 130, 246, 0.4)';
         }}
         onMouseLeave={(e) => {
-          e.target.style.backgroundColor = '#ffffff';
+          e.target.style.backgroundColor = '#2d3139';
+          e.target.style.borderColor = '#3d424d';
+          e.target.style.color = '#e5e7eb';
           e.target.style.transform = 'translateY(0)';
-          e.target.style.boxShadow = '0 1px 3px rgba(0,0,0,0.1)';
+          e.target.style.boxShadow = '0 2px 4px rgba(0,0,0,0.2)';
         }}
       >
         🌐 PACS
@@ -427,14 +435,18 @@ function App() {
         style={toolButtonStyle} 
         title="Press 1-1 (11)"
         onMouseEnter={(e) => {
-          e.target.style.backgroundColor = '#f8f9fa';
+          e.target.style.backgroundColor = '#3b82f6';
+          e.target.style.borderColor = '#3b82f6';
+          e.target.style.color = '#ffffff';
           e.target.style.transform = 'translateY(-1px)';
-          e.target.style.boxShadow = '0 3px 6px rgba(0,0,0,0.12)';
+          e.target.style.boxShadow = '0 4px 8px rgba(59, 130, 246, 0.4)';
         }}
         onMouseLeave={(e) => {
-          e.target.style.backgroundColor = '#ffffff';
+          e.target.style.backgroundColor = '#2d3139';
+          e.target.style.borderColor = '#3d424d';
+          e.target.style.color = '#e5e7eb';
           e.target.style.transform = 'translateY(0)';
-          e.target.style.boxShadow = '0 1px 3px rgba(0,0,0,0.08)';
+          e.target.style.boxShadow = '0 2px 4px rgba(0,0,0,0.2)';
         }}
       >
         Layout
@@ -444,14 +456,18 @@ function App() {
         style={toolButtonStyle} 
         title="Press 1-2 (12)"
         onMouseEnter={(e) => {
-          e.target.style.backgroundColor = '#f8f9fa';
+          e.target.style.backgroundColor = '#3b82f6';
+          e.target.style.borderColor = '#3b82f6';
+          e.target.style.color = '#ffffff';
           e.target.style.transform = 'translateY(-1px)';
-          e.target.style.boxShadow = '0 3px 6px rgba(0,0,0,0.12)';
+          e.target.style.boxShadow = '0 4px 8px rgba(59, 130, 246, 0.4)';
         }}
         onMouseLeave={(e) => {
-          e.target.style.backgroundColor = '#ffffff';
+          e.target.style.backgroundColor = '#2d3139';
+          e.target.style.borderColor = '#3d424d';
+          e.target.style.color = '#e5e7eb';
           e.target.style.transform = 'translateY(0)';
-          e.target.style.boxShadow = '0 1px 3px rgba(0,0,0,0.08)';
+          e.target.style.boxShadow = '0 2px 4px rgba(0,0,0,0.2)';
         }}
       >
         Stack
@@ -461,14 +477,18 @@ function App() {
         style={toolButtonStyle} 
         title="Press 2-1 (21)"
         onMouseEnter={(e) => {
-          e.target.style.backgroundColor = '#f8f9fa';
+          e.target.style.backgroundColor = '#3b82f6';
+          e.target.style.borderColor = '#3b82f6';
+          e.target.style.color = '#ffffff';
           e.target.style.transform = 'translateY(-1px)';
-          e.target.style.boxShadow = '0 3px 6px rgba(0,0,0,0.12)';
+          e.target.style.boxShadow = '0 4px 8px rgba(59, 130, 246, 0.4)';
         }}
         onMouseLeave={(e) => {
-          e.target.style.backgroundColor = '#ffffff';
+          e.target.style.backgroundColor = '#2d3139';
+          e.target.style.borderColor = '#3d424d';
+          e.target.style.color = '#e5e7eb';
           e.target.style.transform = 'translateY(0)';
-          e.target.style.boxShadow = '0 1px 3px rgba(0,0,0,0.08)';
+          e.target.style.boxShadow = '0 2px 4px rgba(0,0,0,0.2)';
         }}
       >
         Zoom
@@ -478,14 +498,18 @@ function App() {
         style={toolButtonStyle} 
         title="Press 2-2 (22)"
         onMouseEnter={(e) => {
-          e.target.style.backgroundColor = '#f8f9fa';
+          e.target.style.backgroundColor = '#3b82f6';
+          e.target.style.borderColor = '#3b82f6';
+          e.target.style.color = '#ffffff';
           e.target.style.transform = 'translateY(-1px)';
-          e.target.style.boxShadow = '0 3px 6px rgba(0,0,0,0.12)';
+          e.target.style.boxShadow = '0 4px 8px rgba(59, 130, 246, 0.4)';
         }}
         onMouseLeave={(e) => {
-          e.target.style.backgroundColor = '#ffffff';
+          e.target.style.backgroundColor = '#2d3139';
+          e.target.style.borderColor = '#3d424d';
+          e.target.style.color = '#e5e7eb';
           e.target.style.transform = 'translateY(0)';
-          e.target.style.boxShadow = '0 1px 3px rgba(0,0,0,0.08)';
+          e.target.style.boxShadow = '0 2px 4px rgba(0,0,0,0.2)';
         }}
       >
         W/L
@@ -495,14 +519,18 @@ function App() {
         style={toolButtonStyle} 
         title="Press 3-1 (31)"
         onMouseEnter={(e) => {
-          e.target.style.backgroundColor = '#f8f9fa';
+          e.target.style.backgroundColor = '#3b82f6';
+          e.target.style.borderColor = '#3b82f6';
+          e.target.style.color = '#ffffff';
           e.target.style.transform = 'translateY(-1px)';
-          e.target.style.boxShadow = '0 3px 6px rgba(0,0,0,0.12)';
+          e.target.style.boxShadow = '0 4px 8px rgba(59, 130, 246, 0.4)';
         }}
         onMouseLeave={(e) => {
-          e.target.style.backgroundColor = '#ffffff';
+          e.target.style.backgroundColor = '#2d3139';
+          e.target.style.borderColor = '#3d424d';
+          e.target.style.color = '#e5e7eb';
           e.target.style.transform = 'translateY(0)';
-          e.target.style.boxShadow = '0 1px 3px rgba(0,0,0,0.08)';
+          e.target.style.boxShadow = '0 2px 4px rgba(0,0,0,0.2)';
         }}
       >
         Length
@@ -512,14 +540,18 @@ function App() {
         style={toolButtonStyle} 
         title="Press 3-2 (32)"
         onMouseEnter={(e) => {
-          e.target.style.backgroundColor = '#f8f9fa';
+          e.target.style.backgroundColor = '#3b82f6';
+          e.target.style.borderColor = '#3b82f6';
+          e.target.style.color = '#ffffff';
           e.target.style.transform = 'translateY(-1px)';
-          e.target.style.boxShadow = '0 3px 6px rgba(0,0,0,0.12)';
+          e.target.style.boxShadow = '0 4px 8px rgba(59, 130, 246, 0.4)';
         }}
         onMouseLeave={(e) => {
-          e.target.style.backgroundColor = '#ffffff';
+          e.target.style.backgroundColor = '#2d3139';
+          e.target.style.borderColor = '#3d424d';
+          e.target.style.color = '#e5e7eb';
           e.target.style.transform = 'translateY(0)';
-          e.target.style.boxShadow = '0 1px 3px rgba(0,0,0,0.08)';
+          e.target.style.boxShadow = '0 2px 4px rgba(0,0,0,0.2)';
         }}
       >
         Angle
@@ -529,14 +561,18 @@ function App() {
         style={toolButtonStyle} 
         title="Press 4-1 (41)"
         onMouseEnter={(e) => {
-          e.target.style.backgroundColor = '#f8f9fa';
+          e.target.style.backgroundColor = '#3b82f6';
+          e.target.style.borderColor = '#3b82f6';
+          e.target.style.color = '#ffffff';
           e.target.style.transform = 'translateY(-1px)';
-          e.target.style.boxShadow = '0 3px 6px rgba(0,0,0,0.12)';
+          e.target.style.boxShadow = '0 4px 8px rgba(59, 130, 246, 0.4)';
         }}
         onMouseLeave={(e) => {
-          e.target.style.backgroundColor = '#ffffff';
+          e.target.style.backgroundColor = '#2d3139';
+          e.target.style.borderColor = '#3d424d';
+          e.target.style.color = '#e5e7eb';
           e.target.style.transform = 'translateY(0)';
-          e.target.style.boxShadow = '0 1px 3px rgba(0,0,0,0.08)';
+          e.target.style.boxShadow = '0 2px 4px rgba(0,0,0,0.2)';
         }}
       >
         Reset
@@ -548,14 +584,14 @@ function App() {
           position: 'absolute',
           top: '16px',
           right: '16px',
-          backgroundColor: '#28a745',
-          color: 'white',
+          backgroundColor: '#3b82f6',
+          color: '#ffffff',
           padding: '8px 12px',
-          borderRadius: '8px',
+          borderRadius: '6px',
           fontSize: '14px',
           fontWeight: '600',
-          boxShadow: '0 3px 6px rgba(40,167,69,0.3)',
-          border: '2px solid #20c997'
+          boxShadow: '0 4px 12px rgba(59, 130, 246, 0.4)',
+          border: '1px solid #60a5fa'
         }}>
           {displaySequence}
         </div>
@@ -569,54 +605,54 @@ function App() {
       height: '100%',
       overflow: 'auto',
       fontSize: '14px',
-      color: '#495057'
+      color: '#e5e7eb'
     }}>
       {selectedPatient ? (
         <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
           <div>
-            <div style={{ 
-              fontWeight: '600', 
-              color: '#2c3e50', 
+            <div style={{
+              fontWeight: '600',
+              color: '#3b82f6',
               fontSize: '16px',
               marginBottom: '8px',
               paddingBottom: '8px',
-              borderBottom: '2px solid #e1e8ed'
+              borderBottom: '2px solid #2d3139'
             }}>
               👤 Patient
             </div>
             <div style={{ marginLeft: '8px', lineHeight: '1.5' }}>
-              <div style={{ fontWeight: '500' }}>{selectedPatient.patientName}</div>
-              <div style={{ color: '#6c757d', fontSize: '13px' }}>ID: {selectedPatient.patientId}</div>
+              <div style={{ fontWeight: '500', color: '#e5e7eb' }}>{selectedPatient.patientName}</div>
+              <div style={{ color: '#9ca3af', fontSize: '13px' }}>ID: {selectedPatient.patientId}</div>
             </div>
           </div>
 
           {selectedStudy && (
             <div>
-              <div style={{ 
-                fontWeight: '600', 
-                color: '#2c3e50', 
+              <div style={{
+                fontWeight: '600',
+                color: '#3b82f6',
                 fontSize: '16px',
                 marginBottom: '8px',
                 paddingBottom: '8px',
-                borderBottom: '2px solid #e1e8ed'
+                borderBottom: '2px solid #2d3139'
               }}>
                 📋 Study
               </div>
               <div style={{ marginLeft: '8px', lineHeight: '1.5' }}>
-                <div style={{ fontWeight: '500' }}>{selectedStudy.studyDescription}</div>
-                <div style={{ color: '#6c757d', fontSize: '13px' }}>{selectedStudy.studyDate}</div>
+                <div style={{ fontWeight: '500', color: '#e5e7eb' }}>{selectedStudy.studyDescription}</div>
+                <div style={{ color: '#9ca3af', fontSize: '13px' }}>{selectedStudy.studyDate}</div>
               </div>
             </div>
           )}
 
           <div>
-            <div style={{ 
-              fontWeight: '600', 
-              color: '#2c3e50', 
+            <div style={{
+              fontWeight: '600',
+              color: '#3b82f6',
               fontSize: '16px',
               marginBottom: '12px',
               paddingBottom: '8px',
-              borderBottom: '2px solid #e1e8ed'
+              borderBottom: '2px solid #2d3139'
             }}>
               🗂️ Series
             </div>
@@ -628,51 +664,54 @@ function App() {
                     display: 'flex',
                     alignItems: 'center',
                     padding: '12px',
-                    backgroundColor: selectedSeries?.seriesInstanceUID === series.seriesInstanceUID ? '#e7f3ff' : '#ffffff',
+                    backgroundColor: selectedSeries?.seriesInstanceUID === series.seriesInstanceUID ? '#2d3139' : '#242830',
                     cursor: 'pointer',
-                    border: '1px solid #e1e8ed',
-                    borderRadius: '8px',
+                    border: selectedSeries?.seriesInstanceUID === series.seriesInstanceUID ? '1px solid #3b82f6' : '1px solid #2d3139',
+                    borderRadius: '6px',
                     transition: 'all 0.2s ease',
-                    boxShadow: '0 1px 3px rgba(0,0,0,0.05)'
+                    boxShadow: selectedSeries?.seriesInstanceUID === series.seriesInstanceUID ? '0 0 12px rgba(59, 130, 246, 0.3)' : '0 1px 3px rgba(0,0,0,0.2)'
                   }}
                   onClick={() => setSelectedSeries(series)}
                   onDoubleClick={() => loadSeriesToViewport(series, 'viewport1')}
                   onMouseEnter={(e) => {
                     if (selectedSeries?.seriesInstanceUID !== series.seriesInstanceUID) {
-                      e.target.style.backgroundColor = '#f8f9fa';
+                      e.target.style.backgroundColor = '#2d3139';
+                      e.target.style.borderColor = '#3b82f6';
                       e.target.style.transform = 'translateY(-1px)';
-                      e.target.style.boxShadow = '0 3px 6px rgba(0,0,0,0.08)';
+                      e.target.style.boxShadow = '0 2px 8px rgba(59, 130, 246, 0.2)';
                     }
                   }}
                   onMouseLeave={(e) => {
                     if (selectedSeries?.seriesInstanceUID !== series.seriesInstanceUID) {
-                      e.target.style.backgroundColor = '#ffffff';
+                      e.target.style.backgroundColor = '#242830';
+                      e.target.style.borderColor = '#2d3139';
                       e.target.style.transform = 'translateY(0)';
-                      e.target.style.boxShadow = '0 1px 3px rgba(0,0,0,0.05)';
+                      e.target.style.boxShadow = '0 1px 3px rgba(0,0,0,0.2)';
                     }
                   }}
                 >
                   <div style={{
                     width: '40px',
                     height: '40px',
-                    backgroundColor: '#f0f2f5',
+                    backgroundColor: '#1a1d23',
                     marginRight: '12px',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    borderRadius: '6px',
-                    fontSize: '16px'
+                    borderRadius: '4px',
+                    fontSize: '16px',
+                    border: '1px solid #2d3139'
                   }}>
                     🖼️
                   </div>
                   <div style={{ flex: 1 }}>
-                    <div style={{ fontWeight: '600', color: '#2c3e50', marginBottom: '2px' }}>
+                    <div style={{ fontWeight: '600', color: '#3b82f6', marginBottom: '2px' }}>
                       {series.modality}
                     </div>
-                    <div style={{ fontSize: '13px', color: '#495057', marginBottom: '2px' }}>
+                    <div style={{ fontSize: '13px', color: '#9ca3af', marginBottom: '2px' }}>
                       {series.seriesDescription}
                     </div>
-                    <div style={{ fontSize: '12px', color: '#6c757d' }}>
+                    <div style={{ fontSize: '12px', color: '#6b7280' }}>
                       {series.images.length} images
                     </div>
                   </div>
@@ -688,14 +727,14 @@ function App() {
           alignItems: 'center',
           justifyContent: 'center',
           height: '100%',
-          color: '#6c757d',
+          color: '#6b7280',
           textAlign: 'center'
         }}>
           <div style={{ fontSize: '48px', marginBottom: '16px' }}>📁</div>
-          <div style={{ fontSize: '16px', fontWeight: '500', marginBottom: '8px' }}>
+          <div style={{ fontSize: '16px', fontWeight: '500', marginBottom: '8px', color: '#9ca3af' }}>
             No files loaded
           </div>
-          <div style={{ fontSize: '13px' }}>
+          <div style={{ fontSize: '13px', color: '#6b7280' }}>
             Select local files or connect to PACS to get started
           </div>
         </div>
@@ -718,36 +757,36 @@ function App() {
           key={vpNum}
           style={{
             position: 'relative',
-            backgroundColor: '#ffffff',
-            border: activeViewport === vpNum ? '3px solid #007bff' : '1px solid #e1e8ed',
-            borderRadius: '12px',
+            backgroundColor: '#000000',
+            border: activeViewport === vpNum ? '2px solid #3b82f6' : '1px solid #1a1d23',
+            borderRadius: '4px',
             display: 'flex',
             flexDirection: 'column',
             overflow: 'hidden',
-            boxShadow: activeViewport === vpNum ? '0 4px 12px rgba(0,123,255,0.3)' : '0 2px 8px rgba(0,0,0,0.06)',
+            boxShadow: activeViewport === vpNum ? '0 0 12px rgba(59, 130, 246, 0.4)' : '0 1px 4px rgba(0,0,0,0.3)',
             transition: 'all 0.2s ease',
             cursor: 'pointer'
           }}
           onClick={() => setActiveViewport(vpNum)}
           onMouseEnter={(e) => {
             if (activeViewport !== vpNum) {
-              e.currentTarget.style.transform = 'translateY(-2px)';
-              e.currentTarget.style.boxShadow = '0 6px 20px rgba(0,0,0,0.12)';
+              e.currentTarget.style.borderColor = '#3b82f6';
+              e.currentTarget.style.boxShadow = '0 0 8px rgba(59, 130, 246, 0.2)';
             }
           }}
           onMouseLeave={(e) => {
             if (activeViewport !== vpNum) {
-              e.currentTarget.style.transform = 'translateY(0)';
-              e.currentTarget.style.boxShadow = '0 2px 8px rgba(0,0,0,0.06)';
+              e.currentTarget.style.borderColor = '#1a1d23';
+              e.currentTarget.style.boxShadow = '0 1px 4px rgba(0,0,0,0.3)';
             }
           }}
         >
-          <div 
+          <div
             ref={vpNum === 1 ? viewport1Ref : vpNum === 2 ? viewport2Ref : vpNum === 3 ? viewport3Ref : viewport4Ref}
             style={{
               width: '100%',
               height: '100%',
-              backgroundColor: '#fafbfc'
+              backgroundColor: '#000000'
             }}
           />
         </div>
@@ -757,15 +796,15 @@ function App() {
 
   const toolButtonStyle = {
     padding: '10px 16px',
-    backgroundColor: '#ffffff',
-    color: '#495057',
-    border: '1px solid #dee2e6',
-    borderRadius: '8px',
+    backgroundColor: '#2d3139',
+    color: '#e5e7eb',
+    border: '1px solid #3d424d',
+    borderRadius: '6px',
     cursor: 'pointer',
     fontSize: '14px',
     fontWeight: '500',
     transition: 'all 0.2s ease',
-    boxShadow: '0 1px 3px rgba(0,0,0,0.08)',
+    boxShadow: '0 2px 4px rgba(0,0,0,0.2)',
     height: '46px',
     display: 'flex',
     alignItems: 'center',
@@ -775,10 +814,10 @@ function App() {
 
   const sourceButtonStyle = {
     padding: '10px 16px',
-    backgroundColor: '#ffffff',
-    color: '#495057',
-    border: '1px solid #dee2e6',
-    borderRadius: '8px',
+    backgroundColor: '#2d3139',
+    color: '#e5e7eb',
+    border: '1px solid #3d424d',
+    borderRadius: '6px',
     cursor: 'pointer',
     fontSize: '14px',
     fontWeight: '500',
@@ -788,7 +827,7 @@ function App() {
     justifyContent: 'center',
     transition: 'all 0.2s ease',
     flex: 1,
-    boxShadow: '0 1px 3px rgba(0,0,0,0.1)'
+    boxShadow: '0 2px 4px rgba(0,0,0,0.2)'
   };
 
   // PACS Modal Component
@@ -799,7 +838,7 @@ function App() {
       left: 0,
       right: 0,
       bottom: 0,
-      backgroundColor: 'rgba(0,0,0,0.6)',
+      backgroundColor: 'rgba(0, 0, 0, 0.85)',
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
@@ -807,17 +846,17 @@ function App() {
       backdropFilter: 'blur(4px)'
     }}>
       <div style={{
-        backgroundColor: '#ffffff',
+        backgroundColor: '#242830',
         padding: '32px',
-        borderRadius: '16px',
-        color: '#495057',
+        borderRadius: '12px',
+        color: '#e5e7eb',
         minWidth: '450px',
-        boxShadow: '0 20px 40px rgba(0,0,0,0.15)',
-        border: '1px solid #e1e8ed'
+        boxShadow: '0 8px 32px rgba(0, 0, 0, 0.5)',
+        border: '1px solid #3d424d'
       }}>
-        <h3 style={{ 
-          color: '#2c3e50', 
-          fontSize: '24px', 
+        <h3 style={{
+          color: '#e5e7eb',
+          fontSize: '24px',
           fontWeight: '600',
           marginBottom: '24px',
           display: 'flex',
@@ -827,136 +866,156 @@ function App() {
           🌐 PACS Connection
         </h3>
         <div style={{ marginBottom: '20px' }}>
-          <label style={{ 
-            display: 'block', 
-            fontSize: '14px', 
-            fontWeight: '500', 
+          <label style={{
+            display: 'block',
+            fontSize: '14px',
+            fontWeight: '500',
             marginBottom: '8px',
-            color: '#495057'
+            color: '#9ca3af'
           }}>
             Server URL:
           </label>
-          <input 
-            type="text" 
-            placeholder="http://example.com" 
-            style={{ 
-              width: '100%', 
-              padding: '12px 16px', 
+          <input
+            type="text"
+            placeholder="http://example.com"
+            style={{
+              width: '100%',
+              padding: '12px 16px',
               fontSize: '14px',
-              border: '1px solid #dee2e6',
-              borderRadius: '8px',
-              backgroundColor: '#ffffff',
-              color: '#495057',
+              border: '1px solid #3d424d',
+              borderRadius: '6px',
+              backgroundColor: '#1e2128',
+              color: '#e5e7eb',
               outline: 'none',
-              transition: 'border-color 0.2s ease',
+              transition: 'all 0.2s ease',
               boxSizing: 'border-box'
-            }} 
-            onFocus={(e) => e.target.style.borderColor = '#007bff'}
-            onBlur={(e) => e.target.style.borderColor = '#dee2e6'}
+            }}
+            onFocus={(e) => {
+              e.target.style.borderColor = '#3b82f6';
+              e.target.style.boxShadow = '0 0 0 3px rgba(59, 130, 246, 0.1)';
+            }}
+            onBlur={(e) => {
+              e.target.style.borderColor = '#3d424d';
+              e.target.style.boxShadow = 'none';
+            }}
           />
         </div>
         <div style={{ marginBottom: '20px' }}>
-          <label style={{ 
-            display: 'block', 
-            fontSize: '14px', 
-            fontWeight: '500', 
+          <label style={{
+            display: 'block',
+            fontSize: '14px',
+            fontWeight: '500',
             marginBottom: '8px',
-            color: '#495057'
+            color: '#9ca3af'
           }}>
             Port:
           </label>
-          <input 
-            type="text" 
-            placeholder="11112" 
-            style={{ 
-              width: '100%', 
-              padding: '12px 16px', 
+          <input
+            type="text"
+            placeholder="11112"
+            style={{
+              width: '100%',
+              padding: '12px 16px',
               fontSize: '14px',
-              border: '1px solid #dee2e6',
-              borderRadius: '8px',
-              backgroundColor: '#ffffff',
-              color: '#495057',
+              border: '1px solid #3d424d',
+              borderRadius: '6px',
+              backgroundColor: '#1e2128',
+              color: '#e5e7eb',
               outline: 'none',
-              transition: 'border-color 0.2s ease',
+              transition: 'all 0.2s ease',
               boxSizing: 'border-box'
-            }} 
-            onFocus={(e) => e.target.style.borderColor = '#007bff'}
-            onBlur={(e) => e.target.style.borderColor = '#dee2e6'}
+            }}
+            onFocus={(e) => {
+              e.target.style.borderColor = '#3b82f6';
+              e.target.style.boxShadow = '0 0 0 3px rgba(59, 130, 246, 0.1)';
+            }}
+            onBlur={(e) => {
+              e.target.style.borderColor = '#3d424d';
+              e.target.style.boxShadow = 'none';
+            }}
           />
         </div>
         <div style={{ marginBottom: '24px' }}>
-          <label style={{ 
-            display: 'block', 
-            fontSize: '14px', 
-            fontWeight: '500', 
+          <label style={{
+            display: 'block',
+            fontSize: '14px',
+            fontWeight: '500',
             marginBottom: '8px',
-            color: '#495057'
+            color: '#9ca3af'
           }}>
             AE Title:
           </label>
-          <input 
-            type="text" 
-            placeholder="VIEWER" 
-            style={{ 
-              width: '100%', 
-              padding: '12px 16px', 
+          <input
+            type="text"
+            placeholder="VIEWER"
+            style={{
+              width: '100%',
+              padding: '12px 16px',
               fontSize: '14px',
-              border: '1px solid #dee2e6',
-              borderRadius: '8px',
-              backgroundColor: '#ffffff',
-              color: '#495057',
+              border: '1px solid #3d424d',
+              borderRadius: '6px',
+              backgroundColor: '#1e2128',
+              color: '#e5e7eb',
               outline: 'none',
-              transition: 'border-color 0.2s ease',
+              transition: 'all 0.2s ease',
               boxSizing: 'border-box'
-            }} 
-            onFocus={(e) => e.target.style.borderColor = '#007bff'}
-            onBlur={(e) => e.target.style.borderColor = '#dee2e6'}
+            }}
+            onFocus={(e) => {
+              e.target.style.borderColor = '#3b82f6';
+              e.target.style.boxShadow = '0 0 0 3px rgba(59, 130, 246, 0.1)';
+            }}
+            onBlur={(e) => {
+              e.target.style.borderColor = '#3d424d';
+              e.target.style.boxShadow = 'none';
+            }}
           />
         </div>
         <div style={{ display: 'flex', gap: '12px', justifyContent: 'flex-end' }}>
-          <button 
-            onClick={() => setShowPacsModal(false)} 
+          <button
+            onClick={() => setShowPacsModal(false)}
             style={{
               padding: '12px 24px',
-              backgroundColor: '#ffffff',
-              color: '#6c757d',
-              border: '1px solid #dee2e6',
-              borderRadius: '8px',
+              backgroundColor: '#2d3139',
+              color: '#e5e7eb',
+              border: '1px solid #3d424d',
+              borderRadius: '6px',
               cursor: 'pointer',
               fontSize: '14px',
               fontWeight: '500',
               transition: 'all 0.2s ease'
             }}
             onMouseEnter={(e) => {
-              e.target.style.backgroundColor = '#f8f9fa';
-              e.target.style.borderColor = '#adb5bd';
+              e.target.style.backgroundColor = '#363b47';
+              e.target.style.borderColor = '#4d5360';
             }}
             onMouseLeave={(e) => {
-              e.target.style.backgroundColor = '#ffffff';
-              e.target.style.borderColor = '#dee2e6';
+              e.target.style.backgroundColor = '#2d3139';
+              e.target.style.borderColor = '#3d424d';
             }}
           >
             Cancel
           </button>
-          <button 
+          <button
             style={{
               padding: '12px 24px',
-              backgroundColor: '#007bff',
+              backgroundColor: '#3b82f6',
               color: '#ffffff',
-              border: '1px solid #007bff',
-              borderRadius: '8px',
+              border: '1px solid #3b82f6',
+              borderRadius: '6px',
               cursor: 'pointer',
               fontSize: '14px',
               fontWeight: '500',
               transition: 'all 0.2s ease'
             }}
             onMouseEnter={(e) => {
-              e.target.style.backgroundColor = '#0056b3';
-              e.target.style.borderColor = '#0056b3';
+              e.target.style.backgroundColor = '#2563eb';
+              e.target.style.borderColor = '#2563eb';
+              e.target.style.boxShadow = '0 4px 12px rgba(59, 130, 246, 0.3)';
             }}
             onMouseLeave={(e) => {
-              e.target.style.backgroundColor = '#007bff';
-              e.target.style.borderColor = '#007bff';
+              e.target.style.backgroundColor = '#3b82f6';
+              e.target.style.borderColor = '#3b82f6';
+              e.target.style.boxShadow = 'none';
             }}
           >
             Connect
