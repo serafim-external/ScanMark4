@@ -4,8 +4,8 @@
   font-weight: 400;
 
   color-scheme: dark;
-  color: #e5e7eb;
-  background-color: #1a1d23;
+  color: #d4d4d4;
+  background-color: #1e1e1e;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -60,13 +60,13 @@ h1 {
 
 button {
   border-radius: 8px;
-  border: 1px solid #3d424d;
+  border: 1px solid #4a4a4a;
   padding: 0.6em 1.2em;
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #2d3139;
-  color: #e5e7eb;
+  background-color: #3a3a3a;
+  color: #d4d4d4;
   cursor: pointer;
   transition: all 0.2s ease;
 }

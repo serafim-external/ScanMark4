@@ -15,7 +15,7 @@ html, body {
   height: 100%;
   overflow: hidden;
   font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #1a1d23;
+  background-color: #1e1e1e;
   font-size: 14px;
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
@@ -34,8 +34,8 @@ html, body {
   display: grid;
   grid-template-columns: 320px 1fr; /* Sources: увеличена до 320px для большего воздуха */
   grid-template-rows: 70px 1fr; /* Top: уменьшена до 70px */
-  background-color: #1a1d23;
-  color: #e5e7eb;
+  background-color: #1e1e1e;
+  color: #d4d4d4;
   font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   min-width: 800px;
   min-height: 600px;
@@ -45,8 +45,8 @@ html, body {
 .sources-panel {
   grid-row: 1;
   grid-column: 1;
-  border-right: 1px solid #2d3139;
-  background-color: #242830;
+  border-right: 1px solid #2a2a2a;
+  background-color: #2d2d2d;
   display: flex;
   align-items: center;
   width: 320px;
@@ -58,21 +58,21 @@ html, body {
 .tools-panel {
   grid-row: 1;
   grid-column: 2;
-  background-color: #242830;
+  background-color: #2d2d2d;
   display: flex;
   align-items: center;
   height: 70px;
   min-width: 500px;
   padding: 12px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.3);
-  border-bottom: 1px solid #2d3139;
+  border-bottom: 1px solid #2a2a2a;
 }
 
 .browser-panel {
   grid-row: 2;
   grid-column: 1;
-  border-right: 1px solid #2d3139;
-  background-color: #1e2128;
+  border-right: 1px solid #2a2a2a;
+  background-color: #252525;
   overflow-y: auto;
   width: 320px;
   padding: 16px;
@@ -99,7 +99,7 @@ html, body {
 .viewport {
   position: relative;
   background-color: #000000;
-  border: 1px solid #1a1d23;
+  border: 1px solid #1e1e1e;
   min-height: 200px;
 }
 
@@ -132,9 +132,9 @@ html, body {
 /* Button styles */
 .btn {
   padding: 12px 24px;
-  background-color: #2d3139;
-  color: #e5e7eb;
-  border: 1px solid #3d424d;
+  background-color: #3a3a3a;
+  color: #d4d4d4;
+  border: 1px solid #4a4a4a;
   border-radius: 8px;
   cursor: pointer;
   font-size: 14px;
@@ -144,8 +144,8 @@ html, body {
 }
 
 .btn:hover {
-  background-color: #363b47;
-  border-color: #4d5360;
+  background-color: #454545;
+  border-color: #555555;
   transform: translateY(-1px);
   box-shadow: 0 4px 12px rgba(0,0,0,0.4);
 }
@@ -170,9 +170,9 @@ html, body {
 /* Tool button styles */
 .tool-btn {
   padding: 12px 16px;
-  background-color: #2d3139;
-  color: #e5e7eb;
-  border: 1px solid #3d424d;
+  background-color: #3a3a3a;
+  color: #d4d4d4;
+  border: 1px solid #4a4a4a;
   border-radius: 6px;
   cursor: pointer;
   font-size: 13px;
@@ -204,20 +204,20 @@ html, body {
   margin-bottom: 6px;
   padding: 8px;
   cursor: pointer;
-  border: 1px solid #2d3139;
+  border: 1px solid #333333;
   border-radius: 6px;
   transition: all 0.2s ease;
-  background-color: #242830;
+  background-color: #2d2d2d;
 }
 
 .series-item:hover {
-  background-color: #2d3139;
+  background-color: #3a3a3a;
   border-color: #3b82f6;
   box-shadow: 0 2px 8px rgba(59, 130, 246, 0.2);
 }
 
 .series-item.selected {
-  background-color: #2d3139;
+  background-color: #3a3a3a;
   border-color: #3b82f6;
   box-shadow: 0 0 12px rgba(59, 130, 246, 0.3);
 }
@@ -225,15 +225,15 @@ html, body {
 .series-thumbnail {
   width: 40px;
   height: 40px;
-  background-color: #1a1d23;
+  background-color: #1e1e1e;
   margin-right: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 9px;
-  color: #6b7280;
+  color: #888888;
   border-radius: 4px;
-  border: 1px solid #2d3139;
+  border: 1px solid #333333;
 }
 
 .series-info {
@@ -250,13 +250,13 @@ html, body {
 
 .series-description {
   font-size: 11px;
-  color: #9ca3af;
+  color: #a0a0a0;
   margin-bottom: 2px;
 }
 
 .series-count {
   font-size: 10px;
-  color: #6b7280;
+  color: #888888;
 }
 
 /* Modal styles */
@@ -275,13 +275,13 @@ html, body {
 }
 
 .modal-content {
-  background-color: #242830;
+  background-color: #2d2d2d;
   padding: 24px;
   border-radius: 12px;
-  color: #e5e7eb;
+  color: #d4d4d4;
   min-width: 400px;
   max-width: 600px;
-  border: 1px solid #3d424d;
+  border: 1px solid #4a4a4a;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
 }
 
@@ -294,15 +294,15 @@ html, body {
   margin-bottom: 6px;
   font-size: 14px;
   font-weight: 500;
-  color: #9ca3af;
+  color: #a0a0a0;
 }
 
 .modal-form-group input {
   width: 100%;
   padding: 10px 12px;
-  background-color: #1e2128;
-  color: #e5e7eb;
-  border: 1px solid #3d424d;
+  background-color: #252525;
+  color: #d4d4d4;
+  border: 1px solid #4a4a4a;
   border-radius: 6px;
   font-size: 14px;
   transition: all 0.2s ease;
@@ -327,13 +327,13 @@ html, body {
 }
 
 ::-webkit-scrollbar-track {
-  background: #1a1d23;
+  background: #1e1e1e;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #3d424d;
+  background: #4a4a4a;
   border-radius: 5px;
-  border: 2px solid #1a1d23;
+  border: 2px solid #1e1e1e;
 }
 
 ::-webkit-scrollbar-thumb:hover {

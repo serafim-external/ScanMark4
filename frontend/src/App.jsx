@@ -381,9 +381,9 @@ function App() {
           e.target.style.boxShadow = '0 4px 8px rgba(59, 130, 246, 0.4)';
         }}
         onMouseLeave={(e) => {
-          e.target.style.backgroundColor = '#2d3139';
-          e.target.style.borderColor = '#3d424d';
-          e.target.style.color = '#e5e7eb';
+          e.target.style.backgroundColor = '#3a3a3a';
+          e.target.style.borderColor = '#4a4a4a';
+          e.target.style.color = '#d4d4d4';
           e.target.style.transform = 'translateY(0)';
           e.target.style.boxShadow = '0 2px 4px rgba(0,0,0,0.2)';
         }}
@@ -401,9 +401,9 @@ function App() {
           e.target.style.boxShadow = '0 4px 8px rgba(59, 130, 246, 0.4)';
         }}
         onMouseLeave={(e) => {
-          e.target.style.backgroundColor = '#2d3139';
-          e.target.style.borderColor = '#3d424d';
-          e.target.style.color = '#e5e7eb';
+          e.target.style.backgroundColor = '#3a3a3a';
+          e.target.style.borderColor = '#4a4a4a';
+          e.target.style.color = '#d4d4d4';
           e.target.style.transform = 'translateY(0)';
           e.target.style.boxShadow = '0 2px 4px rgba(0,0,0,0.2)';
         }}
@@ -442,9 +442,9 @@ function App() {
           e.target.style.boxShadow = '0 4px 8px rgba(59, 130, 246, 0.4)';
         }}
         onMouseLeave={(e) => {
-          e.target.style.backgroundColor = '#2d3139';
-          e.target.style.borderColor = '#3d424d';
-          e.target.style.color = '#e5e7eb';
+          e.target.style.backgroundColor = '#3a3a3a';
+          e.target.style.borderColor = '#4a4a4a';
+          e.target.style.color = '#d4d4d4';
           e.target.style.transform = 'translateY(0)';
           e.target.style.boxShadow = '0 2px 4px rgba(0,0,0,0.2)';
         }}
@@ -463,9 +463,9 @@ function App() {
           e.target.style.boxShadow = '0 4px 8px rgba(59, 130, 246, 0.4)';
         }}
         onMouseLeave={(e) => {
-          e.target.style.backgroundColor = '#2d3139';
-          e.target.style.borderColor = '#3d424d';
-          e.target.style.color = '#e5e7eb';
+          e.target.style.backgroundColor = '#3a3a3a';
+          e.target.style.borderColor = '#4a4a4a';
+          e.target.style.color = '#d4d4d4';
           e.target.style.transform = 'translateY(0)';
           e.target.style.boxShadow = '0 2px 4px rgba(0,0,0,0.2)';
         }}
@@ -484,9 +484,9 @@ function App() {
           e.target.style.boxShadow = '0 4px 8px rgba(59, 130, 246, 0.4)';
         }}
         onMouseLeave={(e) => {
-          e.target.style.backgroundColor = '#2d3139';
-          e.target.style.borderColor = '#3d424d';
-          e.target.style.color = '#e5e7eb';
+          e.target.style.backgroundColor = '#3a3a3a';
+          e.target.style.borderColor = '#4a4a4a';
+          e.target.style.color = '#d4d4d4';
           e.target.style.transform = 'translateY(0)';
           e.target.style.boxShadow = '0 2px 4px rgba(0,0,0,0.2)';
         }}
@@ -505,9 +505,9 @@ function App() {
           e.target.style.boxShadow = '0 4px 8px rgba(59, 130, 246, 0.4)';
         }}
         onMouseLeave={(e) => {
-          e.target.style.backgroundColor = '#2d3139';
-          e.target.style.borderColor = '#3d424d';
-          e.target.style.color = '#e5e7eb';
+          e.target.style.backgroundColor = '#3a3a3a';
+          e.target.style.borderColor = '#4a4a4a';
+          e.target.style.color = '#d4d4d4';
           e.target.style.transform = 'translateY(0)';
           e.target.style.boxShadow = '0 2px 4px rgba(0,0,0,0.2)';
         }}
@@ -526,9 +526,9 @@ function App() {
           e.target.style.boxShadow = '0 4px 8px rgba(59, 130, 246, 0.4)';
         }}
         onMouseLeave={(e) => {
-          e.target.style.backgroundColor = '#2d3139';
-          e.target.style.borderColor = '#3d424d';
-          e.target.style.color = '#e5e7eb';
+          e.target.style.backgroundColor = '#3a3a3a';
+          e.target.style.borderColor = '#4a4a4a';
+          e.target.style.color = '#d4d4d4';
           e.target.style.transform = 'translateY(0)';
           e.target.style.boxShadow = '0 2px 4px rgba(0,0,0,0.2)';
         }}
@@ -547,9 +547,9 @@ function App() {
           e.target.style.boxShadow = '0 4px 8px rgba(59, 130, 246, 0.4)';
         }}
         onMouseLeave={(e) => {
-          e.target.style.backgroundColor = '#2d3139';
-          e.target.style.borderColor = '#3d424d';
-          e.target.style.color = '#e5e7eb';
+          e.target.style.backgroundColor = '#3a3a3a';
+          e.target.style.borderColor = '#4a4a4a';
+          e.target.style.color = '#d4d4d4';
           e.target.style.transform = 'translateY(0)';
           e.target.style.boxShadow = '0 2px 4px rgba(0,0,0,0.2)';
         }}
@@ -568,9 +568,9 @@ function App() {
           e.target.style.boxShadow = '0 4px 8px rgba(59, 130, 246, 0.4)';
         }}
         onMouseLeave={(e) => {
-          e.target.style.backgroundColor = '#2d3139';
-          e.target.style.borderColor = '#3d424d';
-          e.target.style.color = '#e5e7eb';
+          e.target.style.backgroundColor = '#3a3a3a';
+          e.target.style.borderColor = '#4a4a4a';
+          e.target.style.color = '#d4d4d4';
           e.target.style.transform = 'translateY(0)';
           e.target.style.boxShadow = '0 2px 4px rgba(0,0,0,0.2)';
         }}
@@ -605,7 +605,7 @@ function App() {
       height: '100%',
       overflow: 'auto',
       fontSize: '14px',
-      color: '#e5e7eb'
+      color: '#d4d4d4'
     }}>
       {selectedPatient ? (
         <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
@@ -616,13 +616,13 @@ function App() {
               fontSize: '16px',
               marginBottom: '8px',
               paddingBottom: '8px',
-              borderBottom: '2px solid #2d3139'
+              borderBottom: '2px solid #333333'
             }}>
               👤 Patient
             </div>
             <div style={{ marginLeft: '8px', lineHeight: '1.5' }}>
-              <div style={{ fontWeight: '500', color: '#e5e7eb' }}>{selectedPatient.patientName}</div>
-              <div style={{ color: '#9ca3af', fontSize: '13px' }}>ID: {selectedPatient.patientId}</div>
+              <div style={{ fontWeight: '500', color: '#d4d4d4' }}>{selectedPatient.patientName}</div>
+              <div style={{ color: '#a0a0a0', fontSize: '13px' }}>ID: {selectedPatient.patientId}</div>
             </div>
           </div>
 
@@ -634,13 +634,13 @@ function App() {
                 fontSize: '16px',
                 marginBottom: '8px',
                 paddingBottom: '8px',
-                borderBottom: '2px solid #2d3139'
+                borderBottom: '2px solid #333333'
               }}>
                 📋 Study
               </div>
               <div style={{ marginLeft: '8px', lineHeight: '1.5' }}>
-                <div style={{ fontWeight: '500', color: '#e5e7eb' }}>{selectedStudy.studyDescription}</div>
-                <div style={{ color: '#9ca3af', fontSize: '13px' }}>{selectedStudy.studyDate}</div>
+                <div style={{ fontWeight: '500', color: '#d4d4d4' }}>{selectedStudy.studyDescription}</div>
+                <div style={{ color: '#a0a0a0', fontSize: '13px' }}>{selectedStudy.studyDate}</div>
               </div>
             </div>
           )}
@@ -652,7 +652,7 @@ function App() {
               fontSize: '16px',
               marginBottom: '12px',
               paddingBottom: '8px',
-              borderBottom: '2px solid #2d3139'
+              borderBottom: '2px solid #333333'
             }}>
               🗂️ Series
             </div>
@@ -664,9 +664,9 @@ function App() {
                     display: 'flex',
                     alignItems: 'center',
                     padding: '12px',
-                    backgroundColor: selectedSeries?.seriesInstanceUID === series.seriesInstanceUID ? '#2d3139' : '#242830',
+                    backgroundColor: selectedSeries?.seriesInstanceUID === series.seriesInstanceUID ? '#3a3a3a' : '#2d2d2d',
                     cursor: 'pointer',
-                    border: selectedSeries?.seriesInstanceUID === series.seriesInstanceUID ? '1px solid #3b82f6' : '1px solid #2d3139',
+                    border: selectedSeries?.seriesInstanceUID === series.seriesInstanceUID ? '1px solid #3b82f6' : '1px solid #333333',
                     borderRadius: '6px',
                     transition: 'all 0.2s ease',
                     boxShadow: selectedSeries?.seriesInstanceUID === series.seriesInstanceUID ? '0 0 12px rgba(59, 130, 246, 0.3)' : '0 1px 3px rgba(0,0,0,0.2)'
@@ -675,7 +675,7 @@ function App() {
                   onDoubleClick={() => loadSeriesToViewport(series, 'viewport1')}
                   onMouseEnter={(e) => {
                     if (selectedSeries?.seriesInstanceUID !== series.seriesInstanceUID) {
-                      e.target.style.backgroundColor = '#2d3139';
+                      e.target.style.backgroundColor = '#3a3a3a';
                       e.target.style.borderColor = '#3b82f6';
                       e.target.style.transform = 'translateY(-1px)';
                       e.target.style.boxShadow = '0 2px 8px rgba(59, 130, 246, 0.2)';
@@ -683,8 +683,8 @@ function App() {
                   }}
                   onMouseLeave={(e) => {
                     if (selectedSeries?.seriesInstanceUID !== series.seriesInstanceUID) {
-                      e.target.style.backgroundColor = '#242830';
-                      e.target.style.borderColor = '#2d3139';
+                      e.target.style.backgroundColor = '#2d2d2d';
+                      e.target.style.borderColor = '#333333';
                       e.target.style.transform = 'translateY(0)';
                       e.target.style.boxShadow = '0 1px 3px rgba(0,0,0,0.2)';
                     }
@@ -693,14 +693,14 @@ function App() {
                   <div style={{
                     width: '40px',
                     height: '40px',
-                    backgroundColor: '#1a1d23',
+                    backgroundColor: '#1e1e1e',
                     marginRight: '12px',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
                     borderRadius: '4px',
                     fontSize: '16px',
-                    border: '1px solid #2d3139'
+                    border: '1px solid #333333'
                   }}>
                     🖼️
                   </div>
@@ -708,10 +708,10 @@ function App() {
                     <div style={{ fontWeight: '600', color: '#3b82f6', marginBottom: '2px' }}>
                       {series.modality}
                     </div>
-                    <div style={{ fontSize: '13px', color: '#9ca3af', marginBottom: '2px' }}>
+                    <div style={{ fontSize: '13px', color: '#a0a0a0', marginBottom: '2px' }}>
                       {series.seriesDescription}
                     </div>
-                    <div style={{ fontSize: '12px', color: '#6b7280' }}>
+                    <div style={{ fontSize: '12px', color: '#888888' }}>
                       {series.images.length} images
                     </div>
                   </div>
@@ -727,14 +727,14 @@ function App() {
           alignItems: 'center',
           justifyContent: 'center',
           height: '100%',
-          color: '#6b7280',
+          color: '#888888',
           textAlign: 'center'
         }}>
           <div style={{ fontSize: '48px', marginBottom: '16px' }}>📁</div>
-          <div style={{ fontSize: '16px', fontWeight: '500', marginBottom: '8px', color: '#9ca3af' }}>
+          <div style={{ fontSize: '16px', fontWeight: '500', marginBottom: '8px', color: '#a0a0a0' }}>
             No files loaded
           </div>
-          <div style={{ fontSize: '13px', color: '#6b7280' }}>
+          <div style={{ fontSize: '13px', color: '#888888' }}>
             Select local files or connect to PACS to get started
           </div>
         </div>
@@ -758,7 +758,7 @@ function App() {
           style={{
             position: 'relative',
             backgroundColor: '#000000',
-            border: activeViewport === vpNum ? '2px solid #3b82f6' : '1px solid #1a1d23',
+            border: activeViewport === vpNum ? '2px solid #3b82f6' : '1px solid #1e1e1e',
             borderRadius: '4px',
             display: 'flex',
             flexDirection: 'column',
@@ -776,7 +776,7 @@ function App() {
           }}
           onMouseLeave={(e) => {
             if (activeViewport !== vpNum) {
-              e.currentTarget.style.borderColor = '#1a1d23';
+              e.currentTarget.style.borderColor = '#1e1e1e';
               e.currentTarget.style.boxShadow = '0 1px 4px rgba(0,0,0,0.3)';
             }
           }}
@@ -796,9 +796,9 @@ function App() {
 
   const toolButtonStyle = {
     padding: '10px 16px',
-    backgroundColor: '#2d3139',
-    color: '#e5e7eb',
-    border: '1px solid #3d424d',
+    backgroundColor: '#3a3a3a',
+    color: '#d4d4d4',
+    border: '1px solid #4a4a4a',
     borderRadius: '6px',
     cursor: 'pointer',
     fontSize: '14px',
@@ -814,9 +814,9 @@ function App() {
 
   const sourceButtonStyle = {
     padding: '10px 16px',
-    backgroundColor: '#2d3139',
-    color: '#e5e7eb',
-    border: '1px solid #3d424d',
+    backgroundColor: '#3a3a3a',
+    color: '#d4d4d4',
+    border: '1px solid #4a4a4a',
     borderRadius: '6px',
     cursor: 'pointer',
     fontSize: '14px',
@@ -846,16 +846,16 @@ function App() {
       backdropFilter: 'blur(4px)'
     }}>
       <div style={{
-        backgroundColor: '#242830',
+        backgroundColor: '#2d2d2d',
         padding: '32px',
         borderRadius: '12px',
-        color: '#e5e7eb',
+        color: '#d4d4d4',
         minWidth: '450px',
         boxShadow: '0 8px 32px rgba(0, 0, 0, 0.5)',
-        border: '1px solid #3d424d'
+        border: '1px solid #4a4a4a'
       }}>
         <h3 style={{
-          color: '#e5e7eb',
+          color: '#d4d4d4',
           fontSize: '24px',
           fontWeight: '600',
           marginBottom: '24px',
@@ -871,7 +871,7 @@ function App() {
             fontSize: '14px',
             fontWeight: '500',
             marginBottom: '8px',
-            color: '#9ca3af'
+            color: '#a0a0a0'
           }}>
             Server URL:
           </label>
@@ -882,10 +882,10 @@ function App() {
               width: '100%',
               padding: '12px 16px',
               fontSize: '14px',
-              border: '1px solid #3d424d',
+              border: '1px solid #4a4a4a',
               borderRadius: '6px',
-              backgroundColor: '#1e2128',
-              color: '#e5e7eb',
+              backgroundColor: '#252525',
+              color: '#d4d4d4',
               outline: 'none',
               transition: 'all 0.2s ease',
               boxSizing: 'border-box'
@@ -895,7 +895,7 @@ function App() {
               e.target.style.boxShadow = '0 0 0 3px rgba(59, 130, 246, 0.1)';
             }}
             onBlur={(e) => {
-              e.target.style.borderColor = '#3d424d';
+              e.target.style.borderColor = '#4a4a4a';
               e.target.style.boxShadow = 'none';
             }}
           />
@@ -906,7 +906,7 @@ function App() {
             fontSize: '14px',
             fontWeight: '500',
             marginBottom: '8px',
-            color: '#9ca3af'
+            color: '#a0a0a0'
           }}>
             Port:
           </label>
@@ -917,10 +917,10 @@ function App() {
               width: '100%',
               padding: '12px 16px',
               fontSize: '14px',
-              border: '1px solid #3d424d',
+              border: '1px solid #4a4a4a',
               borderRadius: '6px',
-              backgroundColor: '#1e2128',
-              color: '#e5e7eb',
+              backgroundColor: '#252525',
+              color: '#d4d4d4',
               outline: 'none',
               transition: 'all 0.2s ease',
               boxSizing: 'border-box'
@@ -930,7 +930,7 @@ function App() {
               e.target.style.boxShadow = '0 0 0 3px rgba(59, 130, 246, 0.1)';
             }}
             onBlur={(e) => {
-              e.target.style.borderColor = '#3d424d';
+              e.target.style.borderColor = '#4a4a4a';
               e.target.style.boxShadow = 'none';
             }}
           />
@@ -941,7 +941,7 @@ function App() {
             fontSize: '14px',
             fontWeight: '500',
             marginBottom: '8px',
-            color: '#9ca3af'
+            color: '#a0a0a0'
           }}>
             AE Title:
           </label>
@@ -952,10 +952,10 @@ function App() {
               width: '100%',
               padding: '12px 16px',
               fontSize: '14px',
-              border: '1px solid #3d424d',
+              border: '1px solid #4a4a4a',
               borderRadius: '6px',
-              backgroundColor: '#1e2128',
-              color: '#e5e7eb',
+              backgroundColor: '#252525',
+              color: '#d4d4d4',
               outline: 'none',
               transition: 'all 0.2s ease',
               boxSizing: 'border-box'
@@ -965,7 +965,7 @@ function App() {
               e.target.style.boxShadow = '0 0 0 3px rgba(59, 130, 246, 0.1)';
             }}
             onBlur={(e) => {
-              e.target.style.borderColor = '#3d424d';
+              e.target.style.borderColor = '#4a4a4a';
               e.target.style.boxShadow = 'none';
             }}
           />
@@ -975,9 +975,9 @@ function App() {
             onClick={() => setShowPacsModal(false)}
             style={{
               padding: '12px 24px',
-              backgroundColor: '#2d3139',
-              color: '#e5e7eb',
-              border: '1px solid #3d424d',
+              backgroundColor: '#3a3a3a',
+              color: '#d4d4d4',
+              border: '1px solid #4a4a4a',
               borderRadius: '6px',
               cursor: 'pointer',
               fontSize: '14px',
@@ -985,12 +985,12 @@ function App() {
               transition: 'all 0.2s ease'
             }}
             onMouseEnter={(e) => {
-              e.target.style.backgroundColor = '#363b47';
-              e.target.style.borderColor = '#4d5360';
+              e.target.style.backgroundColor = '#454545';
+              e.target.style.borderColor = '#555555';
             }}
             onMouseLeave={(e) => {
-              e.target.style.backgroundColor = '#2d3139';
-              e.target.style.borderColor = '#3d424d';
+              e.target.style.backgroundColor = '#3a3a3a';
+              e.target.style.borderColor = '#4a4a4a';
             }}
           >
             Cancel
