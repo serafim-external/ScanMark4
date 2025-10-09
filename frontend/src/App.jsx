@@ -365,7 +365,7 @@ function App() {
   const SourcesPanel = () => (
     <div style={{
       display: 'flex',
-      gap: '16px',
+      gap: '6px',
       width: '100%',
       height: '100%',
       alignItems: 'center'
@@ -425,7 +425,7 @@ function App() {
   const ToolsPanel = () => (
     <div style={{
       display: 'flex',
-      gap: '16px',
+      gap: '6px',
       alignItems: 'center',
       justifyContent: 'center',
       width: '100%',
