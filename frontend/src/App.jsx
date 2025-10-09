@@ -795,7 +795,7 @@ function App() {
   );
 
   const toolButtonStyle = {
-    padding: '10px 16px',
+    padding: '0',
     backgroundColor: '#3a3a3a',
     color: '#d4d4d4',
     border: '1px solid #4a4a4a',
@@ -805,6 +805,7 @@ function App() {
     fontWeight: '500',
     transition: 'all 0.2s ease',
     boxShadow: '0 2px 4px rgba(0,0,0,0.2)',
+    width: '46px',
     height: '46px',
     display: 'flex',
     alignItems: 'center',
