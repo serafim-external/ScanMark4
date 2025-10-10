@@ -1,6 +1,6 @@
 import Button from './Button';
 
-const ToolsPanel = ({ displaySequence }) => {
+const ToolsPanel = () => {
   const tools = [
     { label: 'Layout', shortcut: '11' },
     { label: 'Stack', shortcut: '12' },
@@ -17,8 +17,7 @@ const ToolsPanel = ({ displaySequence }) => {
       gap: '6px',
       alignItems: 'center',
       justifyContent: 'center',
-      width: '100%',
-      position: 'relative'
+      width: '100%'
     }}>
       {tools.map(tool => (
         <Button
@@ -29,24 +28,6 @@ const ToolsPanel = ({ displaySequence }) => {
           {tool.label}
         </Button>
       ))}
-
-      {displaySequence && (
-        <div style={{
-          position: 'absolute',
-          top: '16px',
-          right: '16px',
-          backgroundColor: '#3b82f6',
-          color: '#ffffff',
-          padding: '8px 12px',
-          borderRadius: '6px',
-          fontSize: '14px',
-          fontWeight: '600',
-          boxShadow: '0 4px 12px rgba(59, 130, 246, 0.4)',
-          border: '1px solid #60a5fa'
-        }}>
-          {displaySequence}
-        </div>
-      )}
     </div>
   );
 };

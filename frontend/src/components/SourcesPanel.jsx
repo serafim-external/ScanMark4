@@ -1,13 +1,6 @@
-import { useRef } from 'react';
 import Button from './Button';
 
-const SourcesPanel = ({ onLocalFiles, onPacs }) => {
-  const fileInputRef = useRef(null);
-
-  const handleLocalFiles = () => {
-    fileInputRef.current?.click();
-  };
-
+const SourcesPanel = ({ onPacs }) => {
   return (
     <div style={{
       display: 'flex',
@@ -16,20 +9,12 @@ const SourcesPanel = ({ onLocalFiles, onPacs }) => {
       height: '100%',
       alignItems: 'center'
     }}>
-      <Button variant="source" onClick={handleLocalFiles}>
+      <Button variant="source">
         📁 Local Files
       </Button>
       <Button variant="source" onClick={onPacs}>
         🌐 PACS
       </Button>
-      <input
-        ref={fileInputRef}
-        type="file"
-        multiple
-        webkitdirectory="true"
-        onChange={(e) => onLocalFiles(e.target.files)}
-        style={{ display: 'none' }}
-      />
     </div>
   );
 };

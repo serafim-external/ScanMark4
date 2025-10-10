@@ -1,6 +1,4 @@
-import { useState } from 'react';
-
-const ViewportArea = ({ viewportRefs, activeViewport, onViewportClick }) => {
+const ViewportArea = ({ activeViewport, onViewportClick }) => {
   return (
     <div style={{
       display: 'grid',
@@ -14,7 +12,6 @@ const ViewportArea = ({ viewportRefs, activeViewport, onViewportClick }) => {
         <Viewport
           key={vpNum}
           vpNum={vpNum}
-          viewportRef={viewportRefs[`viewport${vpNum}`]}
           isActive={activeViewport === vpNum}
           onClick={() => onViewportClick(vpNum)}
         />
@@ -23,38 +20,28 @@ const ViewportArea = ({ viewportRefs, activeViewport, onViewportClick }) => {
   );
 };
 
-const Viewport = ({ vpNum, viewportRef, isActive, onClick }) => {
-  const [isHovered, setIsHovered] = useState(false);
-
+const Viewport = ({ isActive, onClick }) => {
   return (
     <div
       style={{
         position: 'relative',
-        backgroundColor: '#000000',
+        backgroundColor: '#000',
         border: isActive ? '2px solid #3b82f6' : '1px solid #1e1e1e',
         borderRadius: '4px',
         display: 'flex',
         flexDirection: 'column',
         overflow: 'hidden',
-        boxShadow: isActive
-          ? '0 0 12px rgba(59, 130, 246, 0.4)'
-          : (isHovered ? '0 0 8px rgba(59, 130, 246, 0.2)' : '0 1px 4px rgba(0,0,0,0.3)'),
         transition: 'all 0.2s ease',
-        cursor: 'pointer',
-        borderColor: isHovered && !isActive ? '#3b82f6' : (isActive ? '#3b82f6' : '#1e1e1e')
+        cursor: 'pointer'
       }}
       onClick={onClick}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
     >
-      <div
-        ref={viewportRef}
-        style={{
-          width: '100%',
-          height: '100%',
-          backgroundColor: '#000000'
-        }}
-      />
+      {/* Контейнер для Cornerstone viewport - будет использован позже */}
+      <div style={{
+        width: '100%',
+        height: '100%',
+        backgroundColor: '#000'
+      }} />
     </div>
   );
 };
