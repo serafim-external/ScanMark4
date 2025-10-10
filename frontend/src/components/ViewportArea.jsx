@@ -1,47 +1,16 @@
-const ViewportArea = ({ activeViewport, onViewportClick }) => {
+const ViewportArea = () => {
   return (
     <div style={{
-      display: 'grid',
-      gridTemplateColumns: '1fr 1fr',
-      gridTemplateRows: '1fr 1fr',
-      gap: '2px',
+      width: '100%',
       height: '100%',
-      backgroundColor: 'transparent'
+      backgroundColor: '#000',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      color: '#555',
+      fontSize: '14px'
     }}>
-      {[1, 2, 3, 4].map(vpNum => (
-        <Viewport
-          key={vpNum}
-          vpNum={vpNum}
-          isActive={activeViewport === vpNum}
-          onClick={() => onViewportClick(vpNum)}
-        />
-      ))}
-    </div>
-  );
-};
-
-const Viewport = ({ isActive, onClick }) => {
-  return (
-    <div
-      style={{
-        position: 'relative',
-        backgroundColor: '#000',
-        border: isActive ? '2px solid #3b82f6' : '1px solid #1e1e1e',
-        borderRadius: '4px',
-        display: 'flex',
-        flexDirection: 'column',
-        overflow: 'hidden',
-        transition: 'all 0.2s ease',
-        cursor: 'pointer'
-      }}
-      onClick={onClick}
-    >
-      {/* Контейнер для Cornerstone viewport - будет использован позже */}
-      <div style={{
-        width: '100%',
-        height: '100%',
-        backgroundColor: '#000'
-      }} />
+      {/* Здесь будет Cornerstone3D viewport */}
     </div>
   );
 };

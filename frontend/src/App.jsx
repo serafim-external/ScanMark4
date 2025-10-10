@@ -9,7 +9,6 @@ import PacsModal from './components/PacsModal';
 
 function App() {
   const [showPacsModal, setShowPacsModal] = useState(false);
-  const [activeViewport, setActiveViewport] = useState(1);
 
   return (
     <div className="medical-viewer-container">
@@ -26,10 +25,7 @@ function App() {
       </div>
 
       <div className="viewport-area">
-        <ViewportArea
-          activeViewport={activeViewport}
-          onViewportClick={setActiveViewport}
-        />
+        <ViewportArea />
       </div>
 
       <PacsModal
