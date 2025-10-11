@@ -3,8 +3,8 @@ import { LayoutIcon, ZoomIcon } from './Icons';
 
 const ToolsPanel = () => {
   const tools = [
-    { label: 'Layout', shortcut: '11', icon: <LayoutIcon size={20} /> },
-    { label: 'Zoom', shortcut: '21', icon: <ZoomIcon size={20} /> }
+    { label: 'Layout', shortcut: '11', icon: <LayoutIcon size={18} /> },
+    { label: 'Zoom', shortcut: '21', icon: <ZoomIcon size={18} /> }
   ];
 
   return (
