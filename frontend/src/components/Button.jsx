@@ -1,6 +1,6 @@
 const Button = ({ children, onClick, variant = 'default', title }) => {
   const baseStyle = {
-    backgroundColor: 'hsl(0, 0%, 5%)',
+    backgroundColor: '#1e1e1e',
     color: '#ffffff',
     border: 'none',
     borderRadius: '6px',
@@ -27,11 +27,11 @@ const Button = ({ children, onClick, variant = 'default', title }) => {
   const buttonStyle = { ...baseStyle, ...variants[variant] };
 
   const handleMouseEnter = (e) => {
-    e.currentTarget.style.backgroundColor = 'hsl(0, 0%, 10%)';
+    e.currentTarget.style.backgroundColor = 'hsl(0, 0%, 25%)';
   };
 
   const handleMouseLeave = (e) => {
-    e.currentTarget.style.backgroundColor = 'hsl(0, 0%, 5%)';
+    e.currentTarget.style.backgroundColor = '#1e1e1e';
   };
 
   return (
