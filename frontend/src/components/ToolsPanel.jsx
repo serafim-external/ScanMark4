@@ -1,9 +1,10 @@
 import Button from './Button';
+import { LayoutIcon, ZoomIcon } from './Icons';
 
 const ToolsPanel = () => {
   const tools = [
-    { label: 'Layout', shortcut: '11' },
-    { label: 'Zoom', shortcut: '21' }
+    { label: 'Layout', shortcut: '11', icon: <LayoutIcon size={20} /> },
+    { label: 'Zoom', shortcut: '21', icon: <ZoomIcon size={20} /> }
   ];
 
   return (
@@ -18,9 +19,9 @@ const ToolsPanel = () => {
         <Button
           key={tool.shortcut}
           variant="tool"
-          title={`Press ${tool.shortcut[0]}-${tool.shortcut[1]} (${tool.shortcut})`}
+          title={`${tool.label} - Press ${tool.shortcut[0]}-${tool.shortcut[1]} (${tool.shortcut})`}
         >
-          {tool.label}
+          {tool.icon}
         </Button>
       ))}
     </div>
