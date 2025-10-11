@@ -1,4 +1,5 @@
 import Button from './Button';
+import { FolderIcon, ServerIcon } from './Icons';
 
 const SourcesPanel = ({ onPacs }) => {
   return (
@@ -9,11 +10,11 @@ const SourcesPanel = ({ onPacs }) => {
       height: '100%',
       alignItems: 'center'
     }}>
-      <Button variant="source">
-        📁 Local Files
+      <Button variant="tool" title="Local Files">
+        <FolderIcon size={20} />
       </Button>
-      <Button variant="source" onClick={onPacs}>
-        🌐 PACS
+      <Button variant="tool" onClick={onPacs} title="PACS">
+        <ServerIcon size={20} />
       </Button>
     </div>
   );
