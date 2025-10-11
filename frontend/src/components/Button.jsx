@@ -1,12 +1,13 @@
 const Button = ({ children, onClick, variant = 'default', title }) => {
   const baseStyle = {
-    backgroundColor: '#3C3C3C',
+    backgroundColor: 'hsl(0, 0%, 5%)',
     color: '#ffffff',
-    border: '1px solid #454545',
+    border: 'none',
     borderRadius: '6px',
     cursor: 'pointer',
     fontSize: '13px',
-    fontFamily: 'inherit'
+    fontFamily: 'inherit',
+    transition: 'background-color 0.15s ease'
   };
 
   const variants = {
@@ -25,8 +26,22 @@ const Button = ({ children, onClick, variant = 'default', title }) => {
 
   const buttonStyle = { ...baseStyle, ...variants[variant] };
 
+  const handleMouseEnter = (e) => {
+    e.currentTarget.style.backgroundColor = 'hsl(0, 0%, 10%)';
+  };
+
+  const handleMouseLeave = (e) => {
+    e.currentTarget.style.backgroundColor = 'hsl(0, 0%, 5%)';
+  };
+
   return (
-    <button onClick={onClick} title={title} style={buttonStyle}>
+    <button
+      onClick={onClick}
+      title={title}
+      style={buttonStyle}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+    >
       {children}
     </button>
   );
