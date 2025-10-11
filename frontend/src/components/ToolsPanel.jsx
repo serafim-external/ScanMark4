@@ -8,13 +8,7 @@ const ToolsPanel = () => {
   ];
 
   return (
-    <div style={{
-      display: 'flex',
-      gap: '6px',
-      alignItems: 'center',
-      justifyContent: 'center',
-      width: '100%'
-    }}>
+    <div className="tools-panel">
       {tools.map(tool => (
         <Button
           key={tool.shortcut}

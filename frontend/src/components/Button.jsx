@@ -1,18 +1,14 @@
 const Button = ({ children, onClick, variant = 'default', title }) => {
-  // Базовые стили для всех кнопок
-  const base = {
-    padding: '10px 16px',
+  const baseStyle = {
     backgroundColor: '#3C3C3C',
     color: '#ffffff',
     border: '1px solid #454545',
-    borderRadius: '6px',
+    borderRadius: '4px',
     cursor: 'pointer',
     fontSize: '14px',
-    fontWeight: '500',
-    transition: 'all 0.2s ease'
+    fontFamily: 'inherit'
   };
 
-  // Варианты стилей для разных типов кнопок
   const variants = {
     tool: {
       width: '46px',
@@ -22,21 +18,12 @@ const Button = ({ children, onClick, variant = 'default', title }) => {
       alignItems: 'center',
       justifyContent: 'center'
     },
-    source: {
-      height: '46px',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      flex: 1
-    },
     primary: {
-      backgroundColor: '#3C3C3C',
-      borderColor: '#454545',
-      color: '#ffffff'
+      padding: '10px 16px'
     }
   };
 
-  const buttonStyle = { ...base, ...variants[variant] };
+  const buttonStyle = { ...baseStyle, ...variants[variant] };
 
   return (
     <button onClick={onClick} title={title} style={buttonStyle}>
