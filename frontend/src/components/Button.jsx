@@ -2,9 +2,9 @@ const Button = ({ children, onClick, variant = 'default', title }) => {
   // Базовые стили для всех кнопок
   const base = {
     padding: '10px 16px',
-    backgroundColor: '#8E4A49',
+    backgroundColor: '#c1bdb0',
     color: '#ffffff',
-    border: '1px solid #8E4A49',
+    border: '1px solid #c1bdb0',
     borderRadius: '6px',
     cursor: 'pointer',
     fontSize: '14px',
@@ -30,8 +30,8 @@ const Button = ({ children, onClick, variant = 'default', title }) => {
       flex: 1
     },
     primary: {
-      backgroundColor: '#8E4A49',
-      borderColor: '#8E4A49',
+      backgroundColor: '#c1bdb0',
+      borderColor: '#c1bdb0',
       color: '#ffffff'
     }
   };

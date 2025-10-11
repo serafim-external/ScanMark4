@@ -3,12 +3,7 @@ import Button from './Button';
 const ToolsPanel = () => {
   const tools = [
     { label: 'Layout', shortcut: '11' },
-    { label: 'Stack', shortcut: '12' },
-    { label: 'Zoom', shortcut: '21' },
-    { label: 'W/L', shortcut: '22' },
-    { label: 'Length', shortcut: '31' },
-    { label: 'Angle', shortcut: '32' },
-    { label: 'Reset', shortcut: '41' }
+    { label: 'Zoom', shortcut: '21' }
   ];
 
   return (
