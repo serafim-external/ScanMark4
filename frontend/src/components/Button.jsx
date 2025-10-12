@@ -12,8 +12,8 @@ const Button = ({ children, onClick, variant = 'default', title }) => {
 
   const variants = {
     tool: {
-      width: '36px',
-      height: '36px',
+      width: '25px',
+      height: '25px',
       padding: '0',
       display: 'flex',
       alignItems: 'center',
