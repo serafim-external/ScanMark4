@@ -1,8 +1,8 @@
 const Button = ({ children, onClick, variant = 'default', title }) => {
   const baseStyle = {
-    backgroundColor: '#1e1e1e',
+    backgroundColor: '#3C3C3C',
     color: '#ffffff',
-    border: 'none',
+    border: '1px solid #454545',
     borderRadius: '6px',
     cursor: 'pointer',
     fontSize: '13px',
@@ -12,8 +12,8 @@ const Button = ({ children, onClick, variant = 'default', title }) => {
 
   const variants = {
     tool: {
-      width: '36px',
-      height: '36px',
+      width: '42px',
+      height: '42px',
       padding: '0',
       display: 'flex',
       alignItems: 'center',
@@ -27,11 +27,11 @@ const Button = ({ children, onClick, variant = 'default', title }) => {
   const buttonStyle = { ...baseStyle, ...variants[variant] };
 
   const handleMouseEnter = (e) => {
-    e.currentTarget.style.backgroundColor = 'hsl(0, 0%, 25%)';
+    e.currentTarget.style.backgroundColor = '#8E4A49';
   };
 
   const handleMouseLeave = (e) => {
-    e.currentTarget.style.backgroundColor = '#1e1e1e';
+    e.currentTarget.style.backgroundColor = '#3C3C3C';
   };
 
   return (

@@ -5,10 +5,10 @@ const SourcesPanel = () => {
   return (
     <div className="sources-panel">
       <Button variant="tool" title="Local Files">
-        <FolderIcon size={18} />
+        <FolderIcon size={20} />
       </Button>
       <Button variant="tool" title="PACS">
-        <ServerIcon size={18} />
+        <ServerIcon size={20} />
       </Button>
     </div>
   );
