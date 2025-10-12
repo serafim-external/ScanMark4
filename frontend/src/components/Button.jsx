@@ -3,7 +3,7 @@ const Button = ({ children, onClick, title }) => {
     width: '25px',
     height: '25px',
     padding: 0,
-    backgroundColor: 'oklch(0.3 0 264)',
+    backgroundColor: 'oklch(0.33 0 264)',
     color: 'oklch(0.96 0 264)',
     border: 'none',
     borderRadius: '6px',
