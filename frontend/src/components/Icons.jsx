@@ -1,6 +1,6 @@
 // SVG Icons as React Components
 
-export const LayoutIcon = ({ size = 24, color = 'currentColor' }) => (
+export const LayoutIcon = ({ size = 24, color = 'oklch(0.96 0 264)' }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width={size}
@@ -20,7 +20,7 @@ export const LayoutIcon = ({ size = 24, color = 'currentColor' }) => (
   </svg>
 );
 
-export const ZoomIcon = ({ size = 24, color = 'currentColor' }) => (
+export const ZoomIcon = ({ size = 24, color = 'oklch(0.96 0 264)' }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width={size}
@@ -38,7 +38,7 @@ export const ZoomIcon = ({ size = 24, color = 'currentColor' }) => (
   </svg>
 );
 
-export const FolderIcon = ({ size = 24, color = 'currentColor' }) => (
+export const FolderIcon = ({ size = 24, color = 'oklch(0.96 0 264)' }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width={size}
@@ -55,7 +55,7 @@ export const FolderIcon = ({ size = 24, color = 'currentColor' }) => (
   </svg>
 );
 
-export const ServerIcon = ({ size = 24, color = 'currentColor' }) => (
+export const ServerIcon = ({ size = 24, color = 'oklch(0.96 0 264)' }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width={size}
