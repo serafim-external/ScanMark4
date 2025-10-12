@@ -3,50 +3,82 @@
   height: 100vh;
   display: grid;
   grid-template-columns: 280px 1fr;
-  grid-template-rows: 52px 1fr;
+  grid-template-rows: auto 1fr;
   grid-gap: 0;
   padding: 0;
-  background-color: #000000;
+  background-color: oklch(0.1 0 264);
   font-family: 'Inter', sans-serif;
-  border: 1px solid #454545;
 }
 
 .sources-panel {
   grid-row: 1;
   grid-column: 1;
-  background-color: #3C3C3C;
-  border: 1px solid #454545;
+  background-color: oklch(0.2 0 264);
+  border-radius: 1.5rem;
   display: flex;
   align-items: center;
-  gap: 4px;
-  padding: 4px;
+  padding: 1rem;
+  margin: 0.5rem 0 1rem 0;
+  gap: 1rem;
+}
+
+.sources-panel-buttons {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: oklch(0.3 0 264);
+  padding: 0.75rem 1rem;
+  border-radius: 1rem;
+  box-shadow:
+    inset 0 1px 2px #ffffff70,  /* внутренний светлый блик сверху */
+    0 4px 6px #00000030,        /* основная внешняя тень */
+    0 6px 10px #00000015;       /* мягкая рассеянная тень */
 }
 
 .tools-panel {
   grid-row: 1;
   grid-column: 2;
-  background-color: #3C3C3C;
-  border: 1px solid #454545;
+  background-color: oklch(0.2 0 264);
+  border-radius: 1.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 4px;
-  padding: 4px;
+  padding: 1rem;
+  margin: 0.5rem 0 1rem 0;
+  gap: 1rem;
+}
+
+.tools-panel-buttons {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: oklch(0.3 0 264);
+  padding: 0.75rem 1rem;
+  border-radius: 1rem;
+  box-shadow:
+    inset 0 1px 2px #ffffff70,  /* внутренний светлый блик сверху */
+    0 4px 6px #00000030,        /* основная внешняя тень */
+    0 6px 10px #00000015;       /* мягкая рассеянная тень */
 }
 
 .browser-panel {
   grid-row: 2;
   grid-column: 1;
-  background-color: #3C3C3C;
-  border: 1px solid #454545;
+  background-color: oklch(0.2 0 264);
+  border-radius: 1.5rem;
   overflow-y: auto;
-  padding: 8px;
+  padding: 1rem;
+  margin: 0 0 0.5rem 0;
+  gap: 1rem;
 }
 
 .viewport-area {
   grid-row: 2;
   grid-column: 2;
-  background-color: #000000;
-  border: 1px solid #454545;
+  background-color: oklch(0.1 0 264);
+  border-radius: 1.5rem;
   overflow: hidden;
+  padding: 1rem;
+  margin: 0 0.5rem 0.5rem 0;
+  gap: 1rem;
 }

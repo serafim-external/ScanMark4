@@ -9,15 +9,17 @@ const ToolsPanel = () => {
 
   return (
     <div className="tools-panel">
-      {tools.map(tool => (
-        <Button
-          key={tool.shortcut}
-          variant="tool"
-          title={`${tool.label} - Press ${tool.shortcut[0]}-${tool.shortcut[1]} (${tool.shortcut})`}
-        >
-          {tool.icon}
-        </Button>
-      ))}
+      <div className="tools-panel-buttons">
+        {tools.map(tool => (
+          <Button
+            key={tool.shortcut}
+            variant="tool"
+            title={`${tool.label} - Press ${tool.shortcut[0]}-${tool.shortcut[1]} (${tool.shortcut})`}
+          >
+            {tool.icon}
+          </Button>
+        ))}
+      </div>
     </div>
   );
 };
