@@ -7,7 +7,7 @@ const Button = ({ children, onClick, variant = 'default', title }) => {
     cursor: 'pointer',
     fontSize: '13px',
     fontFamily: 'inherit',
-    transition: 'background-color 0.15s ease'
+    transition: 'transform 0.15s ease'
   };
 
   const variants = {
@@ -27,11 +27,11 @@ const Button = ({ children, onClick, variant = 'default', title }) => {
   const buttonStyle = { ...baseStyle, ...variants[variant] };
 
   const handleMouseEnter = (e) => {
-    e.currentTarget.style.backgroundColor = 'oklch(0.35 0 264)';
+    e.currentTarget.style.transform = 'scale(1.3)';
   };
 
   const handleMouseLeave = (e) => {
-    e.currentTarget.style.backgroundColor = 'oklch(0.3 0 264)';
+    e.currentTarget.style.transform = 'scale(1)';
   };
 
   return (
