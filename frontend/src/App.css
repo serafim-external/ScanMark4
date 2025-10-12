@@ -4,50 +4,34 @@
   display: grid;
   grid-template-columns: 290px 1fr;
   grid-template-rows: auto 1fr;
-  grid-gap: 0;
-  padding: 0;
   background-color: oklch(0.1 0 264);
   font-family: 'Inter', sans-serif;
 }
 
-.sources-panel {
+.sources-panel,
+.tools-panel {
   grid-row: 1;
-  grid-column: 1;
   background-color: oklch(0.2 0 264);
-  border-radius: 0.75rem 0.75rem 0 0;
   display: flex;
   align-items: center;
   padding: 0.4rem;
-  margin: 0.5rem 0.375rem 0 0.5rem;
   gap: 0.5rem;
 }
 
-.sources-panel-buttons {
-  display: flex;
-  align-items: center;
-  gap: 0.35rem;
-  background-color: oklch(0.3 0 264);
-  padding: 0.4rem 0.6rem;
-  border-radius: 0.75rem;
-  box-shadow:
-    inset 0 1px 2px #ffffff70,  /* внутренний светлый блик сверху */
-    0 4px 6px #00000030,        /* основная внешняя тень */
-    0 6px 10px #00000015;       /* мягкая рассеянная тень */
+.sources-panel {
+  grid-column: 1;
+  border-radius: 0.75rem 0.75rem 0 0;
+  margin: 0.5rem 0.375rem 0 0.5rem;
 }
 
 .tools-panel {
-  grid-row: 1;
   grid-column: 2;
-  background-color: oklch(0.2 0 264);
-  border-radius: 0.75rem;
-  display: flex;
-  align-items: center;
   justify-content: center;
-  padding: 0.4rem;
+  border-radius: 0.75rem;
   margin: 0.5rem 0.5rem 0 0.375rem;
-  gap: 0.5rem;
 }
 
+.sources-panel-buttons,
 .tools-panel-buttons {
   display: flex;
   align-items: center;
@@ -56,33 +40,33 @@
   padding: 0.4rem 0.6rem;
   border-radius: 0.75rem;
   box-shadow:
-    inset 0 1px 2px #ffffff70,  /* внутренний светлый блик сверху */
-    0 4px 6px #00000030,        /* основная внешняя тень */
-    0 6px 10px #00000015;       /* мягкая рассеянная тень */
+    inset 0 1px 2px #ffffff70,
+    0 4px 6px #00000030,
+    0 6px 10px #00000015;
+}
+
+.browser-panel,
+.viewport-area {
+  grid-row: 2;
+  border-radius: 0.75rem;
+  overflow-y: auto;
+  padding: 1rem;
 }
 
 .browser-panel {
-  grid-row: 2;
   grid-column: 1;
   background-color: oklch(0.2 0 264);
   border-radius: 0 0 0.75rem 0.75rem;
-  overflow-y: auto;
-  padding: 1rem;
   margin: 0 0.375rem 0.5rem 0.5rem;
-  gap: 1rem;
 }
 
 .viewport-area {
-  grid-row: 2;
   grid-column: 2;
   background-color: oklch(0.1 0 264);
-  border-radius: 0.75rem;
-  overflow: hidden;
-  padding: 1rem;
   margin: 0.75rem 0.5rem 0.5rem 0.375rem;
-  gap: 1rem;
+  overflow: hidden;
   box-shadow:
-    inset 0 1px 2px rgba(255, 255, 255, 0.15), /* внутренний мягкий блик сверху */
-    0 4px 8px rgba(255, 255, 255, 0.05),       /* лёгкое внешнее свечение */
-    0 8px 16px rgba(255, 255, 255, 0.03);      /* глубокое рассеянное сияние */
+    inset 0 1px 2px rgba(255, 255, 255, 0.15),
+    0 4px 8px rgba(255, 255, 255, 0.05),
+    0 8px 16px rgba(255, 255, 255, 0.03);
 }

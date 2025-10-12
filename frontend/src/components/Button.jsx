@@ -1,5 +1,8 @@
-const Button = ({ children, onClick, variant = 'default', title }) => {
-  const baseStyle = {
+const Button = ({ children, onClick, title }) => {
+  const style = {
+    width: '25px',
+    height: '25px',
+    padding: 0,
     backgroundColor: 'oklch(0.3 0 264)',
     color: 'oklch(0.96 0 264)',
     border: 'none',
@@ -7,27 +10,14 @@ const Button = ({ children, onClick, variant = 'default', title }) => {
     cursor: 'pointer',
     fontSize: '13px',
     fontFamily: 'inherit',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
     transition: 'transform 0.15s ease'
   };
 
-  const variants = {
-    tool: {
-      width: '25px',
-      height: '25px',
-      padding: '0',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center'
-    },
-    primary: {
-      padding: '6px 12px'
-    }
-  };
-
-  const buttonStyle = { ...baseStyle, ...variants[variant] };
-
   const handleMouseEnter = (e) => {
-    e.currentTarget.style.transform = 'scale(1.3)';
+    e.currentTarget.style.transform = 'scale(1.1)';
   };
 
   const handleMouseLeave = (e) => {
@@ -38,7 +28,7 @@ const Button = ({ children, onClick, variant = 'default', title }) => {
     <button
       onClick={onClick}
       title={title}
-      style={buttonStyle}
+      style={style}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
