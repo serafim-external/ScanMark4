@@ -50,18 +50,28 @@ canvas {
 }
 
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 10px;
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--bg);
+  background: var(--bg-dark);
+  border-radius: 10px;
+  margin: 4px 0;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--border);
-  border-radius: 8px;
+  background: linear-gradient(180deg, var(--border) 0%, var(--border-muted) 100%);
+  border-radius: 10px;
+  border: 2px solid var(--bg-dark);
+  transition: all 0.2s ease;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--border-muted);
+  background: linear-gradient(180deg, var(--highlight) 0%, var(--border) 100%);
+  border-color: var(--bg);
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+::-webkit-scrollbar-thumb:active {
+  background: var(--primary);
 }
