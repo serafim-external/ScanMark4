@@ -41,6 +41,7 @@
   background-color: var(--bg-light);
   padding: 0.4rem 0.6rem;
   border-radius: 0.75rem;
+  border: 1px solid var(--highlight);
   backdrop-filter: blur(8px);
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.03),
