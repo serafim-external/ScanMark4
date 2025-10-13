@@ -5,6 +5,7 @@ import {
   ZoomTool,
   PanTool,
   StackScrollTool,
+  Enums,
 } from '@cornerstonejs/tools';
 
 /**
@@ -38,7 +39,7 @@ export function createToolGroup(viewportId, renderingEngineId) {
     toolGroup.addTool(WindowLevelTool.toolName);
     toolGroup.addTool(ZoomTool.toolName);
     toolGroup.addTool(PanTool.toolName);
-    toolGroup.addTool(StackScrollTool.toolName);
+    toolGroup.addTool(StackScrollTool.toolName, { loop: false });
 
     // Активируем инструменты по умолчанию
     // Window/Level - левая кнопка мыши (Primary)
@@ -57,8 +58,14 @@ export function createToolGroup(viewportId, renderingEngineId) {
     });
 
     // Stack Scroll - прокрутка колесика мыши (без нажатия)
-    // Для инструментов на основе wheel используем setToolEnabled
-    toolGroup.setToolEnabled(StackScrollTool.toolName);
+    // Согласно официальному примеру, нужно явно указать MouseBindings.Wheel
+    toolGroup.setToolActive(StackScrollTool.toolName, {
+      bindings: [
+        {
+          mouseButton: Enums.MouseBindings.Wheel, // колесико мыши
+        },
+      ],
+    });
 
     console.log('ToolGroup created and tools activated:', toolGroupId);
     console.log('StackScrollTool status:', toolGroup.getToolOptions(StackScrollTool.toolName));
