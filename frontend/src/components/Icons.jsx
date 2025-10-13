@@ -1,4 +1,4 @@
-const Icon = ({ size = 24, color = 'oklch(0.96 0 264)', children }) => (
+const Icon = ({ size = 24, color = 'currentColor', children }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width={size}

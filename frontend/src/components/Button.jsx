@@ -4,7 +4,7 @@ const Button = ({ children, onClick, title }) => {
     height: '25px',
     padding: 0,
     backgroundColor: 'var(--bg-light)',
-    color: 'var(--text)',
+    color: 'var(--primary)',
     border: 'none',
     borderRadius: '6px',
     cursor: 'pointer',
