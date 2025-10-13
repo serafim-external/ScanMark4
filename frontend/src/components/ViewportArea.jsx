@@ -1,6 +1,6 @@
 const ViewportArea = () => (
   <div className="viewport-area">
-    {/* Здесь будет Cornerstone3D viewport */}
+    {/* Cornerstone3D viewport will be rendered here */}
   </div>
 );
 

@@ -1,6 +1,6 @@
 const BrowserPanel = () => (
   <div className="browser-panel">
-    {/* Здесь будет список DICOM файлов */}
+    {/* DICOM files list will be rendered here */}
   </div>
 );
 
