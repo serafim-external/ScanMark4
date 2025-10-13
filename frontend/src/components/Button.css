@@ -1,6 +1,6 @@
 .icon-button {
-  width: 25px;
-  height: 25px;
+  width: 26px;
+  height: 26px;
   padding: 0;
   background-color: transparent;
   color: var(--primary);
@@ -12,20 +12,35 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-  opacity: 1;
+  transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   overflow: hidden;
 }
 
+.icon-button::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-color: var(--primary);
+  opacity: 0;
+  border-radius: 6px;
+  transition: opacity 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
 .icon-button:hover:not(.disabled) {
-  transform: scale(1.15);
-  background-color: var(--bg);
-  box-shadow: 0 0 0 2px var(--primary)33;
+  color: var(--text);
+}
+
+.icon-button:hover:not(.disabled)::before {
+  opacity: 0.12;
 }
 
 .icon-button:active:not(.disabled) {
-  transform: scale(1.05);
+  transform: scale(0.95);
+}
+
+.icon-button:active:not(.disabled)::before {
+  opacity: 0.2;
 }
 
 .icon-button.disabled {
