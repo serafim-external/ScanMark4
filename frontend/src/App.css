@@ -21,8 +21,7 @@
 
 .sources-panel {
   grid-column: 1;
-  border-radius: 0.625rem 0.625rem 0 0;
-  border-bottom: none;
+  border-radius: 0.625rem;
 }
 
 .tools-panel {
@@ -41,20 +40,20 @@
 .browser-panel,
 .viewport-area {
   grid-row: 2;
-  border-radius: 0.625rem;
   background-color: var(--bg);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .browser-panel {
   grid-column: 1;
-  border-radius: 0 0 0.625rem 0.625rem;
+  border-radius: 0.625rem;
   padding: 0.75rem;
   overflow-y: auto;
 }
 
 .viewport-area {
   grid-column: 2;
+  border-radius: 0.625rem;
   padding: 0.5rem;
   overflow: hidden;
 }
