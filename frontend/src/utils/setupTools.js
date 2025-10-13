@@ -53,13 +53,15 @@ export function createToolGroup(viewportId, renderingEngineId) {
 
     // Pan - средняя кнопка мыши (Auxiliary)
     toolGroup.setToolActive(PanTool.toolName, {
-      bindings: [{ mouseButton: 4 }], // 4 = средняя кнопка
+      bindings: [{ mouseButton: 4 }], // 4 = средняя кнопка + движение
     });
 
-    // Stack Scroll - колесико мыши
-    toolGroup.setToolActive(StackScrollTool.toolName);
+    // Stack Scroll - прокрутка колесика мыши (без нажатия)
+    // Для инструментов на основе wheel используем setToolEnabled
+    toolGroup.setToolEnabled(StackScrollTool.toolName);
 
     console.log('ToolGroup created and tools activated:', toolGroupId);
+    console.log('StackScrollTool status:', toolGroup.getToolOptions(StackScrollTool.toolName));
   }
 
   // Привязываем viewport к группе инструментов
