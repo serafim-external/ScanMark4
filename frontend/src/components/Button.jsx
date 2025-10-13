@@ -17,7 +17,7 @@ const Button = ({ children, onClick, title }) => {
   };
 
   const handleMouseEnter = (e) => {
-    e.currentTarget.style.transform = 'scale(1.1)';
+    e.currentTarget.style.transform = 'scale(1.3)';
   };
 
   const handleMouseLeave = (e) => {
