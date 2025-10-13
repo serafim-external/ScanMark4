@@ -4,7 +4,7 @@ import {
   WindowLevelTool,
   ZoomTool,
   PanTool,
-  StackScrollMouseWheelTool,
+  StackScrollTool,
 } from '@cornerstonejs/tools';
 
 /**
@@ -16,7 +16,7 @@ export function registerTools() {
   addTool(WindowLevelTool);
   addTool(ZoomTool);
   addTool(PanTool);
-  addTool(StackScrollMouseWheelTool);
+  addTool(StackScrollTool);
 
   console.log('Tools registered successfully');
 }
@@ -38,7 +38,7 @@ export function createToolGroup(viewportId, renderingEngineId) {
     toolGroup.addTool(WindowLevelTool.toolName);
     toolGroup.addTool(ZoomTool.toolName);
     toolGroup.addTool(PanTool.toolName);
-    toolGroup.addTool(StackScrollMouseWheelTool.toolName);
+    toolGroup.addTool(StackScrollTool.toolName);
 
     // Активируем инструменты по умолчанию
     // Window/Level - левая кнопка мыши (Primary)
@@ -57,7 +57,7 @@ export function createToolGroup(viewportId, renderingEngineId) {
     });
 
     // Stack Scroll - колесико мыши
-    toolGroup.setToolActive(StackScrollMouseWheelTool.toolName);
+    toolGroup.setToolActive(StackScrollTool.toolName);
 
     console.log('ToolGroup created and tools activated:', toolGroupId);
   }
