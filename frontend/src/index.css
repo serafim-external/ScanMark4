@@ -1,3 +1,29 @@
+:root {
+  /* Background Colors */
+  --bg-dark: oklch(0.1 0.025 264);
+  --bg: oklch(0.15 0.025 264);
+  --bg-light: oklch(0.2 0.025 264);
+
+  /* Text Colors */
+  --text: oklch(0.96 0.05 264);
+  --text-muted: oklch(0.76 0.05 264);
+
+  /* Borders */
+  --highlight: oklch(0.5 0.05 264);
+  --border: oklch(0.4 0.05 264);
+  --border-muted: oklch(0.3 0.05 264);
+
+  /* Actions */
+  --primary: oklch(0.76 0.1 264);
+  --secondary: oklch(0.76 0.1 84);
+
+  /* Alerts */
+  --danger: oklch(0.7 0.05 30);
+  --warning: oklch(0.7 0.05 100);
+  --success: oklch(0.7 0.05 160);
+  --info: oklch(0.7 0.05 260);
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -13,7 +39,7 @@ html, body, #root {
 body {
   font-family: 'Inter', sans-serif;
   font-size: 13px;
-  color: #d4d4d4;
+  color: var(--text);
   -webkit-font-smoothing: antialiased;
 }
 
@@ -28,14 +54,14 @@ canvas {
 }
 
 ::-webkit-scrollbar-track {
-  background: #252526;
+  background: var(--bg);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #454545;
+  background: var(--border);
   border-radius: 8px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #555555;
+  background: var(--border-muted);
 }
