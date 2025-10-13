@@ -1,21 +1,21 @@
 :root {
   /* Background Colors */
-  --bg-dark: oklch(0.1 0.025 264);
-  --bg: oklch(0.15 0.025 264);
-  --bg-light: oklch(0.2 0.025 264);
+  --bg-dark: oklch(0.1 0.005 196);
+  --bg: oklch(0.15 0.005 196);
+  --bg-light: oklch(0.2 0.005 196);
 
   /* Text Colors */
-  --text: oklch(0.96 0.05 264);
-  --text-muted: oklch(0.76 0.05 264);
+  --text: oklch(0.96 0.01 196);
+  --text-muted: oklch(0.76 0.01 196);
 
   /* Borders */
-  --highlight: oklch(0.5 0.05 264);
-  --border: oklch(0.4 0.05 264);
-  --border-muted: oklch(0.3 0.05 264);
+  --highlight: oklch(0.5 0.01 196);
+  --border: oklch(0.4 0.01 196);
+  --border-muted: oklch(0.3 0.01 196);
 
   /* Actions */
-  --primary: oklch(0.76 0.1 264);
-  --secondary: oklch(0.76 0.1 84);
+  --primary: oklch(0.76 0.1 196);
+  --secondary: oklch(0.76 0.1 16);
 
   /* Alerts */
   --danger: oklch(0.7 0.05 30);
