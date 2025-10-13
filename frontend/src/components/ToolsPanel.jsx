@@ -1,5 +1,5 @@
 import Button from './Button';
-import { LayoutIcon, ZoomIcon } from './Icons';
+import { LayoutIcon, ZoomIcon, PanIcon, WindowLevelIcon, StackScrollIcon } from './Icons';
 
 const ToolsPanel = () => (
   <div className="tools-panel">
@@ -9,6 +9,15 @@ const ToolsPanel = () => (
       </Button>
       <Button title="Zoom">
         <ZoomIcon />
+      </Button>
+      <Button title="Pan">
+        <PanIcon />
+      </Button>
+      <Button title="Window/Level">
+        <WindowLevelIcon />
+      </Button>
+      <Button title="Stack Scroll">
+        <StackScrollIcon />
       </Button>
     </div>
   </div>

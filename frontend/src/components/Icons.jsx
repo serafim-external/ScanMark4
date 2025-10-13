@@ -44,3 +44,34 @@ export const ServerIcon = ({ size, color }) => (
     <path d="M7 16l0 .01" />
   </Icon>
 );
+
+export const PanIcon = ({ size, color }) => (
+  <Icon size={size} color={color}>
+    <path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" />
+    <path d="M8 11l-1 1l1 1" />
+    <path d="M11 8l1 -1l1 1" />
+    <path d="M16 11l1 1l-1 1" />
+    <path d="M11 16l1 1l1 -1" />
+  </Icon>
+);
+
+export const WindowLevelIcon = ({ size, color }) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width={size || 24}
+    height={size || 24}
+    viewBox="0 0 24 24"
+    fill={color || 'currentColor'}
+  >
+    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+    <path d="M17 3.34a10 10 0 1 1 -15 8.66l.005 -.324a10 10 0 0 1 14.995 -8.336m-9 1.732a8 8 0 0 0 4.001 14.928l-.001 -16a8 8 0 0 0 -4 1.072" />
+  </svg>
+);
+
+export const StackScrollIcon = ({ size, color }) => (
+  <Icon size={size} color={color}>
+    <path d="M12 4l-8 4l8 4l8 -4l-8 -4" fill={color || 'currentColor'} />
+    <path d="M8 14l-4 2l8 4l8 -4l-4 -2" />
+    <path d="M8 10l-4 2l8 4l8 -4l-4 -2" />
+  </Icon>
+);
