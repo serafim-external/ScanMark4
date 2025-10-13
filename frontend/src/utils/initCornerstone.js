@@ -1,9 +1,12 @@
 import { init as coreInit } from '@cornerstonejs/core';
 import { init as dicomImageLoaderInit } from '@cornerstonejs/dicom-image-loader';
+import { init as cornerstoneToolsInit } from '@cornerstonejs/tools';
 
 /**
- * Инициализация Cornerstone3D Core и DICOM Image Loader
- * Согласно документации: https://www.cornerstonejs.org/docs/tutorials/basic-stack
+ * Инициализация Cornerstone3D Core, DICOM Image Loader и Tools
+ * Согласно документации:
+ * - https://www.cornerstonejs.org/docs/tutorials/basic-stack
+ * - https://www.cornerstonejs.org/docs/tutorials/basic-manipulation-tool
  */
 export async function initCornerstone() {
   // Инициализация Cornerstone Core
@@ -12,5 +15,8 @@ export async function initCornerstone() {
   // Инициализация DICOM Image Loader
   await dicomImageLoaderInit();
 
-  console.log('Cornerstone3D initialized successfully');
+  // Инициализация Cornerstone Tools
+  await cornerstoneToolsInit();
+
+  console.log('Cornerstone3D and Tools initialized successfully');
 }

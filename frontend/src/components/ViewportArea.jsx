@@ -1,17 +1,22 @@
 import { useEffect, useRef } from 'react';
 import { RenderingEngine, Enums } from '@cornerstonejs/core';
+import { registerTools, createToolGroup } from '../utils/setupTools';
 
 const ViewportArea = ({ imageIds }) => {
   const viewportRef = useRef(null);
   const renderingEngineRef = useRef(null);
   const viewportIdRef = useRef('CT_STACK');
+  const renderingEngineIdRef = useRef('myRenderingEngine');
 
   // Инициализация viewport
   useEffect(() => {
     if (!viewportRef.current) return;
 
-    const renderingEngineId = 'myRenderingEngine';
+    const renderingEngineId = renderingEngineIdRef.current;
     const viewportId = viewportIdRef.current;
+
+    // Регистрируем инструменты
+    registerTools();
 
     // Создаем RenderingEngine
     const renderingEngine = new RenderingEngine(renderingEngineId);
@@ -26,6 +31,9 @@ const ViewportArea = ({ imageIds }) => {
 
     // Включаем viewport
     renderingEngine.enableElement(viewportInput);
+
+    // Создаем ToolGroup и привязываем к viewport
+    createToolGroup(viewportId, renderingEngineId);
 
     console.log('Stack Viewport created:', viewportId);
 
