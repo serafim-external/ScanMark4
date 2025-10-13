@@ -50,20 +50,20 @@ canvas {
 }
 
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 8px;
 }
 
 ::-webkit-scrollbar-track {
   background: var(--bg-dark);
-  border-radius: 10px;
+  border-radius: 0.5rem;
   margin: 4px 0;
 }
 
 ::-webkit-scrollbar-thumb {
   background: linear-gradient(180deg, var(--border) 0%, var(--border-muted) 100%);
-  border-radius: 10px;
+  border-radius: 0.5rem;
   border: 2px solid var(--bg-dark);
-  transition: all 0.2s ease;
+  transition: all 0.15s ease;
 }
 
 ::-webkit-scrollbar-thumb:hover {

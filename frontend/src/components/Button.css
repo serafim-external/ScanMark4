@@ -5,7 +5,7 @@
   background-color: transparent;
   color: var(--primary);
   border: none;
-  border-radius: 6px;
+  border-radius: 0.5rem;
   cursor: pointer;
   font-size: 13px;
   font-family: inherit;
@@ -21,9 +21,9 @@
   content: '';
   position: absolute;
   inset: 0;
-  background-color: var(--primary);
+  background: linear-gradient(135deg, var(--primary), var(--primary));
   opacity: 0;
-  border-radius: 6px;
+  border-radius: 0.5rem;
   transition: opacity 0.15s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -32,15 +32,15 @@
 }
 
 .icon-button:hover:not(.disabled)::before {
-  opacity: 0.12;
+  opacity: 0.15;
 }
 
 .icon-button:active:not(.disabled) {
-  transform: scale(0.95);
+  transform: scale(0.92);
 }
 
 .icon-button:active:not(.disabled)::before {
-  opacity: 0.2;
+  opacity: 0.25;
 }
 
 .icon-button.disabled {
