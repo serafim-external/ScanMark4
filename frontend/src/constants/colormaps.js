@@ -1,39 +1,40 @@
 /**
- * Colormaps available in Cornerstone3D
- * Sources:
- * 1. CPU colormaps from cornerstone3D-github-original/packages/core/src/constants/cpuColormaps.ts
- * 2. VTK.js colormaps via vtkColorMaps.rgbPresetNames
+ * Проверенные colormaps для Cornerstone3D
+ * Только те colormap, которые точно работают с vtk.js
+ *
  * Reference:
  * - cornerstone3D-github-original/packages/core/examples/stackAPI/index.ts (uses 'hsv')
- * - cornerstone3D-github-original/packages/tools/examples/changeColormap/index.ts
+ * - cornerstone3D-github-original/packages/tools/examples/advancedColorbar/index.ts (uses 'Grayscale', 'Black-Body Radiation')
+ *
+ * Note: Имена colormap регистрозависимые и должны точно соответствовать vtk.js preset names
  */
 
 export const COMMON_COLORMAPS = [
-  // From official stackAPI example - uses lowercase
+  // Проверенные - 100% работают
   { name: 'hsv', label: 'HSV' },
-
-  // Common matplotlib colormaps (lowercase to match vtk.js presets)
-  { name: 'hot', label: 'Hot' },
-  { name: 'cool', label: 'Cool' },
-  { name: 'spring', label: 'Spring' },
-  { name: 'summer', label: 'Summer' },
-  { name: 'autumn', label: 'Autumn' },
-  { name: 'winter', label: 'Winter' },
-  { name: 'bone', label: 'Bone' },
-  { name: 'copper', label: 'Copper' },
-  { name: 'jet', label: 'Jet' },
-
-  // Scientific colormaps
-  { name: 'viridis', label: 'Viridis' },
-  { name: 'plasma', label: 'Plasma' },
-  { name: 'inferno', label: 'Inferno' },
-  { name: 'magma', label: 'Magma' },
-
-  // Diverging colormaps
-  { name: 'coolwarm', label: 'Cool-Warm' },
-  { name: 'rainbow', label: 'Rainbow' },
+  { name: 'erdc_rainbow_bright', label: 'Rainbow Bright' },
 
   // Grayscale
-  { name: 'gray', label: 'Grayscale' },
-  { name: 'erdc_rainbow_bright', label: 'Rainbow Bright' },
+  { name: 'Grayscale', label: 'Grayscale' },
+
+  // Scientific (из matplotlib, используются с суффиксом)
+  { name: 'Viridis (matplotlib)', label: 'Viridis' },
+  { name: 'Plasma (matplotlib)', label: 'Plasma' },
+  { name: 'Inferno (matplotlib)', label: 'Inferno' },
+  { name: 'Magma (matplotlib)', label: 'Magma' },
+
+  // Physical/Medical
+  { name: 'Black-Body Radiation', label: 'Black Body' },
+  { name: 'X Ray', label: 'X-Ray' },
+
+  // Rainbow/Spectrum
+  { name: 'rainbow', label: 'Rainbow' },
+  { name: 'erdc_rainbow_dark', label: 'Rainbow Dark' },
+
+  // Diverging
+  { name: 'Blue to Red Rainbow', label: 'Blue-Red Rainbow' },
+  { name: 'Cool to Warm', label: 'Cool to Warm' },
+
+  // Classic
+  { name: 'jet', label: 'Jet' },
 ];
