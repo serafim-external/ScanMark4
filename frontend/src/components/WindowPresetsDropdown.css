@@ -23,6 +23,7 @@
 
 .window-presets-dropdown .dropdown-button:hover {
   background-color: var(--secondary);
+  color: var(--bg-dark);
 }
 
 .window-presets-dropdown .dropdown-button:active {
