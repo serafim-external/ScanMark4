@@ -71,7 +71,7 @@ const DropdownButton = ({ icon, items, onItemClick, title = '' }) => {
                 className="dropdown-item"
                 onClick={() => handleItemClick(item)}
               >
-                {item.name || item}
+                {item.label || item.name || item}
               </button>
             );
           })}

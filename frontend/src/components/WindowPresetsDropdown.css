@@ -8,10 +8,10 @@
   width: 16px;
   height: 30px;
   padding: 0;
-  background-color: var(--bg-light);
-  color: var(--primary);
+  background-color: var(--primary);
+  color: var(--bg-dark);
   border: none;
-  border-radius: 0.33rem;
+  border-radius: 0.5rem;
   cursor: pointer;
   font-size: 13px;
   font-family: inherit;
@@ -23,7 +23,6 @@
 
 .window-presets-dropdown .dropdown-button:hover {
   background-color: var(--secondary);
-  color: var(--bg-dark);
 }
 
 .window-presets-dropdown .dropdown-button:active {

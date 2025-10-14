@@ -1,4 +1,5 @@
 import Button from './Button';
+import DropdownButton from './DropdownButton';
 import WindowPresetsDropdown from './WindowPresetsDropdown';
 import {
   LayoutIcon,
@@ -17,6 +18,7 @@ import {
   ChevronDownIcon
 } from './Icons';
 import { getRenderingEngine } from '@cornerstonejs/core';
+import { COMMON_COLORMAPS } from '../constants/colormaps';
 
 const ToolsPanel = () => {
   // Handler для кнопки Previous Image
@@ -218,8 +220,8 @@ const ToolsPanel = () => {
     }
   };
 
-  // Handler для кнопки Apply Colormap
-  const handleApplyColormap = () => {
+  // Handler для выбора colormap из dropdown
+  const handleColormapSelect = (colormap) => {
     try {
       const renderingEngineId = 'myRenderingEngine';
       const viewportId = 'CT_STACK';
@@ -240,10 +242,11 @@ const ToolsPanel = () => {
         return;
       }
 
-      viewport.setProperties({ colormap: { name: 'hsv' } });
+      // Apply colormap using official Cornerstone3D approach
+      viewport.setProperties({ colormap: { name: colormap.name } });
       viewport.render();
     } catch (error) {
-      console.error('Error in handleApplyColormap:', error);
+      console.error('Error in handleColormapSelect:', error);
     }
   };
 
@@ -319,9 +322,15 @@ const ToolsPanel = () => {
         <Button title="Invert" onClick={handleInvert}>
           <InvertIcon />
         </Button>
-        <Button title="Apply Colormap" onClick={handleApplyColormap}>
+        <Button title="Colormap">
           <ColormapIcon />
         </Button>
+        <DropdownButton
+          icon={<ChevronDownIcon />}
+          items={COMMON_COLORMAPS}
+          onItemClick={handleColormapSelect}
+          title="Select Colormap"
+        />
         <Button title="Reset Viewport" onClick={handleResetViewport}>
           <ResetIcon />
         </Button>
