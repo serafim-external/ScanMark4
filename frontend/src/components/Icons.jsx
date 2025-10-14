@@ -115,3 +115,17 @@ export const RotateRightIcon = ({ size, color }) => (
     <path d="M880 418H352c-17.7 0-32 14.3-32 32v414c0 17.7 14.3 32 32 32h528c17.7 0 32-14.3 32-32V450c0-17.7-14.3-32-32-32z m-44 402H396V494h440v326z" />
   </svg>
 );
+
+export const InvertIcon = ({ size, color }) => (
+  <svg
+    width={size || 24}
+    height={size || 24}
+    viewBox="0 0 512 512"
+    fill={color || 'currentColor'}
+    stroke={color || 'currentColor'}
+  >
+    <circle fill="none" strokeMiterlimit="10" strokeWidth="32" cx="256" cy="256" r="208"/>
+    <path d="M256,176V336a80,80,0,0,0,0-160Z"/>
+    <path d="M256,48V176a80,80,0,0,0,0,160V464C141.12,464,48,370.88,48,256S141.12,48,256,48Z"/>
+  </svg>
+);

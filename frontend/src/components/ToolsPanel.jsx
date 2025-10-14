@@ -9,7 +9,8 @@ import {
   NextImageIcon,
   FlipHorizontalIcon,
   FlipVerticalIcon,
-  RotateRightIcon
+  RotateRightIcon,
+  InvertIcon
 } from './Icons';
 import { getRenderingEngine } from '@cornerstonejs/core';
 
@@ -182,6 +183,37 @@ const ToolsPanel = () => {
     }
   };
 
+  // Handler для кнопки Invert
+  const handleInvert = () => {
+    try {
+      const renderingEngineId = 'myRenderingEngine';
+      const viewportId = 'CT_STACK';
+
+      // Get the rendering engine
+      const renderingEngine = getRenderingEngine(renderingEngineId);
+
+      if (!renderingEngine) {
+        console.warn('Rendering engine not found');
+        return;
+      }
+
+      // Get the stack viewport
+      const viewport = renderingEngine.getViewport(viewportId);
+
+      if (!viewport) {
+        console.warn('Viewport not found');
+        return;
+      }
+
+      const { invert } = viewport.getProperties();
+      viewport.setProperties({ invert: !invert });
+
+      viewport.render();
+    } catch (error) {
+      console.error('Error in handleInvert:', error);
+    }
+  };
+
   return (
     <div className="tools-panel">
       <div className="tools-panel-buttons">
@@ -214,6 +246,9 @@ const ToolsPanel = () => {
         </Button>
         <Button title="Rotate Right" onClick={handleRotateRight}>
           <RotateRightIcon />
+        </Button>
+        <Button title="Invert" onClick={handleInvert}>
+          <InvertIcon />
         </Button>
       </div>
     </div>
