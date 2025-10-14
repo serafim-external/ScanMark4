@@ -87,3 +87,19 @@ export const PreviousImageIcon = ({ size, color }) => (
     <path d="M14 6l-6 6l6 6v-12" />
   </Icon>
 );
+
+export const FlipHorizontalIcon = ({ size, color }) => (
+  <Icon size={size} color={color}>
+    <path d="M12 3l0 18" />
+    <path d="M16 7l0 10l5 0l-5 -10" />
+    <path d="M8 7l0 10l-5 0l5 -10" />
+  </Icon>
+);
+
+export const FlipVerticalIcon = ({ size, color }) => (
+  <Icon size={size} color={color}>
+    <path d="M3 12l18 0" />
+    <path d="M7 16l10 0l-10 5l0 -5" />
+    <path d="M7 8l10 0l-10 -5l0 5" />
+  </Icon>
+);

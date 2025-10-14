@@ -6,7 +6,9 @@ import {
   WindowLevelIcon,
   StackScrollIcon,
   PreviousImageIcon,
-  NextImageIcon
+  NextImageIcon,
+  FlipHorizontalIcon,
+  FlipVerticalIcon
 } from './Icons';
 import { getRenderingEngine } from '@cornerstonejs/core';
 
@@ -84,6 +86,68 @@ const ToolsPanel = () => {
     }
   };
 
+  // Handler для кнопки Flip H
+  const handleFlipHorizontal = () => {
+    try {
+      const renderingEngineId = 'myRenderingEngine';
+      const viewportId = 'CT_STACK';
+
+      // Get the rendering engine
+      const renderingEngine = getRenderingEngine(renderingEngineId);
+
+      if (!renderingEngine) {
+        console.warn('Rendering engine not found');
+        return;
+      }
+
+      // Get the stack viewport
+      const viewport = renderingEngine.getViewport(viewportId);
+
+      if (!viewport) {
+        console.warn('Viewport not found');
+        return;
+      }
+
+      const { flipHorizontal } = viewport.getCamera();
+      viewport.setCamera({ flipHorizontal: !flipHorizontal });
+
+      viewport.render();
+    } catch (error) {
+      console.error('Error in handleFlipHorizontal:', error);
+    }
+  };
+
+  // Handler для кнопки Flip V
+  const handleFlipVertical = () => {
+    try {
+      const renderingEngineId = 'myRenderingEngine';
+      const viewportId = 'CT_STACK';
+
+      // Get the rendering engine
+      const renderingEngine = getRenderingEngine(renderingEngineId);
+
+      if (!renderingEngine) {
+        console.warn('Rendering engine not found');
+        return;
+      }
+
+      // Get the stack viewport
+      const viewport = renderingEngine.getViewport(viewportId);
+
+      if (!viewport) {
+        console.warn('Viewport not found');
+        return;
+      }
+
+      const { flipVertical } = viewport.getCamera();
+      viewport.setCamera({ flipVertical: !flipVertical });
+
+      viewport.render();
+    } catch (error) {
+      console.error('Error in handleFlipVertical:', error);
+    }
+  };
+
   return (
     <div className="tools-panel">
       <div className="tools-panel-buttons">
@@ -107,6 +171,12 @@ const ToolsPanel = () => {
         </Button>
         <Button title="Next Image" onClick={handleNextImage}>
           <NextImageIcon />
+        </Button>
+        <Button title="Flip Horizontal" onClick={handleFlipHorizontal}>
+          <FlipHorizontalIcon />
+        </Button>
+        <Button title="Flip Vertical" onClick={handleFlipVertical}>
+          <FlipVerticalIcon />
         </Button>
       </div>
     </div>
