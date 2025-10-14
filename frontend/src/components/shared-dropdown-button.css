@@ -14,10 +14,10 @@
   width: 16px;
   height: 30px;
   padding: 0;
-  background-color: var(--primary);
-  color: var(--bg-dark);
+  background-color: var(--bg-ligth);
+  color: var(--primary);
   border: none;
-  border-radius: 0.5rem;
+  border-radius: 0.32rem;
   cursor: pointer;
   font-size: 13px;
   font-family: inherit;
@@ -29,6 +29,7 @@
 
 .dropdown-button:hover {
   background-color: var(--secondary);
+  color: var(--bg-dark);
 }
 
 .dropdown-button:active {
