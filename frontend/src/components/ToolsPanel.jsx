@@ -11,7 +11,8 @@ import {
   FlipVerticalIcon,
   RotateRightIcon,
   InvertIcon,
-  ColormapIcon
+  ColormapIcon,
+  ResetIcon
 } from './Icons';
 import { getRenderingEngine } from '@cornerstonejs/core';
 
@@ -244,6 +245,38 @@ const ToolsPanel = () => {
     }
   };
 
+  // Handler для кнопки Reset Viewport
+  const handleResetViewport = () => {
+    try {
+      const renderingEngineId = 'myRenderingEngine';
+      const viewportId = 'CT_STACK';
+
+      // Get the rendering engine
+      const renderingEngine = getRenderingEngine(renderingEngineId);
+
+      if (!renderingEngine) {
+        console.warn('Rendering engine not found');
+        return;
+      }
+
+      // Get the stack viewport
+      const viewport = renderingEngine.getViewport(viewportId);
+
+      if (!viewport) {
+        console.warn('Viewport not found');
+        return;
+      }
+
+      // Resets the viewport's camera
+      viewport.resetCamera();
+      // Resets the viewport's properties
+      viewport.resetProperties();
+      viewport.render();
+    } catch (error) {
+      console.error('Error in handleResetViewport:', error);
+    }
+  };
+
   return (
     <div className="tools-panel">
       <div className="tools-panel-buttons">
@@ -282,6 +315,9 @@ const ToolsPanel = () => {
         </Button>
         <Button title="Apply Colormap" onClick={handleApplyColormap}>
           <ColormapIcon />
+        </Button>
+        <Button title="Reset Viewport" onClick={handleResetViewport}>
+          <ResetIcon />
         </Button>
       </div>
     </div>
