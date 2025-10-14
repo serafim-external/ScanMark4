@@ -75,3 +75,15 @@ export const StackScrollIcon = ({ size, color }) => (
     <path d="M8 10l-4 2l8 4l8 -4l-4 -2" />
   </Icon>
 );
+
+export const NextImageIcon = ({ size, color }) => (
+  <Icon size={size} color={color}>
+    <path d="M10 18l6 -6l-6 -6v12" />
+  </Icon>
+);
+
+export const PreviousImageIcon = ({ size, color }) => (
+  <Icon size={size} color={color}>
+    <path d="M14 6l-6 6l6 6v-12" />
+  </Icon>
+);
