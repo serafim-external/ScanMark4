@@ -8,7 +8,8 @@ import {
   PreviousImageIcon,
   NextImageIcon,
   FlipHorizontalIcon,
-  FlipVerticalIcon
+  FlipVerticalIcon,
+  RotateRightIcon
 } from './Icons';
 import { getRenderingEngine } from '@cornerstonejs/core';
 
@@ -148,6 +149,39 @@ const ToolsPanel = () => {
     }
   };
 
+  // Handler для кнопки Rotate Right (по часовой стрелке, +90 градусов)
+  const handleRotateRight = () => {
+    try {
+      const renderingEngineId = 'myRenderingEngine';
+      const viewportId = 'CT_STACK';
+
+      // Get the rendering engine
+      const renderingEngine = getRenderingEngine(renderingEngineId);
+
+      if (!renderingEngine) {
+        console.warn('Rendering engine not found');
+        return;
+      }
+
+      // Get the stack viewport
+      const viewport = renderingEngine.getViewport(viewportId);
+
+      if (!viewport) {
+        console.warn('Viewport not found');
+        return;
+      }
+
+      // Get the current rotation
+      const { rotation } = viewport.getViewPresentation();
+      // Add 90 degrees for clockwise rotation
+      viewport.setViewPresentation({ rotation: rotation + 90 });
+
+      viewport.render();
+    } catch (error) {
+      console.error('Error in handleRotateRight:', error);
+    }
+  };
+
   return (
     <div className="tools-panel">
       <div className="tools-panel-buttons">
@@ -177,6 +211,9 @@ const ToolsPanel = () => {
         </Button>
         <Button title="Flip Vertical" onClick={handleFlipVertical}>
           <FlipVerticalIcon />
+        </Button>
+        <Button title="Rotate Right" onClick={handleRotateRight}>
+          <RotateRightIcon />
         </Button>
       </div>
     </div>
