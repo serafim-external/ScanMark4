@@ -10,7 +10,8 @@ import {
   FlipHorizontalIcon,
   FlipVerticalIcon,
   RotateRightIcon,
-  InvertIcon
+  InvertIcon,
+  ColormapIcon
 } from './Icons';
 import { getRenderingEngine } from '@cornerstonejs/core';
 
@@ -214,6 +215,35 @@ const ToolsPanel = () => {
     }
   };
 
+  // Handler для кнопки Apply Colormap
+  const handleApplyColormap = () => {
+    try {
+      const renderingEngineId = 'myRenderingEngine';
+      const viewportId = 'CT_STACK';
+
+      // Get the rendering engine
+      const renderingEngine = getRenderingEngine(renderingEngineId);
+
+      if (!renderingEngine) {
+        console.warn('Rendering engine not found');
+        return;
+      }
+
+      // Get the stack viewport
+      const viewport = renderingEngine.getViewport(viewportId);
+
+      if (!viewport) {
+        console.warn('Viewport not found');
+        return;
+      }
+
+      viewport.setProperties({ colormap: { name: 'hsv' } });
+      viewport.render();
+    } catch (error) {
+      console.error('Error in handleApplyColormap:', error);
+    }
+  };
+
   return (
     <div className="tools-panel">
       <div className="tools-panel-buttons">
@@ -249,6 +279,9 @@ const ToolsPanel = () => {
         </Button>
         <Button title="Invert" onClick={handleInvert}>
           <InvertIcon />
+        </Button>
+        <Button title="Apply Colormap" onClick={handleApplyColormap}>
+          <ColormapIcon />
         </Button>
       </div>
     </div>
