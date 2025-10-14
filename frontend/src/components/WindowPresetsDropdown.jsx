@@ -105,7 +105,7 @@ const WindowPresetsDropdown = ({ icon, title = 'Window Presets' }) => {
   const isCT = modality === 'CT';
 
   return (
-    <div className="window-presets-dropdown" ref={dropdownRef}>
+    <div className="dropdown-button-container" ref={dropdownRef}>
       <button
         className="dropdown-button"
         onClick={() => setIsOpen(!isOpen)}

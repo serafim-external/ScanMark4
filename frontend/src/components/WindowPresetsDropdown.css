@@ -1,34 +1,5 @@
-.window-presets-dropdown {
-  position: relative;
-  display: inline-block;
-  margin-left: -0.35rem; /* Уменьшает отступ от левой кнопки */
-}
-
-.window-presets-dropdown .dropdown-button {
-  width: 16px;
-  height: 30px;
-  padding: 0;
-  background-color: var(--primary);
-  color: var(--bg-dark);
-  border: none;
-  border-radius: 0.5rem;
-  cursor: pointer;
-  font-size: 13px;
-  font-family: inherit;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background-color 0.15s ease;
-}
-
-.window-presets-dropdown .dropdown-button:hover {
-  background-color: var(--secondary);
-}
-
-.window-presets-dropdown .dropdown-button:active {
-  background-color: var(--secondary);
-  filter: brightness(0.9);
-}
+/* Import shared dropdown button styles */
+@import './shared-dropdown-button.css';
 
 .window-dropdown-menu {
   position: absolute;
