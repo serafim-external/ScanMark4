@@ -6,33 +6,28 @@
 
 .dropdown-button {
   width: 16px;
-  height: 32px;
-  background: transparent;
-  border: 1px solid var(--bg-light);
-  border-radius: 4px;
+  height: 30px;
+  padding: 0;
+  background-color: var(--primary);
+  color: var(--bg-dark);
+  border: none;
+  border-radius: 0.5rem;
   cursor: pointer;
+  font-size: 13px;
+  font-family: inherit;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0;
-  transition: all 0.2s ease;
-}
-
-.dropdown-button svg {
-  color: var(--primary);
+  transition: background-color 0.15s ease;
 }
 
 .dropdown-button:hover {
-  background: var(--secondary);
-  border-color: var(--bg-light);
-}
-
-.dropdown-button:hover svg {
-  color: var(--bg-dark);
+  background-color: var(--secondary);
 }
 
 .dropdown-button:active {
-  transform: scale(0.95);
+  background-color: var(--secondary);
+  filter: brightness(0.9);
 }
 
 .dropdown-menu {
