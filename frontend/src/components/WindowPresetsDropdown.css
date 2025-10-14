@@ -11,7 +11,7 @@
   background-color: var(--primary);
   color: var(--bg-dark);
   border: none;
-  border-radius: 0.3rem;
+  border-radius: 0.33rem;
   cursor: pointer;
   font-size: 13px;
   font-family: inherit;
