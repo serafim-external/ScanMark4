@@ -2,6 +2,7 @@ import { useRef } from 'react';
 import Button from './Button';
 import { FolderIcon, ServerIcon } from './Icons';
 import { wadouri } from '@cornerstonejs/dicom-image-loader';
+import { utilities, imageLoader } from '@cornerstonejs/core';
 
 const SourcesPanel = ({ onFilesLoaded }) => {
   const fileInputRef = useRef(null);
@@ -10,7 +11,7 @@ const SourcesPanel = ({ onFilesLoaded }) => {
     fileInputRef.current?.click();
   };
 
-  const handleFileChange = (event) => {
+  const handleFileChange = async (event) => {
     const files = event.target.files;
     if (files && files.length > 0) {
       console.log(`Selected ${files.length} file(s)`);
@@ -29,11 +30,29 @@ const SourcesPanel = ({ onFilesLoaded }) => {
         console.log(`Generated imageId: ${imageId}`);
       });
 
-      console.log('Total imageIds:', imageIds);
+      console.log('Total imageIds (unsorted):', imageIds);
 
-      // Передаем imageIds наверх
-      if (onFilesLoaded) {
-        onFilesLoaded(imageIds);
+      try {
+        // Загружаем метаданные для всех изображений
+        // Cornerstone автоматически кэширует метаданные при loadImage
+        await Promise.all(imageIds.map(imageId => imageLoader.loadImage(imageId)));
+        console.log('Metadata loaded for all images');
+
+        // Теперь сортируем imageIds с помощью встроенной утилиты Cornerstone
+        // Она использует загруженные DICOM метаданные
+        const { sortedImageIds } = utilities.sortImageIdsAndGetSpacing(imageIds);
+        console.log('Sorted imageIds:', sortedImageIds);
+
+        // Передаем отсортированные imageIds наверх
+        if (onFilesLoaded) {
+          onFilesLoaded(sortedImageIds);
+        }
+      } catch (error) {
+        console.error('Error loading or sorting imageIds:', error);
+        // В случае ошибки передаем неотсортированные
+        if (onFilesLoaded) {
+          onFilesLoaded(imageIds);
+        }
       }
     }
   };
