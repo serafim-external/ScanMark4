@@ -1,6 +1,7 @@
 .dropdown-button-container {
   position: relative;
   display: inline-block;
+  margin-left: -0.35rem; /* Уменьшает отступ от левой кнопки */
 }
 
 .dropdown-button {
@@ -15,22 +16,23 @@
   justify-content: center;
   padding: 0;
   transition: all 0.2s ease;
+}
+
+.dropdown-button svg {
   color: var(--primary);
 }
 
 .dropdown-button:hover {
-  background: var(--bg-light);
+  background: var(--secondary);
   border-color: var(--highlight);
-  color: var(--secondary);
+}
+
+.dropdown-button:hover svg {
+  color: var(--bg-dark);
 }
 
 .dropdown-button:active {
   transform: scale(0.95);
-}
-
-.dropdown-button svg {
-  width: 12px;
-  height: 12px;
 }
 
 .dropdown-menu {
