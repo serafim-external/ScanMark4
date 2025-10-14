@@ -1,5 +1,5 @@
 import Button from './Button';
-import DropdownButton from './DropdownButton';
+import WindowPresetsDropdown from './WindowPresetsDropdown';
 import {
   LayoutIcon,
   ZoomIcon,
@@ -16,8 +16,7 @@ import {
   ResetIcon,
   ChevronDownIcon
 } from './Icons';
-import { getRenderingEngine, utilities } from '@cornerstonejs/core';
-import { WINDOW_PRESETS_BY_CATEGORY } from '../constants/windowPresets';
+import { getRenderingEngine } from '@cornerstonejs/core';
 
 const ToolsPanel = () => {
   // Handler для кнопки Previous Image
@@ -280,45 +279,6 @@ const ToolsPanel = () => {
     }
   };
 
-  // Handler для выбора window preset
-  const handleWindowPresetSelect = (preset) => {
-    try {
-      const renderingEngineId = 'myRenderingEngine';
-      const viewportId = 'CT_STACK';
-
-      // Get the rendering engine
-      const renderingEngine = getRenderingEngine(renderingEngineId);
-
-      if (!renderingEngine) {
-        console.warn('Rendering engine not found');
-        return;
-      }
-
-      // Get the stack viewport
-      const viewport = renderingEngine.getViewport(viewportId);
-
-      if (!viewport) {
-        console.warn('Viewport not found');
-        return;
-      }
-
-      // Convert window width/level to VOI range using Cornerstone3D utility
-      const { lower, upper } = utilities.windowLevel.toLowHighRange(
-        preset.windowWidth,
-        preset.windowCenter
-      );
-
-      // Apply the VOI range to the viewport
-      viewport.setProperties({
-        voiRange: { lower, upper }
-      });
-
-      viewport.render();
-    } catch (error) {
-      console.error('Error in handleWindowPresetSelect:', error);
-    }
-  };
-
   return (
     <div className="tools-panel">
       <div className="tools-panel-buttons">
@@ -334,10 +294,8 @@ const ToolsPanel = () => {
         <Button title="Window/Level">
           <WindowLevelIcon />
         </Button>
-        <DropdownButton
+        <WindowPresetsDropdown
           icon={<ChevronDownIcon />}
-          items={WINDOW_PRESETS_BY_CATEGORY}
-          onItemClick={handleWindowPresetSelect}
           title="Window Presets"
         />
         <Button title="Stack Scroll">
