@@ -242,7 +242,15 @@ const ToolsPanel = () => {
         return;
       }
 
+      // Check if viewport has images loaded (has actor)
+      const defaultActor = viewport.getDefaultActor();
+      if (!defaultActor) {
+        console.warn('No image loaded in viewport. Load an image first before applying colormap.');
+        return;
+      }
+
       // Apply colormap using official Cornerstone3D approach
+      // Following the pattern from stackAPI example
       viewport.setProperties({ colormap: { name: colormap.name } });
       viewport.render();
     } catch (error) {
