@@ -5,10 +5,10 @@
 }
 
 .dropdown-button {
-  width: 16px; /* половина ширины обычной кнопки (32px / 2) */
+  width: 16px;
   height: 32px;
   background: transparent;
-  border: 1px solid var(--border);
+  border: 1px solid var(--bg-light);
   border-radius: 4px;
   cursor: pointer;
   display: flex;
@@ -24,7 +24,7 @@
 
 .dropdown-button:hover {
   background: var(--secondary);
-  border-color: var(--highlight);
+  border-color: var(--bg-light);
 }
 
 .dropdown-button:hover svg {
