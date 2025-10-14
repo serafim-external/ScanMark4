@@ -1,0 +1,119 @@
+.dropdown-button-container {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-button {
+  width: 16px; /* половина ширины обычной кнопки (32px / 2) */
+  height: 32px;
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  transition: all 0.2s ease;
+  color: var(--primary);
+}
+
+.dropdown-button:hover {
+  background: var(--bg-light);
+  border-color: var(--highlight);
+  color: var(--secondary);
+}
+
+.dropdown-button:active {
+  transform: scale(0.95);
+}
+
+.dropdown-button svg {
+  width: 12px;
+  height: 12px;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  min-width: 200px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+  max-height: 400px;
+  overflow-y: auto;
+  animation: slideDown 0.15s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.dropdown-category {
+  padding: 4px 0;
+}
+
+.dropdown-category:not(:last-child) {
+  border-bottom: 1px solid var(--border-muted);
+}
+
+.dropdown-category-header {
+  padding: 8px 12px;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  letter-spacing: 0.5px;
+  background: var(--bg-dark);
+}
+
+.dropdown-item {
+  width: 100%;
+  padding: 8px 16px;
+  background: transparent;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+  color: var(--text);
+  font-size: 13px;
+  transition: all 0.15s ease;
+  display: block;
+}
+
+.dropdown-item:hover {
+  background: var(--bg-light);
+  color: var(--primary);
+}
+
+.dropdown-item:active {
+  background: var(--highlight);
+}
+
+/* Scrollbar styling */
+.dropdown-menu::-webkit-scrollbar {
+  width: 6px;
+}
+
+.dropdown-menu::-webkit-scrollbar-track {
+  background: var(--bg-dark);
+  border-radius: 4px;
+}
+
+.dropdown-menu::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 4px;
+}
+
+.dropdown-menu::-webkit-scrollbar-thumb:hover {
+  background: var(--highlight);
+}
