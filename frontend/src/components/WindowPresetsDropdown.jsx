@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
-import { getRenderingEngine, utilities } from '@cornerstonejs/core';
+import { getRenderingEngine, utilities, Enums } from '@cornerstonejs/core';
 import { WINDOW_PRESETS_BY_CATEGORY } from '../constants/windowPresets';
 import './WindowPresetsDropdown.css';
 
@@ -9,9 +9,10 @@ const WindowPresetsDropdown = ({ icon, title = 'Window Presets' }) => {
   const [customWL, setCustomWL] = useState('');
   const [showPresets, setShowPresets] = useState(false);
   const [modality, setModality] = useState(null);
+  const [voiFunction, setVoiFunction] = useState('LINEAR'); // LINEAR or SAMPLED_SIGMOID
   const dropdownRef = useRef(null);
 
-  // Get current viewport modality
+  // Get current viewport modality and VOI function
   useEffect(() => {
     if (isOpen) {
       try {
@@ -23,6 +24,12 @@ const WindowPresetsDropdown = ({ icon, title = 'Window Presets' }) => {
             setModality(currentModality);
             // Auto-show presets if modality is CT
             setShowPresets(currentModality === 'CT');
+
+            // Get current VOI function
+            const properties = viewport.getProperties();
+            if (properties.VOILUTFunction) {
+              setVoiFunction(properties.VOILUTFunction);
+            }
           }
         }
       } catch (error) {
@@ -102,6 +109,38 @@ const WindowPresetsDropdown = ({ icon, title = 'Window Presets' }) => {
     }
   };
 
+  const handleVoiFunctionToggle = () => {
+    try {
+      const renderingEngine = getRenderingEngine('myRenderingEngine');
+      if (!renderingEngine) {
+        console.warn('Rendering engine not found');
+        return;
+      }
+
+      const viewport = renderingEngine.getViewport('CT_STACK');
+      if (!viewport) {
+        console.warn('Viewport not found');
+        return;
+      }
+
+      // Toggle between LINEAR and SAMPLED_SIGMOID
+      const newFunction = voiFunction === Enums.VOILUTFunctionType.LINEAR
+        ? Enums.VOILUTFunctionType.SAMPLED_SIGMOID
+        : Enums.VOILUTFunctionType.LINEAR;
+
+      viewport.setProperties({
+        VOILUTFunction: newFunction
+      });
+
+      viewport.render();
+
+      // Update state
+      setVoiFunction(newFunction);
+    } catch (error) {
+      console.error('Error toggling VOI function:', error);
+    }
+  };
+
   const isCT = modality === 'CT';
 
   return (
@@ -130,7 +169,7 @@ const WindowPresetsDropdown = ({ icon, title = 'Window Presets' }) => {
                   placeholder="Width"
                   value={customWW}
                   onChange={(e) => setCustomWW(e.target.value)}
-                  onKeyPress={(e) => e.key === 'Enter' && handleApplyCustomWindow()}
+                  onKeyDown={(e) => e.key === 'Enter' && handleApplyCustomWindow()}
                 />
               </div>
               <div className="input-group">
@@ -141,13 +180,31 @@ const WindowPresetsDropdown = ({ icon, title = 'Window Presets' }) => {
                   placeholder="Level"
                   value={customWL}
                   onChange={(e) => setCustomWL(e.target.value)}
-                  onKeyPress={(e) => e.key === 'Enter' && handleApplyCustomWindow()}
+                  onKeyDown={(e) => e.key === 'Enter' && handleApplyCustomWindow()}
                 />
               </div>
             </div>
             <button className="apply-custom-button" onClick={handleApplyCustomWindow}>
               Apply
             </button>
+          </div>
+
+          {/* VOI LUT Function Toggle */}
+          <div className="voi-function-section">
+            <div className="presets-divider" />
+            <label className="voi-function-label">
+              <input
+                type="checkbox"
+                checked={voiFunction === Enums.VOILUTFunctionType.SAMPLED_SIGMOID}
+                onChange={handleVoiFunctionToggle}
+              />
+              <span className="voi-function-text">
+                Sigmoid VOI (smoother transitions)
+              </span>
+            </label>
+            <div className="voi-function-info">
+              Current: {voiFunction === Enums.VOILUTFunctionType.SAMPLED_SIGMOID ? 'Sigmoid' : 'Linear'}
+            </div>
           </div>
 
           {/* Presets Section */}
