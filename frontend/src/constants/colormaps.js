@@ -14,9 +14,6 @@ export const COMMON_COLORMAPS = [
   { name: 'hsv', label: 'HSV' },
   { name: 'erdc_rainbow_bright', label: 'Rainbow Bright' },
 
-  // Grayscale
-  { name: 'Grayscale', label: 'Grayscale' },
-
   // Scientific (из matplotlib, используются с суффиксом)
   { name: 'Viridis (matplotlib)', label: 'Viridis' },
   { name: 'Plasma (matplotlib)', label: 'Plasma' },

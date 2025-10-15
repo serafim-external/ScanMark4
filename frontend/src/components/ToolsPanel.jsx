@@ -300,12 +300,8 @@ const ToolsPanel = () => {
       // Apply selected colormap from dropdown
       viewport.setProperties({ colormap: { name: colormap.name } });
 
-      // Активируем кнопку colormap, если выбрали не Grayscale
-      if (colormap.name !== 'Grayscale') {
-        setIsColormapActive(true);
-      } else {
-        setIsColormapActive(false);
-      }
+      // Активируем кнопку colormap (все colormaps в списке кроме Grayscale)
+      setIsColormapActive(true);
 
       viewport.render();
     } catch (error) {
