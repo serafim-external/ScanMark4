@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import Button from './Button';
 import DropdownButton from './DropdownButton';
 import WindowPresetsDropdown from './WindowPresetsDropdown';
@@ -21,6 +22,7 @@ import { getRenderingEngine } from '@cornerstonejs/core';
 import { COMMON_COLORMAPS } from '../constants/colormaps';
 
 const ToolsPanel = () => {
+  const [isColormapActive, setIsColormapActive] = useState(false);
   // Handler для кнопки Previous Image
   const handlePreviousImage = () => {
     try {
@@ -220,6 +222,52 @@ const ToolsPanel = () => {
     }
   };
 
+  // Handler для кнопки Colormap - переключает между HSV и Grayscale
+  const handleColormapToggle = () => {
+    try {
+      const renderingEngineId = 'myRenderingEngine';
+      const viewportId = 'CT_STACK';
+
+      // Get the rendering engine
+      const renderingEngine = getRenderingEngine(renderingEngineId);
+
+      if (!renderingEngine) {
+        console.warn('Rendering engine not found');
+        return;
+      }
+
+      // Get the stack viewport
+      const viewport = renderingEngine.getViewport(viewportId);
+
+      if (!viewport) {
+        console.warn('Viewport not found');
+        return;
+      }
+
+      // Check if viewport has images loaded (has actor)
+      const defaultActor = viewport.getDefaultActor();
+      if (!defaultActor) {
+        console.warn('No image loaded in viewport. Load an image first before applying colormap.');
+        return;
+      }
+
+      // Toggle between HSV and Grayscale
+      if (isColormapActive) {
+        // Reset to Grayscale (default medical imaging colormap)
+        viewport.setProperties({ colormap: { name: 'Grayscale' } });
+        setIsColormapActive(false);
+      } else {
+        // Apply HSV colormap
+        viewport.setProperties({ colormap: { name: 'hsv' } });
+        setIsColormapActive(true);
+      }
+
+      viewport.render();
+    } catch (error) {
+      console.error('Error in handleColormapToggle:', error);
+    }
+  };
+
   // Handler для выбора colormap из dropdown
   const handleColormapSelect = (colormap) => {
     try {
@@ -249,9 +297,16 @@ const ToolsPanel = () => {
         return;
       }
 
-      // Apply colormap using official Cornerstone3D approach
-      // Following the pattern from stackAPI example
+      // Apply selected colormap from dropdown
       viewport.setProperties({ colormap: { name: colormap.name } });
+
+      // Активируем кнопку colormap, если выбрали не Grayscale
+      if (colormap.name !== 'Grayscale') {
+        setIsColormapActive(true);
+      } else {
+        setIsColormapActive(false);
+      }
+
       viewport.render();
     } catch (error) {
       console.error('Error in handleColormapSelect:', error);
@@ -285,6 +340,9 @@ const ToolsPanel = () => {
       // Resets the viewport's properties
       viewport.resetProperties();
       viewport.render();
+
+      // Reset colormap state
+      setIsColormapActive(false);
     } catch (error) {
       console.error('Error in handleResetViewport:', error);
     }
@@ -330,7 +388,7 @@ const ToolsPanel = () => {
         <Button title="Invert" onClick={handleInvert}>
           <InvertIcon />
         </Button>
-        <Button title="Colormap">
+        <Button title="Colormap" onClick={handleColormapToggle} active={isColormapActive}>
           <ColormapIcon />
         </Button>
         <DropdownButton

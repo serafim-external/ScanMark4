@@ -24,6 +24,10 @@
   filter: brightness(0.9);
 }
 
+.icon-button.active {
+  background-color: var(--secondary);
+}
+
 .icon-button:disabled {
   background-color: var(--border-muted);
   color: var(--text-muted);
