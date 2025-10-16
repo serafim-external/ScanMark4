@@ -18,7 +18,7 @@ import {
   ResetIcon,
   ChevronDownIcon
 } from './Icons';
-import { getRenderingEngine } from '@cornerstonejs/core';
+import { getRenderingEngine, Enums } from '@cornerstonejs/core';
 import { COMMON_COLORMAPS } from '../constants/colormaps';
 
 const ToolsPanel = () => {
@@ -331,10 +331,22 @@ const ToolsPanel = () => {
         return;
       }
 
-      // Resets the viewport's camera
+      // Best practice from cornerstone3D official examples:
+      // Reset viewport following the pattern from stackAPI example
+
+      // Resets the viewport's camera (pan, zoom, rotation, flip)
       viewport.resetCamera();
-      // Resets the viewport's properties
+
+      // Note: resetProperties() does NOT reset VOILUTFunction
+      // It only resets: VOI range, invert, interpolation, colormap
+      // So we manually reset VOILUTFunction to LINEAR first to avoid Sigmoid issues
+      viewport.setProperties({
+        VOILUTFunction: Enums.VOILUTFunctionType.LINEAR
+      });
+
+      // Now reset other properties
       viewport.resetProperties();
+
       viewport.render();
 
       // Reset colormap state
