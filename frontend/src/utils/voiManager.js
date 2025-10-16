@@ -1,14 +1,16 @@
 import { Enums } from '@cornerstonejs/core';
 
 let alertCallback = null;
+let lastAlertTime = 0;
+const ALERT_DEBOUNCE_MS = 8000; // Не показывать повторное уведомление чаще, чем раз в 8 секунд
 
 // Установка callback для показа alert
 export const setAlertCallback = (callback) => {
   alertCallback = callback;
 };
 
-// Автоматическое переключение с SIGMOID на LINEAR с уведомлением
-export const autoSwitchToLinear = (viewport) => {
+// Показать warning если пользователь меняет WW/WL в режиме Sigmoid
+export const warnIfSigmoid = (viewport) => {
   if (!viewport) return false;
 
   try {
@@ -16,42 +18,24 @@ export const autoSwitchToLinear = (viewport) => {
 
     // Проверяем, активен ли SIGMOID
     if (properties.VOILUTFunction === Enums.VOILUTFunctionType.SAMPLED_SIGMOID) {
-      // Переключаем на LINEAR
-      viewport.setProperties({
-        VOILUTFunction: Enums.VOILUTFunctionType.LINEAR
-      });
-
-      viewport.render();
-
-      // Показываем уведомление
-      if (alertCallback) {
+      // Показываем предупреждение (с debounce)
+      const now = Date.now();
+      if (alertCallback && (now - lastAlertTime) > ALERT_DEBOUNCE_MS) {
         alertCallback({
-          variant: 'danger',
-          title: 'VOI Function Auto-Switched',
-          message: 'Sigmoid VOI was automatically switched to Linear for interactive window/level adjustment.',
+          variant: 'warning',
+          title: 'Sigmoid VOI Active',
+          message: 'Interactive window/level adjustment works best with Linear VOI. Switch to Linear in Window Presets for optimal results.',
           autoClose: true,
-          autoCloseDuration: 5000
+          autoCloseDuration: 6000
         });
+        lastAlertTime = now;
       }
 
-      return true; // Переключение произошло
+      return true; // Sigmoid активен
     }
   } catch (error) {
-    console.error('Error in autoSwitchToLinear:', error);
+    console.error('Error in warnIfSigmoid:', error);
   }
 
-  return false; // Переключение не требовалось
-};
-
-// Проверка, нужно ли переключить на LINEAR
-export const shouldSwitchToLinear = (viewport) => {
-  if (!viewport) return false;
-
-  try {
-    const properties = viewport.getProperties();
-    return properties.VOILUTFunction === Enums.VOILUTFunctionType.SAMPLED_SIGMOID;
-  } catch (error) {
-    console.error('Error checking VOI function:', error);
-    return false;
-  }
+  return false; // Sigmoid не активен
 };

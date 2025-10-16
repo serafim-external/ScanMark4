@@ -3,7 +3,7 @@ import { RenderingEngine, Enums as csEnums } from '@cornerstonejs/core';
 import { registerTools, createToolGroup } from '../utils/setupTools';
 import { useAlerts } from '../contexts/AlertContext';
 import AlertContainer from './AlertContainer';
-import { setAlertCallback, autoSwitchToLinear } from '../utils/voiManager';
+import { setAlertCallback, warnIfSigmoid } from '../utils/voiManager';
 
 const ViewportArea = ({ imageIds }) => {
   const viewportRef = useRef(null);
@@ -44,15 +44,17 @@ const ViewportArea = ({ imageIds }) => {
     // Создаем ToolGroup и привязываем к viewport
     createToolGroup(viewportId, renderingEngineId);
 
-    // Добавляем слушатель для автоматического переключения с SIGMOID на LINEAR
-    // при использовании WindowLevelTool с мышкой
+    // Добавляем слушатель для предупреждения о Sigmoid VOI
+    // при изменении WW/WL с помощью мыши
     const element = viewportRef.current;
+
     const handleMouseDown = (evt) => {
       // Проверяем, что это левая кнопка мыши (WindowLevelTool)
       if (evt.button === 0) {
         const viewport = renderingEngine.getViewport(viewportId);
         if (viewport) {
-          autoSwitchToLinear(viewport);
+          // Просто показываем warning, если активен Sigmoid
+          warnIfSigmoid(viewport);
         }
       }
     };
