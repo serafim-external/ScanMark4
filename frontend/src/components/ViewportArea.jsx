@@ -16,6 +16,7 @@ const ViewportArea = ({ imageIds }) => {
   // State для overlay информации
   const [imageInfo, setImageInfo] = useState({ current: 0, total: 0 });
   const [cameraInfo, setCameraInfo] = useState({ zoom: 1.0, pan: { x: 0, y: 0 } });
+  const [voiInfo, setVoiInfo] = useState({ ww: 0, wl: 0 });
 
   // Установка callback для VOI manager
   useEffect(() => {
@@ -100,6 +101,22 @@ const ViewportArea = ({ imageIds }) => {
 
     element.addEventListener(csEnums.Events.CAMERA_MODIFIED, handleCameraModified);
 
+    // Добавляем обработчик события VOI_MODIFIED
+    // Согласно официальному примеру ViewportColorbar
+    const handleVoiModified = (evt) => {
+      const { range } = evt.detail;
+      if (range) {
+        // Конвертируем VOIRange (upper/lower) в Window Width/Window Level
+        // WW = upper - lower
+        // WL = (upper + lower) / 2
+        const ww = Math.round(range.upper - range.lower);
+        const wl = Math.round((range.upper + range.lower) / 2);
+        setVoiInfo({ ww, wl });
+      }
+    };
+
+    element.addEventListener(csEnums.Events.VOI_MODIFIED, handleVoiModified);
+
     console.log('Stack Viewport created:', viewportId);
 
     // Очистка при размонтировании
@@ -107,6 +124,7 @@ const ViewportArea = ({ imageIds }) => {
       element.removeEventListener('mousedown', handleMouseDown);
       element.removeEventListener(csEnums.Events.STACK_NEW_IMAGE, handleStackNewImage);
       element.removeEventListener(csEnums.Events.CAMERA_MODIFIED, handleCameraModified);
+      element.removeEventListener(csEnums.Events.VOI_MODIFIED, handleVoiModified);
       if (renderingEngineRef.current) {
         renderingEngineRef.current.destroy();
       }
@@ -135,6 +153,15 @@ const ViewportArea = ({ imageIds }) => {
 
         // Инициализируем информацию об изображениях
         setImageInfo({ current: 1, total: imageIds.length });
+
+        // Инициализируем VOI информацию
+        const properties = viewport.getProperties();
+        if (properties.voiRange) {
+          const { upper, lower } = properties.voiRange;
+          const ww = Math.round(upper - lower);
+          const wl = Math.round((upper + lower) / 2);
+          setVoiInfo({ ww, wl });
+        }
 
         console.log(`Loaded ${imageIds.length} images into viewport`);
       } catch (error) {
@@ -185,6 +212,25 @@ const ViewportArea = ({ imageIds }) => {
           }}
         >
           <div>Zoom: {cameraInfo.zoom.toFixed(2)}x</div>
+        </div>
+      )}
+
+      {/* Overlay с информацией о VOI (WW/WL) - левый нижний угол */}
+      {imageInfo.total > 0 && voiInfo.ww > 0 && (
+        <div
+          style={{
+            position: 'absolute',
+            bottom: '10px',
+            left: '10px',
+            color: 'var(--text-viewport)',
+            fontSize: '14px',
+            fontWeight: '500',
+            pointerEvents: 'none',
+            textShadow: '1px 1px 2px rgba(0, 0, 0, 0.8)',
+            zIndex: 10,
+          }}
+        >
+          <div>W: {voiInfo.ww} L: {voiInfo.wl}</div>
         </div>
       )}
 
