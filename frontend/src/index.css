@@ -7,6 +7,7 @@
   /* Text Colors */
   --text: oklch(0.96 0.01 196);
   --text-muted: oklch(0.76 0.01 196);
+  --text-viewport: #F0F757;
 
   /* Borders */
   --highlight: oklch(0.5 0.01 196);

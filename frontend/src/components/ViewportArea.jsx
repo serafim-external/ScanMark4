@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { RenderingEngine, Enums as csEnums } from '@cornerstonejs/core';
 import { registerTools, createToolGroup } from '../utils/setupTools';
 import { useAlerts } from '../contexts/AlertContext';
@@ -10,7 +10,12 @@ const ViewportArea = ({ imageIds }) => {
   const renderingEngineRef = useRef(null);
   const viewportIdRef = useRef('CT_STACK');
   const renderingEngineIdRef = useRef('myRenderingEngine');
+  const initialParallelScaleRef = useRef(null);
   const { alerts, removeAlert, addAlert } = useAlerts();
+
+  // State для overlay информации
+  const [imageInfo, setImageInfo] = useState({ current: 0, total: 0 });
+  const [cameraInfo, setCameraInfo] = useState({ zoom: 1.0, pan: { x: 0, y: 0 } });
 
   // Установка callback для VOI manager
   useEffect(() => {
@@ -61,11 +66,47 @@ const ViewportArea = ({ imageIds }) => {
 
     element.addEventListener('mousedown', handleMouseDown);
 
+    // Добавляем обработчик события STACK_NEW_IMAGE
+    // Согласно официальному примеру stackEvents
+    const handleStackNewImage = () => {
+      const viewport = renderingEngine.getViewport(viewportId);
+      if (viewport) {
+        const currentIndex = viewport.getCurrentImageIdIndex();
+        const totalImages = viewport.getImageIds().length;
+        setImageInfo({ current: currentIndex + 1, total: totalImages });
+      }
+    };
+
+    element.addEventListener(csEnums.Events.STACK_NEW_IMAGE, handleStackNewImage);
+
+    // Добавляем обработчик события CAMERA_MODIFIED
+    // Для отображения информации о zoom и pan
+    const handleCameraModified = (evt) => {
+      const { camera } = evt.detail;
+      if (camera && initialParallelScaleRef.current) {
+        // parallelScale: чем меньше значение, тем больше zoom
+        // Zoom factor: если parallelScale уменьшился в 2 раза, zoom = 2x
+        const zoomFactor = initialParallelScaleRef.current / camera.parallelScale;
+
+        setCameraInfo({
+          zoom: zoomFactor,
+          pan: {
+            x: camera.position[0],
+            y: camera.position[1],
+          },
+        });
+      }
+    };
+
+    element.addEventListener(csEnums.Events.CAMERA_MODIFIED, handleCameraModified);
+
     console.log('Stack Viewport created:', viewportId);
 
     // Очистка при размонтировании
     return () => {
       element.removeEventListener('mousedown', handleMouseDown);
+      element.removeEventListener(csEnums.Events.STACK_NEW_IMAGE, handleStackNewImage);
+      element.removeEventListener(csEnums.Events.CAMERA_MODIFIED, handleCameraModified);
       if (renderingEngineRef.current) {
         renderingEngineRef.current.destroy();
       }
@@ -88,6 +129,13 @@ const ViewportArea = ({ imageIds }) => {
         // Рендерим
         viewport.render();
 
+        // Сохраняем начальный parallelScale для вычисления zoom
+        const initialCamera = viewport.getCamera();
+        initialParallelScaleRef.current = initialCamera.parallelScale;
+
+        // Инициализируем информацию об изображениях
+        setImageInfo({ current: 1, total: imageIds.length });
+
         console.log(`Loaded ${imageIds.length} images into viewport`);
       } catch (error) {
         console.error('Error loading images:', error);
@@ -100,6 +148,46 @@ const ViewportArea = ({ imageIds }) => {
   return (
     <div className="viewport-area" style={{ position: 'relative' }}>
       <AlertContainer alerts={alerts} onRemoveAlert={removeAlert} />
+
+      {/* Overlay с информацией об изображении - левый верхний угол */}
+      {imageInfo.total > 0 && (
+        <div
+          style={{
+            position: 'absolute',
+            top: '10px',
+            left: '10px',
+            color: 'var(--text-viewport)',
+            fontSize: '14px',
+            fontWeight: '500',
+            pointerEvents: 'none',
+            textShadow: '1px 1px 2px rgba(0, 0, 0, 0.8)',
+            zIndex: 10,
+          }}
+        >
+          img: {imageInfo.current}/{imageInfo.total}
+        </div>
+      )}
+
+      {/* Overlay с информацией о камере - правый верхний угол */}
+      {imageInfo.total > 0 && (
+        <div
+          style={{
+            position: 'absolute',
+            top: '10px',
+            right: '10px',
+            color: 'var(--text-viewport)',
+            fontSize: '14px',
+            fontWeight: '500',
+            pointerEvents: 'none',
+            textShadow: '1px 1px 2px rgba(0, 0, 0, 0.8)',
+            zIndex: 10,
+            textAlign: 'right',
+          }}
+        >
+          <div>Zoom: {cameraInfo.zoom.toFixed(2)}x</div>
+        </div>
+      )}
+
       <div
         ref={viewportRef}
         onContextMenu={(e) => e.preventDefault()}
