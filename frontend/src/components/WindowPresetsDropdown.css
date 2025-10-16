@@ -112,16 +112,32 @@
   background: var(--bg-dark);
 }
 
-.voi-function-label {
+.voi-function-header {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  letter-spacing: 0.5px;
+  margin-bottom: 8px;
+}
+
+.voi-function-radio-label {
   display: flex;
   align-items: center;
   gap: 8px;
   cursor: pointer;
   user-select: none;
-  margin-bottom: 6px;
+  padding: 6px 0;
 }
 
-.voi-function-label input[type="checkbox"] {
+.voi-function-radio-label:hover {
+  background: var(--bg-light);
+  padding-left: 4px;
+  padding-right: 4px;
+  border-radius: 3px;
+}
+
+.voi-function-radio-label input[type="radio"] {
   width: 16px;
   height: 16px;
   cursor: pointer;
@@ -132,14 +148,6 @@
   font-size: 12px;
   color: var(--text);
   line-height: 1.4;
-  font-weight: 500;
-}
-
-.voi-function-info {
-  font-size: 11px;
-  color: var(--text-muted);
-  padding-left: 24px;
-  font-style: italic;
 }
 
 /* Presets Toggle Section */

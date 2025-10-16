@@ -113,7 +113,7 @@ const WindowPresetsDropdown = ({ icon, title = 'Window Presets' }) => {
     }
   };
 
-  const handleVoiFunctionToggle = () => {
+  const handleVoiFunctionChange = (newFunction) => {
     try {
       const renderingEngine = getRenderingEngine('myRenderingEngine');
       if (!renderingEngine) {
@@ -127,11 +127,7 @@ const WindowPresetsDropdown = ({ icon, title = 'Window Presets' }) => {
         return;
       }
 
-      // Toggle between LINEAR and SAMPLED_SIGMOID
-      const newFunction = voiFunction === Enums.VOILUTFunctionType.LINEAR
-        ? Enums.VOILUTFunctionType.SAMPLED_SIGMOID
-        : Enums.VOILUTFunctionType.LINEAR;
-
+      // Set the selected VOI LUT function
       viewport.setProperties({
         VOILUTFunction: newFunction
       });
@@ -144,7 +140,7 @@ const WindowPresetsDropdown = ({ icon, title = 'Window Presets' }) => {
       // Close dropdown after selection (like presets)
       setIsOpen(false);
     } catch (error) {
-      console.error('Error toggling VOI function:', error);
+      console.error('Error changing VOI function:', error);
     }
   };
 
@@ -196,22 +192,34 @@ const WindowPresetsDropdown = ({ icon, title = 'Window Presets' }) => {
             </button>
           </div>
 
-          {/* VOI LUT Function Toggle */}
+          {/* VOI LUT Function Selection */}
           <div className="voi-function-section">
             <div className="presets-divider" />
-            <label className="voi-function-label">
+            <div className="voi-function-header">VOI LUT Function</div>
+
+            <label className="voi-function-radio-label">
               <input
-                type="checkbox"
-                checked={voiFunction === Enums.VOILUTFunctionType.SAMPLED_SIGMOID}
-                onChange={handleVoiFunctionToggle}
+                type="radio"
+                name="voiFunction"
+                checked={voiFunction === Enums.VOILUTFunctionType.LINEAR}
+                onChange={() => handleVoiFunctionChange(Enums.VOILUTFunctionType.LINEAR)}
               />
               <span className="voi-function-text">
-                Sigmoid VOI (smoother transitions)
+                <strong>Linear</strong> - Standard (recommended)
               </span>
             </label>
-            <div className="voi-function-info">
-              Current: {voiFunction === Enums.VOILUTFunctionType.SAMPLED_SIGMOID ? 'Sigmoid' : 'Linear'}
-            </div>
+
+            <label className="voi-function-radio-label">
+              <input
+                type="radio"
+                name="voiFunction"
+                checked={voiFunction === Enums.VOILUTFunctionType.SAMPLED_SIGMOID}
+                onChange={() => handleVoiFunctionChange(Enums.VOILUTFunctionType.SAMPLED_SIGMOID)}
+              />
+              <span className="voi-function-text">
+                <strong>Sigmoid</strong> - Smoother transitions
+              </span>
+            </label>
           </div>
 
           {/* Presets Section */}
