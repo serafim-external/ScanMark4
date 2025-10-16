@@ -5,6 +5,7 @@ import ToolsPanel from './components/ToolsPanel';
 import BrowserPanel from './components/BrowserPanel';
 import ViewportArea from './components/ViewportArea';
 import { initCornerstone } from './utils/initCornerstone';
+import { AlertProvider } from './contexts/AlertContext';
 
 const App = () => {
   const [isInitialized, setIsInitialized] = useState(false);
@@ -46,12 +47,14 @@ const App = () => {
   }
 
   return (
-    <div className="medical-viewer-container">
-      <SourcesPanel onFilesLoaded={setImageIds} />
-      <ToolsPanel />
-      <BrowserPanel />
-      <ViewportArea imageIds={imageIds} />
-    </div>
+    <AlertProvider>
+      <div className="medical-viewer-container">
+        <SourcesPanel onFilesLoaded={setImageIds} />
+        <ToolsPanel />
+        <BrowserPanel />
+        <ViewportArea imageIds={imageIds} />
+      </div>
+    </AlertProvider>
   );
 };
 

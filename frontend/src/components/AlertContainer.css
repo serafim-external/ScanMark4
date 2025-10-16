@@ -1,0 +1,17 @@
+.alert-container {
+  position: absolute;
+  top: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2000;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 90%;
+  max-width: 500px;
+  pointer-events: none;
+}
+
+.alert-container > * {
+  pointer-events: auto;
+}

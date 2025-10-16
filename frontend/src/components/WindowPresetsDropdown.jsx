@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
 import { getRenderingEngine, utilities, Enums } from '@cornerstonejs/core';
 import { WINDOW_PRESETS_BY_CATEGORY } from '../constants/windowPresets';
+import { autoSwitchToLinear } from '../utils/voiManager';
 import './WindowPresetsDropdown.css';
 
 const WindowPresetsDropdown = ({ icon, title = 'Window Presets' }) => {
@@ -90,6 +91,13 @@ const WindowPresetsDropdown = ({ icon, title = 'Window Presets' }) => {
       if (!viewport) {
         console.warn('Viewport not found');
         return;
+      }
+
+      // Auto-switch from SIGMOID to LINEAR if needed
+      const wasSwitched = autoSwitchToLinear(viewport);
+      if (wasSwitched) {
+        // Update local state after auto-switch
+        setVoiFunction(Enums.VOILUTFunctionType.LINEAR);
       }
 
       // Convert window width/level to VOI range using Cornerstone3D utility

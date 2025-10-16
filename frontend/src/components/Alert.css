@@ -1,0 +1,86 @@
+.alert {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 12px 16px;
+  border: none;
+  border-radius: 0.5rem;
+  color: var(--bg);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  animation: slideInDown 0.2s ease-out;
+}
+
+@keyframes slideInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.alert-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.alert-title {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.alert-message {
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.4;
+  opacity: 0.9;
+}
+
+.alert-close-button {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  padding: 0;
+  background: var(--bg);
+  color: var(--text);
+  border: none;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s ease;
+}
+
+.alert-close-button:hover {
+  background: var(--bg-light);
+  transform: scale(1.1);
+}
+
+.alert-close-button:active {
+  transform: scale(0.95);
+}
+
+/* Variant styles */
+.alert-danger {
+  background: var(--danger);
+}
+
+.alert-warning {
+  background: var(--warning);
+}
+
+.alert-success {
+  background: var(--success);
+}
+
+.alert-info {
+  background: var(--info);
+}
