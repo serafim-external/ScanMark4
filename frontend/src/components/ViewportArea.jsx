@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { RenderingEngine, Enums as csEnums } from '@cornerstonejs/core';
+import { RenderingEngine, Enums as csEnums, utilities } from '@cornerstonejs/core';
 import { registerTools, createToolGroup } from '../utils/setupTools';
 import { useAlerts } from '../contexts/AlertContext';
 import AlertContainer from './AlertContainer';
@@ -102,16 +102,23 @@ const ViewportArea = ({ imageIds }) => {
     element.addEventListener(csEnums.Events.CAMERA_MODIFIED, handleCameraModified);
 
     // Добавляем обработчик события VOI_MODIFIED
-    // Согласно официальному примеру ViewportColorbar
+    // Согласно официальному примеру ViewportColorbar и DICOM стандарту
     const handleVoiModified = (evt) => {
       const { range } = evt.detail;
       if (range) {
-        // Конвертируем VOIRange (upper/lower) в Window Width/Window Level
-        // WW = upper - lower
-        // WL = (upper + lower) / 2
-        const ww = Math.round(range.upper - range.lower);
-        const wl = Math.round((range.upper + range.lower) / 2);
-        setVoiInfo({ ww, wl });
+        // Используем официальную функцию cornerstone3D для конвертации
+        // VOIRange (upper/lower) → Window Width/Window Level
+        // Формулы из DICOM стандарта C.11.2.1.2.1:
+        // WW = |high - low| + 1
+        // WL = (low + high + 1) / 2
+        const { windowWidth, windowCenter } = utilities.windowLevel.toWindowLevel(
+          range.lower,
+          range.upper
+        );
+        setVoiInfo({
+          ww: Math.round(windowWidth),
+          wl: Math.round(windowCenter)
+        });
       }
     };
 
@@ -158,9 +165,15 @@ const ViewportArea = ({ imageIds }) => {
         const properties = viewport.getProperties();
         if (properties.voiRange) {
           const { upper, lower } = properties.voiRange;
-          const ww = Math.round(upper - lower);
-          const wl = Math.round((upper + lower) / 2);
-          setVoiInfo({ ww, wl });
+          // Используем официальную функцию cornerstone3D (DICOM стандарт)
+          const { windowWidth, windowCenter } = utilities.windowLevel.toWindowLevel(
+            lower,
+            upper
+          );
+          setVoiInfo({
+            ww: Math.round(windowWidth),
+            wl: Math.round(windowCenter)
+          });
         }
 
         console.log(`Loaded ${imageIds.length} images into viewport`);
