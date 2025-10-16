@@ -140,6 +140,9 @@ const WindowPresetsDropdown = ({ icon, title = 'Window Presets' }) => {
 
       // Update state
       setVoiFunction(newFunction);
+
+      // Close dropdown after selection (like presets)
+      setIsOpen(false);
     } catch (error) {
       console.error('Error toggling VOI function:', error);
     }
