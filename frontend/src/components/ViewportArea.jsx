@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { RenderingEngine, Enums as csEnums, utilities } from '@cornerstonejs/core';
+import { RenderingEngine, Enums as csEnums, utilities, metaData } from '@cornerstonejs/core';
 import { registerTools, createToolGroup } from '../utils/setupTools';
 import { useAlerts } from '../contexts/AlertContext';
 import AlertContainer from './AlertContainer';
@@ -17,6 +17,11 @@ const ViewportArea = ({ imageIds }) => {
   const [imageInfo, setImageInfo] = useState({ current: 0, total: 0 });
   const [cameraInfo, setCameraInfo] = useState({ zoom: 1.0, pan: { x: 0, y: 0 } });
   const [voiInfo, setVoiInfo] = useState({ ww: 0, wl: 0 });
+  const [dicomMetadata, setDicomMetadata] = useState({
+    seriesDescription: '',
+    instanceNumber: '',
+    sliceLocation: ''
+  });
 
   // Установка callback для VOI manager
   useEffect(() => {
@@ -68,13 +73,28 @@ const ViewportArea = ({ imageIds }) => {
     element.addEventListener('mousedown', handleMouseDown);
 
     // Добавляем обработчик события STACK_NEW_IMAGE
-    // Согласно официальному примеру stackEvents
-    const handleStackNewImage = () => {
+    // Согласно официальному примеру stackEvents и stackProgressive
+    const handleStackNewImage = (evt) => {
       const viewport = renderingEngine.getViewport(viewportId);
       if (viewport) {
         const currentIndex = viewport.getCurrentImageIdIndex();
         const totalImages = viewport.getImageIds().length;
         setImageInfo({ current: currentIndex + 1, total: totalImages });
+
+        // Получаем DICOM метаданные для текущего изображения
+        // Используя metaData API от cornerstone3D
+        const { imageId } = evt.detail;
+
+        // Получаем imagePlaneModule для Slice Location и Instance Number
+        const imagePlaneModule = metaData.get('imagePlaneModule', imageId);
+        // Получаем generalSeriesModule для Series Description
+        const generalSeriesModule = metaData.get('generalSeriesModule', imageId);
+
+        setDicomMetadata({
+          seriesDescription: generalSeriesModule?.seriesDescription || 'N/A',
+          instanceNumber: imagePlaneModule?.instanceNumber?.toString() || 'N/A',
+          sliceLocation: imagePlaneModule?.imagePositionPatient?.[2]?.toFixed(2) || 'N/A'
+        });
       }
     };
 
@@ -161,6 +181,17 @@ const ViewportArea = ({ imageIds }) => {
         // Инициализируем информацию об изображениях
         setImageInfo({ current: 1, total: imageIds.length });
 
+        // Инициализируем DICOM метаданные для первого изображения
+        const firstImageId = imageIds[0];
+        const imagePlaneModule = metaData.get('imagePlaneModule', firstImageId);
+        const generalSeriesModule = metaData.get('generalSeriesModule', firstImageId);
+
+        setDicomMetadata({
+          seriesDescription: generalSeriesModule?.seriesDescription || 'N/A',
+          instanceNumber: imagePlaneModule?.instanceNumber?.toString() || 'N/A',
+          sliceLocation: imagePlaneModule?.imagePositionPatient?.[2]?.toFixed(2) || 'N/A'
+        });
+
         // Инициализируем VOI информацию
         const properties = viewport.getProperties();
         if (properties.voiRange) {
@@ -208,12 +239,34 @@ const ViewportArea = ({ imageIds }) => {
         </div>
       )}
 
-      {/* Overlay с информацией о камере - правый верхний угол */}
+      {/* Overlay с DICOM метаданными - правый верхний угол */}
       {imageInfo.total > 0 && (
         <div
           style={{
             position: 'absolute',
             top: '10px',
+            right: '10px',
+            color: 'var(--text-viewport)',
+            fontSize: '14px',
+            fontWeight: '500',
+            pointerEvents: 'none',
+            textShadow: '1px 1px 2px rgba(0, 0, 0, 0.8)',
+            zIndex: 10,
+            textAlign: 'right',
+          }}
+        >
+          <div>{dicomMetadata.seriesDescription}</div>
+          <div>Instance: {dicomMetadata.instanceNumber}</div>
+          <div>Slice: {dicomMetadata.sliceLocation} mm</div>
+        </div>
+      )}
+
+      {/* Overlay с информацией о Zoom - правый нижний угол */}
+      {imageInfo.total > 0 && (
+        <div
+          style={{
+            position: 'absolute',
+            bottom: '10px',
             right: '10px',
             color: 'var(--text-viewport)',
             fontSize: '14px',
