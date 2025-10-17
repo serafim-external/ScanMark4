@@ -18,7 +18,7 @@ import {
   ResetIcon,
   ChevronDownIcon
 } from './Icons';
-import { getRenderingEngine, Enums } from '@cornerstonejs/core';
+import { getRenderingEngine } from '@cornerstonejs/core';
 import { COMMON_COLORMAPS } from '../constants/colormaps';
 
 const ToolsPanel = () => {
@@ -331,25 +331,16 @@ const ToolsPanel = () => {
         return;
       }
 
-      // Best practice from cornerstone3D official examples:
-      // Reset viewport following the pattern from stackAPI example
+      // Official pattern from cornerstone3D stackAPI and stackEvents examples:
+      // https://github.com/cornerstonejs/cornerstone3D/blob/main/packages/core/examples/stackAPI/index.ts
 
       // Resets the viewport's camera (pan, zoom, rotation, flip)
       viewport.resetCamera();
-
-      // Note: resetProperties() does NOT reset VOILUTFunction
-      // It only resets: VOI range, invert, interpolation, colormap
-      // So we manually reset VOILUTFunction to LINEAR first to avoid Sigmoid issues
-      viewport.setProperties({
-        VOILUTFunction: Enums.VOILUTFunctionType.LINEAR
-      });
-
-      // Now reset other properties
+      // Resets the viewport's properties (VOI, invert, interpolation, colormap)
       viewport.resetProperties();
-
       viewport.render();
 
-      // Reset colormap state
+      // Reset colormap UI state
       setIsColormapActive(false);
     } catch (error) {
       console.error('Error in handleResetViewport:', error);
